@@ -38,37 +38,6 @@ public class IndexAction extends ActionSupport {
 
     public String execute() throws Exception {
         now = new Date(System.currentTimeMillis());
-        connectDB();
         return SUCCESS;
-    }
-
-    private void connectDB () {
-        String hostName = "smarteat-server.database.windows.net";
-        String dbName = "smarteatdb";
-        String user = "lars";
-        String password = "BananaU24";
-
-        try {
-            String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-            Class.forName(driver).newInstance();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        }
-        String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
-        Connection connection = null;
-
-        try {
-            connection = DriverManager.getConnection(url);
-            String schema = connection.getSchema();
-            System.out.println("Successful connection - Schema: " + schema);
-        }
-
-        catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
