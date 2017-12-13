@@ -26,16 +26,16 @@ import com.opensymphony.xwork2.conversion.annotations.Conversion;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
 /**
- * 
+ *
  */
 @Conversion()
 public class IndexAction extends ActionSupport {
-    
+
     private Date now = new Date(System.currentTimeMillis());
-    
+
     @TypeConversion(converter = "org.teamsmarteat.DateConverter")
     public Date getDateNow() { return now; }
-    
+
     public String execute() throws Exception {
         now = new Date(System.currentTimeMillis());
         connectDB();
@@ -47,6 +47,17 @@ public class IndexAction extends ActionSupport {
         String dbName = "smarteatdb";
         String user = "lars";
         String password = "BananaU24";
+
+        try {
+            String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+            Class.forName(driver).newInstance();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
         String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
         Connection connection = null;
 
