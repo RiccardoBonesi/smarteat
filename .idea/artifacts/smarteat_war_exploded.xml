@@ -7,6 +7,7 @@
           <element id="module-output" name="smarteat" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.microsoft.sqlserver:mssql-jdbc:6.2.2.jre7" />
           <element id="library" level="project" name="Maven: org.apache.struts:struts2-core:2.5.5" />
           <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.23" />
           <element id="library" level="project" name="Maven: ognl:ognl:3.1.10" />
