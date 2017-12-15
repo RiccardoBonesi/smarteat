@@ -1,30 +1,20 @@
 package org.teamsmarteat;
 
 import junit.framework.TestCase;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.teamsmarteat.model.Menu;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+public class EntityManagerTest extends TestCase {
 
-/**
- *
- */
-public class PersistenceTest extends TestCase {
+    EntityManager em;
 
-    public void testConnection() throws Exception {
-        assertTrue(connectDB());
-    }
-
-    private boolean connectDB () {
+    public void testFind() {
         EntityManagerFactory factory;
-        EntityManager em;
         factory = Persistence.createEntityManagerFactory("unit1");
         em = factory.createEntityManager();
-        return true;
+        assertEquals(Menu.class, em.find(Menu.class,1).getClass());
     }
 }
-
