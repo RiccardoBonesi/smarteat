@@ -24,6 +24,10 @@
             <result>/WEB-INF/jsp/dashboard.jsp</result>
         </action>
 
+        <action name="login" class="org.teamsmarteat.loginAction">
+            <result name="success">/WEB-INF/jsp/dashboard.jsp</result>
+        </action>
+
     </package>
 
 </struts>
