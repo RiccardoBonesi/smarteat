@@ -2,35 +2,43 @@ package org.teamsmarteat.model;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Objects;
+import java.util.Locale;
 
 @Entity
-@Table(name = "dish", schema = "smarteatschema", catalog = "")
+@Table(name = "dish")
 public class DishEntity {
-    private int iddish;
-    private String name;
-    private double price;
-    private String description;
-    private int categoryIdcategory;
-    private int menuIdmenu;
-    private CategoryEntity categoryByCategoryIdcategory;
-    private MenuEntity menuByMenuIdmenu;
-    private Collection<DishHasIngredientsEntity> dishHasIngredientsByIddish;
-    private Collection<OrderLineEntity> orderLinesByIddish;
-    private Collection<PromotionMenuEntity> promotionMenusByIddish;
 
     @Id
+    @GeneratedValue
     @Column(name = "iddish")
-    public int getIddish() {
-        return iddish;
-    }
+    private int DishId;
 
-    public void setIddish(int iddish) {
-        this.iddish = iddish;
-    }
-
-    @Basic
     @Column(name = "name")
+    private String name;
+
+    @Column(name = "price")
+    private double price;
+
+    @Column(name = "description")
+    private String description;
+
+    @ManyToOne
+    private CategoryEntity category;
+
+    @ManyToOne
+    private MenuEntity menu;
+
+    @ManyToMany
+    private Collection<IngredientEntity> ingredients;
+
+    public int getDishId() {
+        return DishId;
+    }
+
+    public void setDishId(int dishId) {
+        DishId = dishId;
+    }
+
     public String getName() {
         return name;
     }
@@ -39,8 +47,6 @@ public class DishEntity {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "price")
     public double getPrice() {
         return price;
     }
@@ -49,8 +55,6 @@ public class DishEntity {
         this.price = price;
     }
 
-    @Basic
-    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -59,87 +63,30 @@ public class DishEntity {
         this.description = description;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DishEntity that = (DishEntity) o;
-        return iddish == that.iddish &&
-                Double.compare(that.price, price) == 0 &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(description, that.description);
+    public CategoryEntity getCategory() {
+        return category;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(iddish, name, price, description);
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
     }
 
-    @Basic
-    @Column(name = "category_idcategory")
-    public int getCategoryIdcategory() {
-        return categoryIdcategory;
+    public MenuEntity getMenu() {
+        return menu;
     }
 
-    public void setCategoryIdcategory(int categoryIdcategory) {
-        this.categoryIdcategory = categoryIdcategory;
+    public void setMenu(MenuEntity menu) {
+        this.menu = menu;
     }
 
-    @Basic
-    @Column(name = "menu_idmenu")
-    public int getMenuIdmenu() {
-        return menuIdmenu;
+
+
+    public Collection<IngredientEntity> getIngredients() {
+        return ingredients;
     }
 
-    public void setMenuIdmenu(int menuIdmenu) {
-        this.menuIdmenu = menuIdmenu;
+    public void setIngredients(Collection<IngredientEntity> ingredients) {
+        this.ingredients = ingredients;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "category_idcategory", referencedColumnName = "idcategory", nullable = false)
-    public CategoryEntity getCategoryByCategoryIdcategory() {
-        return categoryByCategoryIdcategory;
-    }
-
-    public void setCategoryByCategoryIdcategory(CategoryEntity categoryByCategoryIdcategory) {
-        this.categoryByCategoryIdcategory = categoryByCategoryIdcategory;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "menu_idmenu", referencedColumnName = "idmenu", nullable = false)
-    public MenuEntity getMenuByMenuIdmenu() {
-        return menuByMenuIdmenu;
-    }
-
-    public void setMenuByMenuIdmenu(MenuEntity menuByMenuIdmenu) {
-        this.menuByMenuIdmenu = menuByMenuIdmenu;
-    }
-
-    @OneToMany(mappedBy = "dishByDishIddish")
-    public Collection<DishHasIngredientsEntity> getDishHasIngredientsByIddish() {
-        return dishHasIngredientsByIddish;
-    }
-
-    public void setDishHasIngredientsByIddish(Collection<DishHasIngredientsEntity> dishHasIngredientsByIddish) {
-        this.dishHasIngredientsByIddish = dishHasIngredientsByIddish;
-    }
-
-    @OneToMany(mappedBy = "dishByDishIddish")
-    public Collection<OrderLineEntity> getOrderLinesByIddish() {
-        return orderLinesByIddish;
-    }
-
-    public void setOrderLinesByIddish(Collection<OrderLineEntity> orderLinesByIddish) {
-        this.orderLinesByIddish = orderLinesByIddish;
-    }
-
-    @OneToMany(mappedBy = "dishByDishIddish")
-    public Collection<PromotionMenuEntity> getPromotionMenusByIddish() {
-        return promotionMenusByIddish;
-    }
-
-    public void setPromotionMenusByIddish(Collection<PromotionMenuEntity> promotionMenusByIddish) {
-        this.promotionMenusByIddish = promotionMenusByIddish;
-    }
 }

@@ -6,13 +6,10 @@
   <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <class>org.teamsmarteat.model.CategoryEntity</class>
     <class>org.teamsmarteat.model.DishEntity</class>
-    <class>org.teamsmarteat.model.DishHasIngredientsEntity</class>
-    <class>org.teamsmarteat.model.IngredientsEntity</class>
+    <class>org.teamsmarteat.model.IngredientEntity</class>
     <class>org.teamsmarteat.model.MenuEntity</class>
     <class>org.teamsmarteat.model.OrderEntity</class>
-    <class>org.teamsmarteat.model.OrderLineEntity</class>
     <class>org.teamsmarteat.model.PromotionEntity</class>
-    <class>org.teamsmarteat.model.PromotionMenuEntity</class>
     <class>org.teamsmarteat.model.RestaurantEntity</class>
   <class>org.teamsmarteat.model.UserEntity</class>
   <properties>
@@ -27,16 +24,8 @@
       <property name="hibernate.show_sql" value="true" />
       <property name="hibernate.format_sql" value="true" />
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
-      <property name="hibernate.hbm2ddl.auto" value="validate" />
-      <property name="hibernate.default_schema" value="smarteatschema"/>
-        <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/smarteatschema"/>
-        <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-        <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/smarteatschema"/>
-        <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-        <property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost:3306/smarteatschema"/>
-        <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
-        <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/smarteatschema"/>
-        <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <!-- <property name="hibernate.hbm2ddl.auto" value="validate" /> -->
+
     </properties>
   </persistence-unit>
 

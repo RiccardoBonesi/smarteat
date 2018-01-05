@@ -1,69 +1,43 @@
 package org.teamsmarteat.model;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Objects;
 
 @Entity
-@Table(name = "order", schema = "smarteatschema", catalog = "")
+@Table(name = "order")
 public class OrderEntity {
-    private int idorder;
-    private Double totalPrice;
-    private String tableNumber;
-    private Collection<OrderLineEntity> orderLinesByIdorder;
 
     @Id
+    @GeneratedValue()
     @Column(name = "idorder")
-    public int getIdorder() {
-        return idorder;
-    }
+    private int orderId;
 
-    public void setIdorder(int idorder) {
-        this.idorder = idorder;
-    }
-
-    @Basic
     @Column(name = "total_price")
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
+    private double amount;
 
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    @Basic
     @Column(name = "table_number")
+    private String tableNumber;
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public String getTableNumber() {
         return tableNumber;
     }
 
     public void setTableNumber(String tableNumber) {
         this.tableNumber = tableNumber;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        OrderEntity that = (OrderEntity) o;
-        return idorder == that.idorder &&
-                Objects.equals(totalPrice, that.totalPrice) &&
-                Objects.equals(tableNumber, that.tableNumber);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(idorder, totalPrice, tableNumber);
-    }
-
-    @OneToMany(mappedBy = "orderByOrderIdorder")
-    public Collection<OrderLineEntity> getOrderLinesByIdorder() {
-        return orderLinesByIdorder;
-    }
-
-    public void setOrderLinesByIdorder(Collection<OrderLineEntity> orderLinesByIdorder) {
-        this.orderLinesByIdorder = orderLinesByIdorder;
     }
 }

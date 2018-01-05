@@ -3,23 +3,23 @@ package org.teamsmarteat.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "category")
-public class CategoryEntity {
+@Table(name = "ingredients")
+public class IngredientEntity {
 
     @Id
     @GeneratedValue()
-    @Column(name = "idcategory")
-    private int categoryId;
+    @Column(name = "idingredients")
+    private int ingredientId;
 
     @Column(name = "name")
     private String name;
 
-    public int getCategoryId() {
-        return categoryId;
+    public int getIngredientId() {
+        return ingredientId;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setIngredientId(int ingredientId) {
+        this.ingredientId = ingredientId;
     }
 
     public String getName() {
