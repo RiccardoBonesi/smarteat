@@ -3,7 +3,7 @@ package org.teamsmarteat;
 import com.opensymphony.xwork2.ActionSupport;
 import org.teamsmarteat.model.UserEntity;
 
-public class loginAction extends ActionSupport {
+public class LoginAction extends ActionSupport {
     private UserEntity userEntity;
 
     public UserEntity getUserEntity() {
@@ -15,8 +15,8 @@ public class loginAction extends ActionSupport {
     }
 
     public String execute() {
-String user = userEntity.getUsername();
+        String user = userEntity.getUsername();
 
-return SUCCESS;
+        return SUCCESS;
     }
 }

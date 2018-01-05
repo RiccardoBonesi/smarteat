@@ -24,7 +24,7 @@
             <result>/WEB-INF/jsp/dashboard.jsp</result>
         </action>
 
-        <action name="login" class="org.teamsmarteat.loginAction">
+        <action name="login" class="org.teamsmarteat.LoginAction">
             <result name="success">/WEB-INF/jsp/dashboard.jsp</result>
         </action>
 
