@@ -1,7 +1,7 @@
 package org.teamsmarteat;
 
 import junit.framework.TestCase;
-import org.teamsmarteat.model.Menu;
+import org.teamsmarteat.model.MenuEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,6 +15,6 @@ public class EntityManagerTest extends TestCase {
         EntityManagerFactory factory;
         factory = Persistence.createEntityManagerFactory("unit1");
         em = factory.createEntityManager();
-        assertEquals(Menu.class, em.find(Menu.class,1).getClass());
+        assertEquals(MenuEntity.class, em.find(MenuEntity.class,1).getClass());
     }
 }
