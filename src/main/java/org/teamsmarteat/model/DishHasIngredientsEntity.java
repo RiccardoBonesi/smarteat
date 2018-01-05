@@ -9,6 +9,8 @@ import java.util.Objects;
 public class DishHasIngredientsEntity {
     private int dishIddish;
     private int ingredientsIdingredients;
+    private DishEntity dishByDishIddish;
+    private IngredientsEntity ingredientsByIngredientsIdingredients;
 
     @Id
     @Column(name = "dish_iddish")
@@ -43,5 +45,25 @@ public class DishHasIngredientsEntity {
     public int hashCode() {
 
         return Objects.hash(dishIddish, ingredientsIdingredients);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "dish_iddish", referencedColumnName = "iddish", nullable = false)
+    public DishEntity getDishByDishIddish() {
+        return dishByDishIddish;
+    }
+
+    public void setDishByDishIddish(DishEntity dishByDishIddish) {
+        this.dishByDishIddish = dishByDishIddish;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ingredients_idingredients", referencedColumnName = "idingredients", nullable = false)
+    public IngredientsEntity getIngredientsByIngredientsIdingredients() {
+        return ingredientsByIngredientsIdingredients;
+    }
+
+    public void setIngredientsByIngredientsIdingredients(IngredientsEntity ingredientsByIngredientsIdingredients) {
+        this.ingredientsByIngredientsIdingredients = ingredientsByIngredientsIdingredients;
     }
 }

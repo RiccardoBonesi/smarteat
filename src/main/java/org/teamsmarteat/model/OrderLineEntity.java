@@ -12,6 +12,9 @@ public class OrderLineEntity {
     private int promotionIdpromotion;
     private int quantity;
     private String note;
+    private DishEntity dishByDishIddish;
+    private OrderEntity orderByOrderIdorder;
+    private PromotionEntity promotionByPromotionIdpromotion;
 
     @Id
     @Column(name = "dish_iddish")
@@ -79,5 +82,35 @@ public class OrderLineEntity {
     public int hashCode() {
 
         return Objects.hash(dishIddish, orderIdorder, promotionIdpromotion, quantity, note);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "dish_iddish", referencedColumnName = "iddish", nullable = false)
+    public DishEntity getDishByDishIddish() {
+        return dishByDishIddish;
+    }
+
+    public void setDishByDishIddish(DishEntity dishByDishIddish) {
+        this.dishByDishIddish = dishByDishIddish;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "order_idorder", referencedColumnName = "idorder", nullable = false)
+    public OrderEntity getOrderByOrderIdorder() {
+        return orderByOrderIdorder;
+    }
+
+    public void setOrderByOrderIdorder(OrderEntity orderByOrderIdorder) {
+        this.orderByOrderIdorder = orderByOrderIdorder;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "promotion_idpromotion", referencedColumnName = "idpromotion", nullable = false)
+    public PromotionEntity getPromotionByPromotionIdpromotion() {
+        return promotionByPromotionIdpromotion;
+    }
+
+    public void setPromotionByPromotionIdpromotion(PromotionEntity promotionByPromotionIdpromotion) {
+        this.promotionByPromotionIdpromotion = promotionByPromotionIdpromotion;
     }
 }

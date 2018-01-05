@@ -1,6 +1,7 @@
 package org.teamsmarteat.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -9,6 +10,7 @@ public class UserEntity {
     private int iduser;
     private String password;
     private String username;
+    private Collection<RestaurantEntity> restaurantsByIduser;
 
     @Id
     @Column(name = "iduser")
@@ -54,5 +56,14 @@ public class UserEntity {
     public int hashCode() {
 
         return Objects.hash(iduser, password, username);
+    }
+
+    @OneToMany(mappedBy = "userByUserIduser")
+    public Collection<RestaurantEntity> getRestaurantsByIduser() {
+        return restaurantsByIduser;
+    }
+
+    public void setRestaurantsByIduser(Collection<RestaurantEntity> restaurantsByIduser) {
+        this.restaurantsByIduser = restaurantsByIduser;
     }
 }

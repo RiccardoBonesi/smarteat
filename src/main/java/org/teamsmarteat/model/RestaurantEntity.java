@@ -11,6 +11,8 @@ public class RestaurantEntity {
     private String address;
     private int menuIdmenu;
     private int userIduser;
+    private MenuEntity menuByMenuIdmenu;
+    private UserEntity userByUserIduser;
 
     @Id
     @Column(name = "idrestaurant")
@@ -76,5 +78,25 @@ public class RestaurantEntity {
 
     public void setUserIduser(int userIduser) {
         this.userIduser = userIduser;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "menu_idmenu", referencedColumnName = "idmenu", nullable = false)
+    public MenuEntity getMenuByMenuIdmenu() {
+        return menuByMenuIdmenu;
+    }
+
+    public void setMenuByMenuIdmenu(MenuEntity menuByMenuIdmenu) {
+        this.menuByMenuIdmenu = menuByMenuIdmenu;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_iduser", referencedColumnName = "iduser", nullable = false)
+    public UserEntity getUserByUserIduser() {
+        return userByUserIduser;
+    }
+
+    public void setUserByUserIduser(UserEntity userByUserIduser) {
+        this.userByUserIduser = userByUserIduser;
     }
 }

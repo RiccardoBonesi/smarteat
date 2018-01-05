@@ -10,6 +10,9 @@ public class PromotionMenuEntity {
     private int promotionIdpromotion;
     private int dishIddish;
     private int categoryIdcategory;
+    private PromotionEntity promotionByPromotionIdpromotion;
+    private DishEntity dishByDishIddish;
+    private CategoryEntity categoryByCategoryIdcategory;
 
     @Id
     @Column(name = "promotion_idpromotion")
@@ -55,5 +58,35 @@ public class PromotionMenuEntity {
     public int hashCode() {
 
         return Objects.hash(promotionIdpromotion, dishIddish, categoryIdcategory);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "promotion_idpromotion", referencedColumnName = "idpromotion", nullable = false)
+    public PromotionEntity getPromotionByPromotionIdpromotion() {
+        return promotionByPromotionIdpromotion;
+    }
+
+    public void setPromotionByPromotionIdpromotion(PromotionEntity promotionByPromotionIdpromotion) {
+        this.promotionByPromotionIdpromotion = promotionByPromotionIdpromotion;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "dish_iddish", referencedColumnName = "iddish", nullable = false)
+    public DishEntity getDishByDishIddish() {
+        return dishByDishIddish;
+    }
+
+    public void setDishByDishIddish(DishEntity dishByDishIddish) {
+        this.dishByDishIddish = dishByDishIddish;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "category_idcategory", referencedColumnName = "idcategory", nullable = false)
+    public CategoryEntity getCategoryByCategoryIdcategory() {
+        return categoryByCategoryIdcategory;
+    }
+
+    public void setCategoryByCategoryIdcategory(CategoryEntity categoryByCategoryIdcategory) {
+        this.categoryByCategoryIdcategory = categoryByCategoryIdcategory;
     }
 }

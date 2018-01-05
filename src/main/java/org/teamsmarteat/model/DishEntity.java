@@ -1,6 +1,7 @@
 package org.teamsmarteat.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -12,6 +13,11 @@ public class DishEntity {
     private String description;
     private int categoryIdcategory;
     private int menuIdmenu;
+    private CategoryEntity categoryByCategoryIdcategory;
+    private MenuEntity menuByMenuIdmenu;
+    private Collection<DishHasIngredientsEntity> dishHasIngredientsByIddish;
+    private Collection<OrderLineEntity> orderLinesByIddish;
+    private Collection<PromotionMenuEntity> promotionMenusByIddish;
 
     @Id
     @Column(name = "iddish")
@@ -88,5 +94,52 @@ public class DishEntity {
 
     public void setMenuIdmenu(int menuIdmenu) {
         this.menuIdmenu = menuIdmenu;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "category_idcategory", referencedColumnName = "idcategory", nullable = false)
+    public CategoryEntity getCategoryByCategoryIdcategory() {
+        return categoryByCategoryIdcategory;
+    }
+
+    public void setCategoryByCategoryIdcategory(CategoryEntity categoryByCategoryIdcategory) {
+        this.categoryByCategoryIdcategory = categoryByCategoryIdcategory;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "menu_idmenu", referencedColumnName = "idmenu", nullable = false)
+    public MenuEntity getMenuByMenuIdmenu() {
+        return menuByMenuIdmenu;
+    }
+
+    public void setMenuByMenuIdmenu(MenuEntity menuByMenuIdmenu) {
+        this.menuByMenuIdmenu = menuByMenuIdmenu;
+    }
+
+    @OneToMany(mappedBy = "dishByDishIddish")
+    public Collection<DishHasIngredientsEntity> getDishHasIngredientsByIddish() {
+        return dishHasIngredientsByIddish;
+    }
+
+    public void setDishHasIngredientsByIddish(Collection<DishHasIngredientsEntity> dishHasIngredientsByIddish) {
+        this.dishHasIngredientsByIddish = dishHasIngredientsByIddish;
+    }
+
+    @OneToMany(mappedBy = "dishByDishIddish")
+    public Collection<OrderLineEntity> getOrderLinesByIddish() {
+        return orderLinesByIddish;
+    }
+
+    public void setOrderLinesByIddish(Collection<OrderLineEntity> orderLinesByIddish) {
+        this.orderLinesByIddish = orderLinesByIddish;
+    }
+
+    @OneToMany(mappedBy = "dishByDishIddish")
+    public Collection<PromotionMenuEntity> getPromotionMenusByIddish() {
+        return promotionMenusByIddish;
+    }
+
+    public void setPromotionMenusByIddish(Collection<PromotionMenuEntity> promotionMenusByIddish) {
+        this.promotionMenusByIddish = promotionMenusByIddish;
     }
 }
