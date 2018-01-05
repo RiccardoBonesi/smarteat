@@ -13,7 +13,6 @@ public class OrderListAction extends ActionSupport {
         EntityManagerFactory factory;
         factory = Persistence.createEntityManagerFactory("unit1");
         em = factory.createEntityManager();
-        em.
         return SUCCESS;
     }
 }
