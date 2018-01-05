@@ -10,6 +10,8 @@ public class DishEntity {
     private String name;
     private double price;
     private String description;
+    private int categoryIdcategory;
+    private int menuIdmenu;
 
     @Id
     @Column(name = "iddish")
@@ -66,5 +68,25 @@ public class DishEntity {
     public int hashCode() {
 
         return Objects.hash(iddish, name, price, description);
+    }
+
+    @Basic
+    @Column(name = "category_idcategory")
+    public int getCategoryIdcategory() {
+        return categoryIdcategory;
+    }
+
+    public void setCategoryIdcategory(int categoryIdcategory) {
+        this.categoryIdcategory = categoryIdcategory;
+    }
+
+    @Basic
+    @Column(name = "menu_idmenu")
+    public int getMenuIdmenu() {
+        return menuIdmenu;
+    }
+
+    public void setMenuIdmenu(int menuIdmenu) {
+        this.menuIdmenu = menuIdmenu;
     }
 }

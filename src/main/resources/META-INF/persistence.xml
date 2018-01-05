@@ -14,7 +14,8 @@
     <class>org.teamsmarteat.model.PromotionEntity</class>
     <class>org.teamsmarteat.model.PromotionMenuEntity</class>
     <class>org.teamsmarteat.model.RestaurantEntity</class>
-    <properties>
+  <class>org.teamsmarteat.model.UserEntity</class>
+  <properties>
 
       <!-- Configuring JDBC properties -->
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/smarteatschema" />

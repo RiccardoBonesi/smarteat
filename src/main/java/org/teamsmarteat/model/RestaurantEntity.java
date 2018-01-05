@@ -9,6 +9,8 @@ public class RestaurantEntity {
     private int idrestaurant;
     private String name;
     private String address;
+    private int menuIdmenu;
+    private int userIduser;
 
     @Id
     @Column(name = "idrestaurant")
@@ -54,5 +56,25 @@ public class RestaurantEntity {
     public int hashCode() {
 
         return Objects.hash(idrestaurant, name, address);
+    }
+
+    @Basic
+    @Column(name = "menu_idmenu")
+    public int getMenuIdmenu() {
+        return menuIdmenu;
+    }
+
+    public void setMenuIdmenu(int menuIdmenu) {
+        this.menuIdmenu = menuIdmenu;
+    }
+
+    @Basic
+    @Column(name = "user_iduser")
+    public int getUserIduser() {
+        return userIduser;
+    }
+
+    public void setUserIduser(int userIduser) {
+        this.userIduser = userIduser;
     }
 }
