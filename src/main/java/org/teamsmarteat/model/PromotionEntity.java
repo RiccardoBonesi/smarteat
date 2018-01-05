@@ -1,6 +1,7 @@
 package org.teamsmarteat.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -10,6 +11,8 @@ public class PromotionEntity {
     private String name;
     private double pricepromo;
     private String description;
+    private Collection<OrderLineEntity> orderLinesByIdpromotion;
+    private Collection<PromotionMenuEntity> promotionMenusByIdpromotion;
 
     @Id
     @Column(name = "idpromotion")
@@ -66,5 +69,23 @@ public class PromotionEntity {
     public int hashCode() {
 
         return Objects.hash(idpromotion, name, pricepromo, description);
+    }
+
+    @OneToMany(mappedBy = "promotionByPromotionIdpromotion")
+    public Collection<OrderLineEntity> getOrderLinesByIdpromotion() {
+        return orderLinesByIdpromotion;
+    }
+
+    public void setOrderLinesByIdpromotion(Collection<OrderLineEntity> orderLinesByIdpromotion) {
+        this.orderLinesByIdpromotion = orderLinesByIdpromotion;
+    }
+
+    @OneToMany(mappedBy = "promotionByPromotionIdpromotion")
+    public Collection<PromotionMenuEntity> getPromotionMenusByIdpromotion() {
+        return promotionMenusByIdpromotion;
+    }
+
+    public void setPromotionMenusByIdpromotion(Collection<PromotionMenuEntity> promotionMenusByIdpromotion) {
+        this.promotionMenusByIdpromotion = promotionMenusByIdpromotion;
     }
 }
