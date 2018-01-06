@@ -3,7 +3,7 @@ package org.teamsmarteat.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order")
+@Table(name = "ordination")
 public class OrderEntity {
 
     @Id
