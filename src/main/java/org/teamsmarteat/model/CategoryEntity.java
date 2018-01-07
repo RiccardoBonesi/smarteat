@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class CategoryEntity {
 
     @Id
-    @GeneratedValue()
     @Column(name = "idcategory")
     private int categoryId;
 

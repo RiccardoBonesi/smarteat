@@ -9,7 +9,6 @@ import java.util.Locale;
 public class DishEntity {
 
     @Id
-    @GeneratedValue
     @Column(name = "iddish")
     private int DishId;
 
@@ -29,6 +28,9 @@ public class DishEntity {
     private MenuEntity menu;
 
     @ManyToMany
+    @JoinTable(name="dish_has_ingredients",
+            joinColumns=@JoinColumn(name="dish_iddish"),
+            inverseJoinColumns=@JoinColumn(name="ingredients_idingredients"))
     private Collection<IngredientEntity> ingredients;
 
     public int getDishId() {

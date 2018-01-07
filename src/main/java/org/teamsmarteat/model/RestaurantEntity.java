@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class RestaurantEntity {
 
     @Id
-    @GeneratedValue()
     @Column(name = "idrestaurant")
     private int restaurantId;
 

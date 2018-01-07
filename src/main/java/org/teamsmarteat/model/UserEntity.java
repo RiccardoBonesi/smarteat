@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class UserEntity {
 
     @Id
-    @GeneratedValue()
     @Column(name = "iduser")
     private int userId;
 

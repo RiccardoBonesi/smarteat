@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class IngredientEntity {
 
     @Id
-    @GeneratedValue()
     @Column(name = "idingredients")
     private int ingredientId;
 

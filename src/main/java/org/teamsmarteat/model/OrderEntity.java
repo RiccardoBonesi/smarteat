@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class OrderEntity {
 
     @Id
-    @GeneratedValue()
     @Column(name = "idorder")
     private int orderId;
 
