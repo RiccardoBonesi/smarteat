@@ -7,20 +7,15 @@ import javax.persistence.Persistence;
 public class PersistenceManager {
 
     private static final PersistenceManager singleton = new PersistenceManager();
-
     private EntityManagerFactory emf;
 
     public static PersistenceManager getInstance() {
-
         return singleton;
     }
 
-    private PersistenceManager() {
-    }
-
-    public EntityManagerFactory getEntityManagerFactory() {
+    public EntityManagerFactory getEntityManagerFactory(String persistenceUnitName) {
         if (emf == null)
-            createEntityManagerFactory();
+            createEntityManagerFactory(persistenceUnitName);
         return emf;
     }
 
@@ -31,7 +26,8 @@ public class PersistenceManager {
         }
     }
 
-    private void createEntityManagerFactory() {
-        this.emf = Persistence.createEntityManagerFactory("unit1");
+    private void createEntityManagerFactory(String persistenceUnitName) {
+        this.emf = Persistence.createEntityManagerFactory(persistenceUnitName);
     }
+
 }
