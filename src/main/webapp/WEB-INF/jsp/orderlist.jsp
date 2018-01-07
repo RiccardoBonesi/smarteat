@@ -34,47 +34,57 @@
             </ul>
         </div>
     </header>
-    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-        <header class="demo-drawer-header">
-            <img src="images/user.jpg" class="demo-avatar">
-            <%--<div class="demo-avatar-dropdown">
-                <span>hello@example.com</span>
-                <div class="mdl-layout-spacer"></div>
-                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                    <i class="material-icons" role="presentation">arrow_drop_down</i>
-                    <span class="visuallyhidden">Accounts</span>
-                </button>
-                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                    <li class="mdl-menu__item">hello@example.com</li>
-                    <li class="mdl-menu__item">info@example.com</li>
-                    <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
-                </ul>
-            </div>--%>
-        </header>
-        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-            <a class="mdl-navigation__link" href="<s:url action='dashboard'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
-            <a class="mdl-navigation__link" href="<s:url action='orderlist'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">list</i>Order List</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Spam</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Purchases</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
-            <div class="mdl-layout-spacer"></div>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
-        </nav>
-    </div>
 </div>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
+<table><tr><td><div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Order</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        <s:iterator value="result">
+            <s:property />
+        </s:iterator>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Get Started
+        </a>
+    </div>
+    <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">share</i>
+        </button>
+    </div>
+</div></td>
+<td><div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Order</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        <s:iterator value="result" var="res">
+            <s:property value="res.orderId"/> <!-- doesn't show anything -->
+        </s:iterator>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Get Started
+        </a>
+    </div>
+    <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">share</i>
+        </button>
+    </div>
+</div></td></tr>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+     style="position: fixed; left: -1000px; height: -1000px;">
     <defs>
         <mask id="piemask" maskContentUnits="objectBoundingBox">
-            <circle cx=0.5 cy=0.5 r=0.49 fill="white" />
-            <circle cx=0.5 cy=0.5 r=0.40 fill="black" />
+            <circle cx=0.5 cy=0.5 r=0.49 fill="white"/>
+            <circle cx=0.5 cy=0.5 r=0.40 fill="black"/>
         </mask>
         <g id="piechart">
-            <circle cx=0.5 cy=0.5 r=0.5 />
-            <path d="M 0.5 0.5 0.5 0 A 0.5 0.5 0 0 1 0.95 0.28 z" stroke="none" fill="rgba(255, 255, 255, 0.75)" />
+            <circle cx=0.5 cy=0.5 r=0.5/>
+                <path d="M 0.5 0.5 0.5 0 A 0.5 0.5 0 0 1 0.95 0.28 z" stroke="none" fill="rgba(255, 255, 255, 0.75)"/>
         </g>
     </defs>
 </svg>

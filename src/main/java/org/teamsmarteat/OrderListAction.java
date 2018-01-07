@@ -16,14 +16,21 @@ import java.util.List;
 public class OrderListAction extends ActionSupport {
 
     private static Logger logger = LogManager.getLogger(OrderListAction.class);
+
+    private List<OrderEntity> result;
+
     public String execute () {
         EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         EntityManager em = factory.createEntityManager();
         Query query= em.createQuery("select o from OrderEntity o");
-        List<OrderEntity> result = query.getResultList();
+        result = query.getResultList();
         for (OrderEntity res: result) {
             logger.debug(res);
         }
         return SUCCESS;
+    }
+
+    public List getResult() {
+        return result;
     }
 }
