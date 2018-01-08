@@ -13,7 +13,7 @@
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">Menu management</span>
+            <span class="mdl-layout-title">Dish List</span>
             <div class="mdl-layout-spacer"></div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                 <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -35,38 +35,22 @@
         </div>
     </header>
 </div>
-
-<style>
-    .mdl-card--horizontal {
-        /* 1 */
-        padding-left: 150px;
-        padding-top: 0px;
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-
-        background-color: white;
-    }
-
-
-
-</style>
-
 <main class="mdl-layout__content mdl-color--grey-100">
-    <div class="demo-list-action mdl-list">
-        <s:iterator value="result" var="res">
 
-            <div class="mdl-list__item">
-                <div class="mdl-card--horizontal mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Dish <s:property value="#res.dishId"/></h2>
-                        <h6 class="mdl-card__supporting-text"> <s:property value="#res.name"/></h6>
-                    </div>
-                </div>
-            </div>
-        </s:iterator>
+    <div class="demo-list-icon mdl-list">
+        <s:iterator value="result" var="res">
+        <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+        <%--<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">
+        <input type="checkbox" id="list-checkbox-1" class="mdl-checkbox__input" />--%>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input type="checkbox" class="mdl-checkbox__input" value=${res.enabled}/>
+                <s:property value="#res.name"/>
+            <s:checkbox fieldValue="#res.enabled"/>
+    </span>
+            </s:iterator>
     </div>
+
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
 </body>

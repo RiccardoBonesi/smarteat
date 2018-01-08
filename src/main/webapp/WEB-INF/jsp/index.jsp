@@ -41,6 +41,7 @@
         .group {
             position: relative;
             margin-bottom: 45px;
+
         }
 
         input {
@@ -75,40 +76,40 @@
 
         /* active */
 
-        input:focus ~ label, input.used ~ label {
-            top: -20px;
-            transform: scale(.75); left: -2px;
-            /* font-size: 14px; */
-            color: #4a89dc;
-        }
+        /*input:focus ~ label, input.used ~ label {*/
+        /*top: -20px;*/
+        /*transform: scale(.75); left: -2px;*/
+        /*!* font-size: 14px; *!*/
+        /*color: #4a89dc;*/
+        /*}*/
 
 
         /* Underline */
 
-        .bar {
-            position: relative;
-            display: block;
-            width: 100%;
-        }
+        /*.bar {*/
+        /*position: relative;*/
+        /*display: block;*/
+        /*width: 100%;*/
+        /*}*/
 
-        .bar:before, .bar:after {
-            content: '';
-            height: 2px;
-            width: 0;
-            bottom: 0px;
-            position: absolute;
-            background: #4a89dc;
-            transition: all 0.2s ease;
-        }
+        /*.bar:before, .bar:after {*/
+        /*content: '';*/
+        /*height: 2px;*/
+        /*width: 0;*/
+        /*bottom: 0px;*/
+        /*position: absolute;*/
+        /*background: #4a89dc;*/
+        /*transition: all 0.2s ease;*/
+        /*}*/
 
-        .bar:before { left: 50%; }
+        /*.bar:before { left: 50%; }*/
 
-        .bar:after { right: 50%; }
+        /*.bar:after { right: 50%; }*/
 
 
         /* active */
 
-        input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }
+        /*input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }*/
 
 
         /* Highlight */
@@ -247,82 +248,103 @@
 
         footer img:focus , footer a:focus { outline: none; }
 
+        .mdl-textfield--floating-label input[type=password]:-webkit-autofill ~ label {
+            transform: translate3d(0, -20px, 0);
+            visibility: hidden;
+        }
+
+        .mdl-textfield--floating-label input[type=password]:-webkit-autofill ~ label:after {
+            content: 'Password';
+            visibility: visible;
+            left: 0;
+            transform: translate3d(0, -20px, 0);
+            background: transparent;
+            color: inherit;
+        }
+
     </style>
 
-    <script type="javascript">
-        $(window, document, undefined).ready(function() {
+    <%--<script type="javascript">--%>
 
-            $('input').blur(function() {
-                var $this = $(this);
-                if ($this.val())
-                    $this.addClass('used');
-                else
-                    $this.removeClass('used');
-            });
+    <%--$('input').blur(function() {--%>
+    <%--var $this = $(this);--%>
+    <%--if ($this.val())--%>
+    <%--$this.addClass('is-focused');--%>
+    <%--else--%>
+    <%--$this.removeClass('is-focused');--%>
+    <%--});--%>
 
-            var $ripples = $('.ripples');
 
-            $ripples.on('click.Ripples', function(e) {
+    <%--$(window, document, undefined).ready(function() {--%>
 
-                var $this = $(this);
-                var $offset = $this.parent().offset();
-                var $circle = $this.find('.ripplesCircle');
+    <%--var $ripples = $('.ripples');--%>
 
-                var x = e.pageX - $offset.left;
-                var y = e.pageY - $offset.top;
+    <%--$ripples.on('click.Ripples', function(e) {--%>
 
-                $circle.css({
-                    top: y + 'px',
-                    left: x + 'px'
-                });
+    <%--var $this = $(this);--%>
+    <%--var $offset = $this.parent().offset();--%>
+    <%--var $circle = $this.find('.ripplesCircle');--%>
 
-                $this.addClass('is-active');
+    <%--var x = e.pageX - $offset.left;--%>
+    <%--var y = e.pageY - $offset.top;--%>
 
-            });
+    <%--$circle.css({--%>
+    <%--top: y + 'px',--%>
+    <%--left: x + 'px'--%>
+    <%--});--%>
 
-            $ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {
-                $(this).removeClass('is-active');
-            });
+    <%--$this.addClass('is-active');--%>
 
-        });
-    </script>
+    <%--});--%>
+
+    <%--$ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {--%>
+    <%--$(this).removeClass('is-active');--%>
+    <%--});--%>
+
+    <%--});--%>
+    <%--</script>--%>
 
 
 </head>
 <body>
-    <%--OLD LOGIN--%>
-    <%--<s:form action="login" method="post">
+<%--OLD LOGIN--%>
+<%--<s:form action="login" method="post">
 
-        <s:label for="userText">Username</s:label>
-        <s:textfield  id="userText" name="userEntity.username" value="Lars"/>
+    <s:label for="userText">Username</s:label>
+    <s:textfield  id="userText" name="userEntity.username" value="Lars"/>
 
-        <s:password  id="userPass" name="userEntity.password"/>
-        <s:label  for="userPass">Password</s:label>
+    <s:password  id="userPass" name="userEntity.password"/>
+    <s:label  for="userPass">Password</s:label>
 
-        <s:submit value="Login"/>
-    </s:form>--%>
+    <s:submit value="Login"/>
+</s:form>--%>
 
 
-    <%--preso da: https://codepen.io/joshadamous/pen/yyyqJZ--%>
-    <hgroup>
-        <h1>Smarteat</h1>
-    </hgroup>
-    <s:form action="login" method="post">
-        <div class="group">
-            <input type="text" id="userText" name="userEntity.username"><span class="highlight"></span><span class="bar"></span>
-            <label>Name</label>
-        </div>
-        <div class="group">
-            <input type="password" id="userPass" name="userEntity.password" >
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Password</label>
-        </div>
-        <button type="submit" class="button buttonBlue">Login
-            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
-        </button>
+<%--preso da: https://codepen.io/joshadamous/pen/yyyqJZ--%>
+<hgroup>
+    <h1>Smarteat</h1>
+</hgroup>
+<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+<!-- Material Design icon font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<s:form action="login" method="post">
 
-    </s:form>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+        <input class="mdl-textfield__input" type="text" id="userText2" name="userEntity.username" />
+        <label class="mdl-textfield__label" for="userText2">Nameds</label>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="password" id="userText3" name="userEntity.password" />
+        <label class="mdl-textfield__label" for="userText3">Nameds</label>
+    </div>
+
+    <button type="submit" class="button buttonBlue">Login
+        <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+    </button>
+
+</s:form>
 
 </body>
 </html>
