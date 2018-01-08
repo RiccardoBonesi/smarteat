@@ -36,25 +36,18 @@
     </header>
 </div>
 <main class="mdl-layout__content mdl-color--grey-100">
-    <div class="mdl-grid demo-content">
+
+    <div class="demo-list-icon mdl-list">
         <s:iterator value="result" var="res">
-            <div class="mdl-cell">
-                <div class="demo-card mdl-card mdl-shadow--2dp mdl-grid--spacing">
-                    <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Dish <s:property value="#res.dishId"/></h2>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <s:property/>
-                    </div>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#">
-                            View Details
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+        <input type="checkbox" id="<s:property value="#res.orderId"/>"  class="mdl-checkbox__input" />
+    <s:property value="#res.name"/>
+</span>
         </s:iterator>
     </div>
+
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
 </body>
