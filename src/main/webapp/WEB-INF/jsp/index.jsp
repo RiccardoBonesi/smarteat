@@ -338,12 +338,12 @@
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
         <input class="mdl-textfield__input" type="text" id="userText2" name="userEntity.username" />
-        <label class="mdl-textfield__label" for="userText2">Nameds</label>
+        <label class="mdl-textfield__label" for="userText2">Username</label>
     </div>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <input class="mdl-textfield__input" type="password" id="userText3" name="userEntity.password" />
-        <label class="mdl-textfield__label" for="userText3">Nameds</label>
+        <label class="mdl-textfield__label" for="userText3">Password</label>
     </div>
 
     <button type="submit" class="button buttonBlue">Login
