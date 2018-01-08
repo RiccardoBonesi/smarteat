@@ -1,39 +1,29 @@
 package org.teamsmarteat.model;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Objects;
 
 @Entity
-@Table(name = "user", schema = "smarteatschema", catalog = "")
+@Table(name = "user")
 public class UserEntity {
-    private int iduser;
-    private String password;
-    private String username;
-    private Collection<RestaurantEntity> restaurantsByIduser;
 
     @Id
     @Column(name = "iduser")
-    public int getIduser() {
-        return iduser;
-    }
+    private int userId;
 
-    public void setIduser(int iduser) {
-        this.iduser = iduser;
-    }
-
-    @Basic
-    @Column(name = "password")
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    @Basic
     @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -42,28 +32,11 @@ public class UserEntity {
         this.username = username;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserEntity that = (UserEntity) o;
-        return iduser == that.iduser &&
-                Objects.equals(password, that.password) &&
-                Objects.equals(username, that.username);
+    public String getPassword() {
+        return password;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(iduser, password, username);
-    }
-
-    @OneToMany(mappedBy = "userByUserIduser")
-    public Collection<RestaurantEntity> getRestaurantsByIduser() {
-        return restaurantsByIduser;
-    }
-
-    public void setRestaurantsByIduser(Collection<RestaurantEntity> restaurantsByIduser) {
-        this.restaurantsByIduser = restaurantsByIduser;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

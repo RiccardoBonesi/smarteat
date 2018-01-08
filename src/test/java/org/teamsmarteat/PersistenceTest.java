@@ -20,10 +20,8 @@ public class PersistenceTest extends TestCase {
     }
 
     private boolean connectDB () {
-        EntityManagerFactory factory;
-        EntityManager em;
-        factory = Persistence.createEntityManagerFactory("unit1");
-        em = factory.createEntityManager();
+        EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
+        EntityManager em = factory.createEntityManager();
         return true;
     }
 }

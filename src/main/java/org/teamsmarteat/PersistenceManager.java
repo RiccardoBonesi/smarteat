@@ -6,41 +6,28 @@ import javax.persistence.Persistence;
 // Getting the EntityManagerFactory from a singleton in the PersistenceManager class
 public class PersistenceManager {
 
-    public static final boolean DEBUG = true;
-
     private static final PersistenceManager singleton = new PersistenceManager();
-
-    protected EntityManagerFactory emf;
+    private EntityManagerFactory emf;
 
     public static PersistenceManager getInstance() {
-
         return singleton;
     }
 
-    private PersistenceManager() {
-    }
-
-    public EntityManagerFactory getEntityManagerFactory() {
-
+    public EntityManagerFactory getEntityManagerFactory(String persistenceUnitName) {
         if (emf == null)
-            createEntityManagerFactory();
+            createEntityManagerFactory(persistenceUnitName);
         return emf;
     }
 
     public void closeEntityManagerFactory() {
-
         if (emf != null) {
             emf.close();
             emf = null;
-            if (DEBUG)
-                System.out.println("n*** Persistence finished at " + new java.util.Date());
         }
     }
 
-    protected void createEntityManagerFactory() {
-
-        this.emf = Persistence.createEntityManagerFactory("banana");
-        if (DEBUG)
-            System.out.println("n*** Persistence started at " + new java.util.Date());
+    private void createEntityManagerFactory(String persistenceUnitName) {
+        this.emf = Persistence.createEntityManagerFactory(persistenceUnitName);
     }
+
 }

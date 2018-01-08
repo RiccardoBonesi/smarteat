@@ -15,8 +15,7 @@ public class EntityManagerTest {
 
     @BeforeClass
     public static void setup() {
-        EntityManagerFactory factory;
-        factory = Persistence.createEntityManagerFactory("unit1");
+        EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         em = factory.createEntityManager();
     }
 
