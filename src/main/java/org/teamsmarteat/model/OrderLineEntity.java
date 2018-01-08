@@ -51,6 +51,12 @@ public class OrderLineEntity {
     @EmbeddedId
     private OrderLinePK pk;
 
+    @Column(name = "quantity")
+    private int quantity;
+
+    @Column(name = "note")
+    private String notes;
+
     @ManyToOne
     @JoinColumn(name="dish_iddish", insertable = false, updatable = false)
     private DishEntity dish;
