@@ -3,7 +3,7 @@
 <decorators defaultdir="/WEB-INF/decorators">
     <!-- Any urls that are excluded will never be decorated by Sitemesh -->
     <excludes>
-        <pattern>/jsp/loginerror*</pattern>
+
         <pattern>/index*</pattern>
         <pattern>/nodecorate/*</pattern>
         <pattern>/styles/*</pattern>
@@ -17,5 +17,6 @@
     <decorator name="main" page="main.jsp">
         <pattern>/*</pattern>
     </decorator>
+    <decorator name="no" page=""></decorator>
 
 </decorators>
