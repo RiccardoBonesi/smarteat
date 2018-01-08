@@ -7,6 +7,18 @@
 
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+
+
+        .mdl-card-wide > {
+            height: 200px;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+    </style>
 
 </head>
 <body>
@@ -37,16 +49,70 @@
 </div>
 <main class="mdl-layout__content mdl-color--grey-100">
 
+
+
+    <%--W3 CARD--%>
+    <%--            <div class="demo-list-icon mdl-list">
+                    <s:iterator value="result" var="res">
+                    <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+
+            <div class="w3-card">
+                <p>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+            <input type="checkbox" id="<s:property value="#res.orderId"/>" class="mdl-checkbox__input"/>
+        <s:property value="#res.name"/>
+                </p>
+
+            </div>
+    </span>
+                        </s:iterator>
+                </div>--%>
+
+
+
+
+
     <div class="demo-list-icon mdl-list">
         <s:iterator value="result" var="res">
         <li class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
-        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-        <input type="checkbox" id="<s:property value="#res.orderId"/>"  class="mdl-checkbox__input" />
-    <s:property value="#res.name"/>
-</span>
-        </s:iterator>
+        <div class="mdl-card-wide mdl-shadow--2dp" style="width: 100%">
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                <input type="checkbox" id="<s:property value="#res.orderId"/>"  class="mdl-checkbox__input" />
+                <s:property value="#res.name"/>
+        </div>
+    </span>
+            </s:iterator>
     </div>
+
+
+
+
+
+
+
+
+    <%--<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__supporting-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Mauris sagittis pellentesque lacus eleifend lacinia...
+        </div>
+    </div>--%>
+
+
+
+
+    <%--<div class="demo-list-icon mdl-list">
+         <s:iterator value="result" var="res">
+         <li class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+            <input type="checkbox" id="<s:property value="#res.orderId"/>"  class="mdl-checkbox__input" />
+            <s:property value="#res.name"/>
+        </span>
+        </s:iterator>
+    </div>--%>
 
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
