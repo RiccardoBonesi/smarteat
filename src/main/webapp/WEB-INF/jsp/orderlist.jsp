@@ -36,69 +36,26 @@
     </header>
 </div>
 <main class="mdl-layout__content mdl-color--grey-100">
-    <%--<div class="mdl-grid demo-content">
-        <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-                <use xlink:href="#piechart" mask="url(#piemask)" />
-                <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan font-size="0.2" dy="-0.07">%</tspan></text>
-            </svg>
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-                <use xlink:href="#piechart" mask="url(#piemask)" />
-                <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-            </svg>
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-                <use xlink:href="#piechart" mask="url(#piemask)" />
-                <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-            </svg>
-            <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
-                <use xlink:href="#piechart" mask="url(#piemask)" />
-                <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan dy="-0.07" font-size="0.2">%</tspan></text>
-            </svg>
-        </div>
-    </div>--%>
-
-<table><tr><td><div class="demo-card-wide mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Order</h2>
-    </div>
-    <div class="mdl-card__supporting-text">
-        <s:iterator value="result">
-            <s:property />
-        </s:iterator>
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Get Started
-        </a>
-    </div>
-    <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-        </button>
-    </div>
-</div></td>
-<td><div class="demo-card-wide mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Order</h2>
-    </div>
-    <div class="mdl-card__supporting-text">
+    <div class="mdl-grid demo-content">
         <s:iterator value="result" var="res">
-            <s:property value="res.orderId"/> <!-- doesn't show anything -->
+            <div class="mdl-cell">
+                <div class="demo-card mdl-card mdl-shadow--2dp mdl-grid--spacing">
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text">Order <s:property value="res.orderId"/></h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <s:property/>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
         </s:iterator>
     </div>
-    <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Get Started
-        </a>
-    </div>
-    <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-        </button>
-    </div>
-</div></td></tr></table>
-
-<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
 </body>
 
