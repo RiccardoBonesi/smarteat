@@ -30,6 +30,10 @@
             <result name="success">/WEB-INF/jsp/dishlist.jsp</result>
         </action>
 
+        <action name="menu_management" class="org.teamsmarteat.MenuManagement" method="execute">
+            <result name="success">/WEB-INF/jsp/menu_management.jsp</result>
+        </action>
+
         <action name="login" class="org.teamsmarteat.LoginAction">
             <result name="success">/WEB-INF/jsp/dashboard.jsp</result>
             <result name="error">/WEB-INF/jsp/loginerror.jsp</result>
