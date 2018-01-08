@@ -41,10 +41,8 @@
         <s:iterator value="result" var="res">
         <li class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
-        <%--<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="list-checkbox-1">
-        <input type="checkbox" id="list-checkbox-1" class="mdl-checkbox__input" />--%>
         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-        <input type="checkbox" class="mdl-checkbox__input" />
+        <input type="checkbox" id="<s:property value="#res.orderId"/>"  class="mdl-checkbox__input" />
     <s:property value="#res.name"/>
 </span>
         </s:iterator>
