@@ -1,6 +1,7 @@
 package org.teamsmarteat.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ordination")
@@ -15,6 +16,9 @@ public class OrderEntity {
 
     @Column(name = "table_number")
     private String tableNumber;
+
+    @OneToMany(fetch=FetchType.EAGER, mappedBy = "order")
+    private List<OrderLineEntity> orderLines;
 
     public int getOrderId() {
         return orderId;
@@ -38,5 +42,13 @@ public class OrderEntity {
 
     public void setTableNumber(String tableNumber) {
         this.tableNumber = tableNumber;
+    }
+
+    public List<OrderLineEntity> getOrderLines() {
+        return orderLines;
+    }
+
+    public void setOrderLines(List<OrderLineEntity> orderLines) {
+        this.orderLines = orderLines;
     }
 }

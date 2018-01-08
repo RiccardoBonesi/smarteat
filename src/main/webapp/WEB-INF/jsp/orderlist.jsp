@@ -44,13 +44,21 @@
                         <h2 class="mdl-card__title-text">Order <s:property value="#res.orderId"/></h2>
                     </div>
                     <div class="mdl-card__supporting-text">
-                        <s:property/>
+                        <s:iterator value="orderLines" var="line">
+                            <s:property value="#line.quantity"/>
+                            <s:property value="#line.dish.name"/><br>
+                        </s:iterator>
                     </div>
+
                     <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="<s:url action='view_detail'/>">
+
+                            <s:param name="orderEntity">%{res}</s:param>
+
                             View Details
                         </a>
                     </div>
+
                 </div>
             </div>
         </s:iterator>
