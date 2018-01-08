@@ -17,14 +17,14 @@ public class OrderListAction extends ActionSupport {
 
     private static Logger logger = LogManager.getLogger(OrderListAction.class);
 
-    private List<OrderEntity> result;
+    private List result;
 
     public String execute () {
         EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         EntityManager em = factory.createEntityManager();
-        Query query= em.createQuery("select o from OrderEntity o");
+        Query query= em.createQuery("SELECT o,o2  from OrderEntity o join OrderLineEntity o2 ON o.orderId = o2.pk.order_idorder");
         result = query.getResultList();
-        for (OrderEntity res: result) {
+        for (Object res: result) {
             logger.debug(res);
         }
         return SUCCESS;
