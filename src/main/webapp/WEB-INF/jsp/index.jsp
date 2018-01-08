@@ -5,26 +5,21 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 <head>
     <title>Smart Eat</title>
 </head>
 <body>
-
-<p><a href="<s:url action='dashboard'/>">Vai alla dashboard</a></p>
-
-
-
-
-<div align="center">
-    <h2>Please login</h2>
     <s:form action="login" method="post">
-        <s:textfield name="userEntity.username" label="username" />
-        <s:password name="userEntity.password" label="Password" />
-        <s:submit value="Login" />
-    </s:form>
-</div>
 
+        <s:label for="userText">Username</s:label>
+        <s:textfield  id="userText" name="userEntity.username"/>
+
+        <s:textfield  id="userPass" name="userEntity.password"/>
+        <s:label  for="userPass">Password</s:label>
+
+        <s:submit value="Login"/>
+    </s:form>
 
 </body>
 </html>
-	
