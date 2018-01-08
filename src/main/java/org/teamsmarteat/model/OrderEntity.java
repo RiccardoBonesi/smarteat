@@ -51,4 +51,14 @@ public class OrderEntity {
     public void setOrderLines(List<OrderLineEntity> orderLines) {
         this.orderLines = orderLines;
     }
+
+    @Override
+    public String toString() {
+        return "OrderEntity{" +
+                "orderId=" + orderId +
+                ", amount=" + amount +
+                ", tableNumber='" + tableNumber + '\'' +
+                ", orderLines=" + orderLines +
+                '}';
+    }
 }

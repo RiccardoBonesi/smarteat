@@ -6,30 +6,41 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.criterion.Order;
 import org.teamsmarteat.model.OrderEntity;
 
+import javax.persistence.EntityManager;
 
 
 public class OrderLineAction extends ActionSupport {
     private static Logger logger = LogManager.getLogger(OrderLineAction.class);
 
-    private OrderEntity orderEntity;
+    private int orderId;
+    private OrderEntity order;
 
-    public OrderEntity getOrderEntity() {
-        return orderEntity;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrderEntity(OrderEntity orderEntity) {
-        this.orderEntity = orderEntity;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
-    public OrderLineAction(){
-
+    public OrderEntity getOrder() {
+        return order;
     }
 
-    public String execute(){
+    public void setOrder(OrderEntity order) {
+        this.order = order;
+    }
 
+    public OrderLineAction() {}
 
-      int id = getOrderEntity().getOrderId();
-        logger.debug(orderEntity.getOrderId());
-        return SUCCESS;
+    public String execute() {
+        EntityManager entityManager = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
+        if (orderId != 0) {
+            order = entityManager.find(OrderEntity.class, orderId);
+            logger.debug(order.toString());
+            return SUCCESS;
+        } else {
+            return ERROR;
+        }
     }
 }

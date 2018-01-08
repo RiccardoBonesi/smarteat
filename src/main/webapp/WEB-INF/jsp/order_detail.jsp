@@ -37,7 +37,7 @@
 </div>
 <main class="mdl-layout__content mdl-color--grey-100">
     <div class="mdl-grid demo-content">
-        <s:iterator value="result" var="res">
+        <s:iterator value="order" var="res">
             <div class="mdl-cell">
                 <div class="demo-card mdl-card mdl-shadow--2dp mdl-grid--spacing">
                     <div class="mdl-card__title">
@@ -48,6 +48,7 @@
                             <s:property value="#line.quantity"/>
                             <s:property value="#line.dish.name"/><br>
                         </s:iterator>
+                        eccetera...
                     </div>
                     <s:form action="view_detail" method="post">
                         <div class="mdl-card__actions mdl-card--border">

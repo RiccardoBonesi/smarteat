@@ -51,10 +51,10 @@
                     </div>
 
                     <div class="mdl-card__actions mdl-card--border">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="<s:url action='view_detail'/>">
-
-                            <s:param name="orderEntity">%{res}</s:param>
-
+                        <s:url var="orderDetail" action="view_detail">
+                            <s:param name="orderId" value="%{orderId}"/>
+                        </s:url>
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="${orderDetail}">
                             View Details
                         </a>
                     </div>
