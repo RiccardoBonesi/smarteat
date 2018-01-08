@@ -13,13 +13,15 @@
     <s:form action="login" method="post">
 
         <s:label for="userText">Username</s:label>
-        <s:textfield  id="userText" name="userEntity.username"/>
+        <s:textfield  id="userText" name="userEntity.username" value="Lars"/>
 
         <s:password  id="userPass" name="userEntity.password"/>
         <s:label  for="userPass">Password</s:label>
 
         <s:submit value="Login"/>
     </s:form>
+
+
 
 </body>
 </html>

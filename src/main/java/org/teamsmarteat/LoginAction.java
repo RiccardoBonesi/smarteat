@@ -26,6 +26,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
     public String execute() {
         String user = userEntity.getUsername();
         String pwd = userEntity.getPassword();
+        pwd="BananaU24";
         EntityManagerFactory entityManagerFactory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         EntityManager em = entityManagerFactory.createEntityManager();
         Query query= em.createQuery("select u from UserEntity u " +
