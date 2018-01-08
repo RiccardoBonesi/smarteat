@@ -20,7 +20,7 @@
             <result>/WEB-INF/jsp/helloWorld.jsp</result>
         </action>
 
-        <action name="dashboard" class="org.teamsmarteat.DashboardAction" method="execute">
+        <action name="dashboard" class="org.teamsmarteat.DashboardAction">
             <result name="success">/WEB-INF/jsp/dashboard.jsp</result>
         </action>
         <action name="orderlist" class="org.teamsmarteat.OrderListAction" method="execute">
