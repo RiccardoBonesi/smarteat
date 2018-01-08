@@ -15,7 +15,7 @@
         <s:label for="userText">Username</s:label>
         <s:textfield  id="userText" name="userEntity.username"/>
 
-        <s:textfield  id="userPass" name="userEntity.password"/>
+        <s:password  id="userPass" name="userEntity.password"/>
         <s:label  for="userPass">Password</s:label>
 
         <s:submit value="Login"/>

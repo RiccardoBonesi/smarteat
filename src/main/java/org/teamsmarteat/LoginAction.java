@@ -1,12 +1,19 @@
 package org.teamsmarteat;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.SessionAware;
+import org.teamsmarteat.model.OrderEntity;
 import org.teamsmarteat.model.UserEntity;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import java.util.List;
+import java.util.Map;
 
-public class LoginAction extends ActionSupport {
+public class LoginAction extends ActionSupport implements SessionAware {
     private UserEntity userEntity;
+    Map sessionMap;
 
     public UserEntity getUserEntity() {
         return userEntity;
@@ -18,14 +25,28 @@ public class LoginAction extends ActionSupport {
 
     public String execute() {
         String user = userEntity.getUsername();
+        String pwd = userEntity.getPassword();
+        EntityManagerFactory entityManagerFactory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
+        EntityManager em = entityManagerFactory.createEntityManager();
+        Query query= em.createQuery("select u from UserEntity u " +
+                "where u.username= :userUsername " +
+                "and u.password= :userPassword");
 
-//        EntityManagerFactory entityManagerFactory = PersistenceManager.getInstance().getEntityManagerFactory();
+        List<UserEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
 
-        if (!userEntity.getUsername().equalsIgnoreCase("Manna")){
-            //LOGIN ERROR
-
+        if(result.size()>0){
+            sessionMap.put("userEntity",result.get(0));
+            return SUCCESS;
+        }else{
+            return ERROR;
         }
 
-        return SUCCESS;
+
+    }
+
+    @Override
+    public void setSession(Map session)
+    {
+        this.sessionMap=session;
     }
 }
