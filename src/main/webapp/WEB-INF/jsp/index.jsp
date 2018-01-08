@@ -14,9 +14,15 @@
 
         body {
             font-family: Helvetica;
-            background: #eee;
-            -webkit-font-smoothing: antialiased;
+            background-image:url(/images/bgimage.jpeg);
+
+            background-repeat:no-repeat;
+
+            background-size:cover;
+
         }
+
+
 
         hgroup {
             text-align:center;
@@ -306,7 +312,7 @@
 
 
 </head>
-<body>
+<body background="images/bgimage.jpeg">
 <%--OLD LOGIN--%>
 <%--<s:form action="login" method="post">
 
@@ -322,7 +328,7 @@
 
 <%--preso da: https://codepen.io/joshadamous/pen/yyyqJZ--%>
 <hgroup>
-    <h1>Smarteat</h1>
+    <h1 style="color:white">Smarteat</h1>
 </hgroup>
 <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
 <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
