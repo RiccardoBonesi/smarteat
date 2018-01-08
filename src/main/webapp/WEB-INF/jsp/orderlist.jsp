@@ -41,7 +41,7 @@
             <div class="mdl-cell">
                 <div class="demo-card mdl-card mdl-shadow--2dp mdl-grid--spacing">
                     <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Order <s:property value="res.orderId"/></h2>
+                        <h2 class="mdl-card__title-text">Order <s:property value="#res.orderId"/></h2>
                     </div>
                     <div class="mdl-card__supporting-text">
                         <s:property/>
