@@ -75,7 +75,7 @@
 
         /* active */
 
-        input:focus ~ label, input.used ~ label {
+        input:focus ~ label {
             top: -20px;
             transform: scale(.75); left: -2px;
             /* font-size: 14px; */
@@ -175,49 +175,7 @@
 
         /* Ripples container */
 
-        .ripples {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: transparent;
-        }
 
-
-        /* Ripples circle */
-
-        .ripplesCircle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .ripples.is-active .ripplesCircle {
-            animation: ripples .4s ease-in;
-        }
-
-
-        /* Ripples animation */
-
-        @keyframes ripples {
-            0% { opacity: 0; }
-
-            25% { opacity: 1; }
-
-            100% {
-                width: 200%;
-                padding-bottom: 200%;
-                opacity: 0;
-            }
-        }
 
         footer { text-align: center; }
 
@@ -249,43 +207,6 @@
 
     </style>
 
-    <script type="javascript">
-        $(window, document, undefined).ready(function() {
-
-            $('input').blur(function() {
-                var $this = $(this);
-                if ($this.val())
-                    $this.addClass('used');
-                else
-                    $this.removeClass('used');
-            });
-
-            var $ripples = $('.ripples');
-
-            $ripples.on('click.Ripples', function(e) {
-
-                var $this = $(this);
-                var $offset = $this.parent().offset();
-                var $circle = $this.find('.ripplesCircle');
-
-                var x = e.pageX - $offset.left;
-                var y = e.pageY - $offset.top;
-
-                $circle.css({
-                    top: y + 'px',
-                    left: x + 'px'
-                });
-
-                $this.addClass('is-active');
-
-            });
-
-            $ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {
-                $(this).removeClass('is-active');
-            });
-
-        });
-    </script>
 
 
 </head>
@@ -309,14 +230,14 @@
     </hgroup>
     <s:form action="login" method="post">
         <div class="group">
-            <input type="text" id="userText" name="userEntity.username"><span class="highlight"></span><span class="bar"></span>
-            <label>Name</label>
+            <input placeholder="Username" type="text" id="userText" name="userEntity.username"><span class="highlight"></span><span class="bar"></span>
+
         </div>
         <div class="group">
-            <input type="password" id="userPass" name="userEntity.password" >
+            <input type="password" placeholder="Password" id="userPass" name="userEntity.password" >
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Password</label>
+
         </div>
         <button type="submit" class="button buttonBlue">Login
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
