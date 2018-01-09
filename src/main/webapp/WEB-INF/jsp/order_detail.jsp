@@ -36,31 +36,50 @@
     </header>
 </div>
 <main class="mdl-layout__content mdl-color--grey-100">
-    <div class="mdl-grid demo-content">
-        <s:iterator value="order" var="res">
-            <div class="mdl-cell">
-                <div class="demo-card mdl-card mdl-shadow--2dp mdl-grid--spacing">
-                    <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Order <s:property value="#res.orderId"/></h2>
-                    </div>
-                    <div class="mdl-card__supporting-text">
-                        <s:iterator value="orderLines" var="line">
-                            <s:property value="#line.quantity"/>
-                            <s:property value="#line.dish.name"/><br>
-                        </s:iterator>
-                        eccetera...
-                    </div>
-                    <s:form action="view_detail" method="post">
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="#">
-                                View Details
-                            </a>
-                        </div>
-                    </s:form>
-                </div>
-            </div>
+    <s:iterator value="order" var="res">
+    <h1>Order <s:property value="#res.orderId"/></h1>
+    <h2>Table <s:property value="#res.tableNumber"/></h2>
+    <table class="mdl-data-table mdl-js-data-table">
+        <thead>
+        <tr>
+            <th>Quantity</th>
+            <th class="mdl-data-table__cell--non-numeric">Dish</th>
+            <th class="mdl-data-table__cell--non-numeric">Price</th>
+            <th class="mdl-data-table__cell--non-numeric">Notes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <s:iterator value="orderLines" var="line">
+        <tr>
+            <td><s:property value="#line.quantity"/></td>
+            <td class="mdl-data-table__cell--non-numeric"><s:property value="#line.dish.name"/></td>
+            <td class="mdl-data-table__cell--non-numeric"><s:property value="#line.dish.price"/> &#8364;</td>
+            <td class="mdl-data-table__cell--non-numeric"><s:property value="#line.dish.notes"/></td>
+        </tr>
         </s:iterator>
-    </div>
+        </tbody>
+    </table>
+    </s:iterator>
+        <%--<div class="mdl-grid demo-content">
+            <s:iterator value="order" var="res">
+                <div class="mdl-cell">
+                    <div class="demo-card mdl-card mdl-shadow--2dp mdl-grid--spacing">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Order <s:property value="#res.orderId"/></h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <table><tr><th>Quantity</th><th>Dish</th><th>Price</th><th>Notes</th></tr>
+                            <s:iterator value="orderLines" var="line">
+                            <tr><td><s:property value="#line.quantity"/></td>
+                                <td><s:property value="#line.dish.name"/></td>
+                                <td><s:property value="#line.dish.price"/> &#8364;</td>
+                                <td><s:property value="#line.dish.notes"/></td></tr>
+                            </s:iterator></table>
+                        </div>
+                    </div>
+                </div>
+            </s:iterator>
+        </div>--%>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
 </body>
