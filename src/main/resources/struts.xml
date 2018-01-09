@@ -29,6 +29,9 @@
         <action name="dishlist" class="org.teamsmarteat.DishListAction" method="execute">
             <result name="success">/WEB-INF/jsp/dishlist.jsp</result>
         </action>
+        <action name="delete_dish" class="org.teamsmarteat.DishListAction" method="delete_dish">
+            <result name="success">/WEB-INF/jsp/dishlist.jsp</result>
+        </action>
 
         <action name="menu_management" class="org.teamsmarteat.MenuManagement" method="execute">
             <result name="success">/WEB-INF/jsp/menu_management.jsp</result>
