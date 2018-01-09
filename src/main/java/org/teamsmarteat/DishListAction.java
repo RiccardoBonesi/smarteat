@@ -68,6 +68,12 @@ public class DishListAction extends ActionSupport{
             em.getTransaction().commit();
             execute();
            return SUCCESS;
+
+//           VECCHIA DELETE
+           /* dishEntity = em.find(DishEntity.class, dishId);
+            em.getTransaction().begin();
+            em.remove(dishEntity);
+            em.getTransaction().commit();*/
         } else {
             return ERROR;
         }
