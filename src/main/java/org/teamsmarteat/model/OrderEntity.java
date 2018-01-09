@@ -1,6 +1,7 @@
 package org.teamsmarteat.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,6 +14,12 @@ public class OrderEntity {
 
     @Column(name = "total_price")
     private double amount;
+
+    @Column(name ="date")
+    private Date date;
+
+    @Column(name = "checkout")
+    private  boolean checkout;
 
     @Column(name = "table_number")
     private String tableNumber;
@@ -34,6 +41,22 @@ public class OrderEntity {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public boolean isCheckout() {
+        return checkout;
+    }
+
+    public void setCheckout(boolean checkout) {
+        this.checkout = checkout;
     }
 
     public String getTableNumber() {
