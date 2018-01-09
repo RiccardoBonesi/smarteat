@@ -23,6 +23,9 @@ public class DishEntity {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "enabled")
+    private boolean enabled;
+
     @ManyToOne
     private CategoryEntity category;
 
@@ -66,6 +69,10 @@ public class DishEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public boolean isEnabled() { return enabled; }
+
+    public void setEnabled(boolean enabled) { this.enabled = enabled; }
 
     public CategoryEntity getCategory() {
         return category;
