@@ -11,11 +11,12 @@
     <style>
 
 
-        .mdl-card-wide > {
-            height: 200px;
-            color: #fff;
+        .mdl-card-wide {
+            height: auto;
+            padding: 15px;
+            background-color: #fafafa;
             text-align: center;
-            vertical-align: middle;
+            vertical-align: center;
         }
 
     </style>
@@ -78,9 +79,9 @@
         <li class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
         <div class="mdl-card-wide mdl-shadow--2dp" style="width: 100%">
-                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-                <input type="checkbox" id="<s:property value="#res.orderId"/>"  class="mdl-checkbox__input" />
-                <s:property value="#res.name"/>
+
+                    <s:property value="#res.name"/>
+            <button class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400"><i class="material-icons">delete</i></button>
         </div>
     </span>
             </s:iterator>

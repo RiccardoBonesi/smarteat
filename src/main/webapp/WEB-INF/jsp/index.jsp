@@ -337,7 +337,7 @@
 <s:form action="login" method="post">
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-        <input class="mdl-textfield__input" type="text" id="userText2" name="userEntity.username" />
+        <input class="mdl-textfield__input" value="Lars" type="text" id="userText2" name="userEntity.username" />
         <label class="mdl-textfield__label" for="userText2">Username</label>
     </div>
 
