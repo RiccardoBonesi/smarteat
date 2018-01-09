@@ -12,6 +12,7 @@
 
 
         .mdl-card-wide {
+            width: 100%;
             height: auto;
             padding: 15px;
             background-color: #fafafa;
@@ -23,7 +24,7 @@
 
 </head>
 <body>
-<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+<%--<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
             <span class="mdl-layout-title">Dish List</span>
@@ -47,73 +48,58 @@
             </ul>
         </div>
     </header>
-</div>
+</div>--%>
 <main class="mdl-layout__content mdl-color--grey-100">
 
 
-
-    <%--W3 CARD--%>
-    <%--            <div class="demo-list-icon mdl-list">
-                    <s:iterator value="result" var="res">
-                    <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-
-            <div class="w3-card">
-                <p>
-                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-            <input type="checkbox" id="<s:property value="#res.orderId"/>" class="mdl-checkbox__input"/>
-        <s:property value="#res.name"/>
-                </p>
-
-            </div>
-    </span>
-                        </s:iterator>
-                </div>--%>
-
-
-
-
-
     <div class="demo-list-icon mdl-list">
-        <s:iterator value="result" var="res">
+        <s:iterator value="resultCategory" var="resCategory">
+
+        <span class="mdl-list__item-primary-content">
+        <div class="mdl-card-wide mdl-shadow--2dp" style="width: 100%; background-color: #999999">
+            <h3><s:property value="#resCategory.name"/></h3>
+        </div>
+    </span>
+
+
+        <s:iterator value="resultDish" var="resDish">
+        <s:if test="%{#resDish.category.categoryId == #resCategory.categoryId}">
+        <li class="mdl-list__item">
+                <span class="mdl-list__item-primary-content">
+        <div class="mdl-card-wide mdl-shadow--2dp">
+            <s:url var="dishDelete" action="delete_dish">
+                <s:param name="dishId" value="%{dishId}"/>
+            </s:url>
+            <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400" href="${dishDelete}">
+               <i class="material-icons">delete</i>
+            </a>
+            <s:property value="#resDish.name"/>
+        </div>
+    </span>
+            </s:if>
+            </s:iterator>
+            </s:iterator>
+
+
+          <%--  <s:iterator value="result" var="dish">
         <li class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
-        <div class="mdl-card-wide mdl-shadow--2dp" style="width: 100%">
+        <div class="mdl-card-wide mdl-shadow--2dp">
+            <s:url var="dishDelete" action="delete_dish">
+                <s:param name="dishId" value="%{dishId}"/>
+            </s:url>
+            <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400" href="${dishDelete}">
+               <i class="material-icons">delete</i>
+            </a>
+            <s:property value="#dish.name"/>
 
-                    <s:property value="#res.name"/>
-            <button class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400"><i class="material-icons">delete</i></button>
         </div>
     </span>
-            </s:iterator>
+            </s:iterator>--%>
+
+
     </div>
 
-
-
-
-
-
-
-
-    <%--<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-        <div class="mdl-card__supporting-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Mauris sagittis pellentesque lacus eleifend lacinia...
-        </div>
-    </div>--%>
-
-
-
-
-    <%--<div class="demo-list-icon mdl-list">
-         <s:iterator value="result" var="res">
-         <li class="mdl-list__item">
-        <span class="mdl-list__item-primary-content">
-            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
-            <input type="checkbox" id="<s:property value="#res.orderId"/>"  class="mdl-checkbox__input" />
-            <s:property value="#res.name"/>
-        </span>
-        </s:iterator>
-    </div>--%>
 
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
