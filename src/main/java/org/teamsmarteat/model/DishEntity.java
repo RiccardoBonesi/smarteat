@@ -1,6 +1,8 @@
 package org.teamsmarteat.model;
 
 import javax.persistence.*;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.Locale;
 
@@ -28,9 +30,9 @@ public class DishEntity {
     private MenuEntity menu;
 
     @ManyToMany
-    @JoinTable(name="dish_has_ingredients",
-            joinColumns=@JoinColumn(name="dish_iddish"),
-            inverseJoinColumns=@JoinColumn(name="ingredients_idingredients"))
+    @JoinTable(name = "dish_has_ingredients",
+            joinColumns = @JoinColumn(name = "dish_iddish"),
+            inverseJoinColumns = @JoinColumn(name = "ingredients_idingredients"))
     private Collection<IngredientEntity> ingredients;
 
     public int getDishId() {
@@ -80,8 +82,6 @@ public class DishEntity {
     public void setMenu(MenuEntity menu) {
         this.menu = menu;
     }
-
-
 
     public Collection<IngredientEntity> getIngredients() {
         return ingredients;
