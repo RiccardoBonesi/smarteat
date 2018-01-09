@@ -80,6 +80,8 @@ public class OrderEntity {
         return "OrderEntity{" +
                 "orderId=" + orderId +
                 ", amount=" + amount +
+                ", date=" + date +
+                ", checkout=" + checkout +
                 ", tableNumber='" + tableNumber + '\'' +
                 ", orderLines=" + orderLines +
                 '}';
