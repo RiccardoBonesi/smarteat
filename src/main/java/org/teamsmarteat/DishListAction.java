@@ -10,6 +10,9 @@ import org.teamsmarteat.model.DishEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class DishListAction extends ActionSupport{
@@ -52,15 +55,25 @@ public class DishListAction extends ActionSupport{
     }
 
     public String delete_dish () {
-        EntityManager em1 = factory.createEntityManager();
+        EntityManager em = factory.createEntityManager();
 
         if (dishId != 0) {
-           dishEntity = em1.find(DishEntity.class, dishId);
-            em1.getTransaction().begin();
-            em1.remove(dishEntity);
-            em1.getTransaction().commit();
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaUpdate<DishEntity> update = cb.createCriteriaUpdate(DishEntity.class);
+            Root e = update.from(DishEntity.class);
+            update.set("enabled", 0);
+            update.where(cb.equal(e.get("DishId"),dishId));
+            em.getTransaction().begin();
+            em.createQuery(update).executeUpdate();
+            em.getTransaction().commit();
             execute();
            return SUCCESS;
+
+//           VECCHIA DELETE
+           /* dishEntity = em.find(DishEntity.class, dishId);
+            em.getTransaction().begin();
+            em.remove(dishEntity);
+            em.getTransaction().commit();*/
         } else {
             return ERROR;
         }

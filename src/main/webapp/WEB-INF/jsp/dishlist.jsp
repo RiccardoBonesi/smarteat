@@ -63,7 +63,7 @@
 
 
         <s:iterator value="resultDish" var="resDish">
-        <s:if test="%{#resDish.category.categoryId == #resCategory.categoryId}">
+        <s:if test="%{#resDish.category.categoryId == #resCategory.categoryId && #resDish.enabled}">
         <li class="mdl-list__item">
                 <span class="mdl-list__item-primary-content">
         <div class="mdl-card-wide mdl-shadow--2dp">
