@@ -7,7 +7,27 @@
 
 <html lang="en">
 <head>
+    <style>
 
+        .mdl-card{
+            width: 100%;
+            color: white;
+
+        }
+
+        .mdl-card>mdl-card__supporting-text {
+            height: 100%;
+
+        }
+
+        .mdl-card>mdl-card--border {
+            height: 50px;
+        }
+
+
+
+
+    </style>
 </head>
 <body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -39,9 +59,9 @@
     <div class="mdl-grid demo-content">
         <s:iterator value="result" var="res">
             <div class="mdl-cell">
-                <div class="demo-card mdl-card mdl-shadow--2dp mdl-grid--spacing">
+                <div class="demo-card mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Order <s:property value="#res.orderId"/></h2>
+                        <h2 class="mdl-card__title-text">Ordination <s:property value="#res.orderId"/></h2>
                     </div>
                     <div class="mdl-card__supporting-text">
                         <s:iterator value="orderLines" var="line">
@@ -54,7 +74,8 @@
                         <s:url var="orderDetail" action="view_detail">
                             <s:param name="orderId" value="%{orderId}"/>
                         </s:url>
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="${orderDetail}">
+                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                           href="${orderDetail}">
                             View Details
                         </a>
                     </div>
