@@ -17,6 +17,7 @@ import java.util.List;
 
 public class DishListAction extends ActionSupport{
     private int dishId;
+    private String dishName;
     private DishEntity dishEntity;
     public DishEntity getDishEntity() {
         return dishEntity;
@@ -26,6 +27,7 @@ public class DishListAction extends ActionSupport{
     }
 
     private List<DishEntity> resultDish;
+    private List<DishEntity> search_result;
     private List<CategoryEntity> resultCategory;
 
 
@@ -35,6 +37,14 @@ public class DishListAction extends ActionSupport{
 
     public void setDishId(int dishId) {
         this.dishId = dishId;
+    }
+
+    public String getDishName() {
+        return dishName;
+    }
+
+    public void setDishName(String dishName) {
+        this.dishName = dishName;
     }
 
     private static Logger logger = LogManager.getLogger(DishListAction.class);
@@ -80,8 +90,28 @@ public class DishListAction extends ActionSupport{
         }
     }
 
+
+
+    public String search_dish() {
+        EntityManager em = factory.createEntityManager();
+
+        if(! (dishName.isEmpty() && dishName==null)) {
+            Query query = em.createQuery("SELECT d FROM DishEntity d WHERE d.name =  :dishName");
+            search_result = query.setParameter("dishName", dishName).getResultList();
+            return SUCCESS;
+        }
+        else
+            return ERROR;
+
+
+    }
+
     public List getResult() {
         return result;
+    }
+
+    public List getSearchResult() {
+        return search_result;
     }
 
     public List getResultCategory() {
