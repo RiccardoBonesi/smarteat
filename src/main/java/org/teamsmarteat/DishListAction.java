@@ -54,9 +54,10 @@ public class DishListAction extends ActionSupport{
 
     public String execute() {
         EntityManager em = factory.createEntityManager();
-        Query queryDish = em.createQuery("select d from DishEntity d inner join CategoryEntity c on d.category=c.categoryId order by c.categoryId");
-        resultDish = queryDish.getResultList();
-
+        if(resultDish == null) {
+            Query queryDish = em.createQuery("select d from DishEntity d inner join CategoryEntity c on d.category=c.categoryId order by c.categoryId");
+            resultDish = queryDish.getResultList();
+        }
         em = factory.createEntityManager();
         Query queryCategory = em.createQuery("select c from CategoryEntity c");
         resultCategory = queryCategory.getResultList();
@@ -68,6 +69,7 @@ public class DishListAction extends ActionSupport{
     public String delete_dish () {
         EntityManager em = factory.createEntityManager();
 
+        //TODO: provare la soluzione di andre
         if (dishId != 0) {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaUpdate<DishEntity> update = cb.createCriteriaUpdate(DishEntity.class);
@@ -91,17 +93,20 @@ public class DishListAction extends ActionSupport{
     }
 
 
-
     public String search_dish() {
         EntityManager em = factory.createEntityManager();
 
         if(! (dishName.isEmpty() && dishName==null)) {
-            Query query = em.createQuery("SELECT d FROM DishEntity d WHERE d.name =  :dishName");
-            search_result = query.setParameter("dishName", dishName).getResultList();
+            Query query = em.createQuery("SELECT d FROM DishEntity d WHERE d.name LIKE :dishName");
+            resultDish = query.setParameter("dishName", "%" + dishName + "%").getResultList();
+            execute();
             return SUCCESS;
         }
-        else
-            return ERROR;
+        else {
+            execute();
+            return SUCCESS;
+        }
+
 
 
     }
