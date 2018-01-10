@@ -17,6 +17,7 @@ import java.util.List;
 
 public class DishListAction extends ActionSupport{
     private int dishId;
+    private String dishName;
     private DishEntity dishEntity;
     public DishEntity getDishEntity() {
         return dishEntity;
@@ -26,6 +27,7 @@ public class DishListAction extends ActionSupport{
     }
 
     private List<DishEntity> resultDish;
+    private List<DishEntity> search_result;
     private List<CategoryEntity> resultCategory;
 
 
@@ -37,6 +39,14 @@ public class DishListAction extends ActionSupport{
         this.dishId = dishId;
     }
 
+    public String getDishName() {
+        return dishName;
+    }
+
+    public void setDishName(String dishName) {
+        this.dishName = dishName;
+    }
+
     private static Logger logger = LogManager.getLogger(DishListAction.class);
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
 
@@ -44,19 +54,22 @@ public class DishListAction extends ActionSupport{
 
     public String execute() {
         EntityManager em = factory.createEntityManager();
-        Query queryDish = em.createQuery("select d from DishEntity d inner join CategoryEntity c on d.category=c.categoryId order by c.categoryId");
-        resultDish = queryDish.getResultList();
-
+        if(resultDish == null) {
+            Query queryDish = em.createQuery("select d from DishEntity d inner join CategoryEntity c on d.category=c.categoryId order by c.categoryId");
+            resultDish = queryDish.getResultList();
+        }
         em = factory.createEntityManager();
         Query queryCategory = em.createQuery("select c from CategoryEntity c");
         resultCategory = queryCategory.getResultList();
 
+        //TODO BONNY: aggiungere check del menù assegnato all'utente in uso
         return SUCCESS;
     }
 
     public String delete_dish () {
         EntityManager em = factory.createEntityManager();
 
+        //TODO: provare la soluzione di andre
         if (dishId != 0) {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaUpdate<DishEntity> update = cb.createCriteriaUpdate(DishEntity.class);
@@ -79,8 +92,31 @@ public class DishListAction extends ActionSupport{
         }
     }
 
+
+    public String search_dish() {
+        EntityManager em = factory.createEntityManager();
+
+        if(! (dishName.isEmpty() && dishName==null)) {
+            Query query = em.createQuery("SELECT d FROM DishEntity d WHERE d.name LIKE :dishName");
+            resultDish = query.setParameter("dishName", "%" + dishName + "%").getResultList();
+            execute();
+            return SUCCESS;
+        }
+        else {
+            execute();
+            return SUCCESS;
+        }
+
+
+
+    }
+
     public List getResult() {
         return result;
+    }
+
+    public List getSearchResult() {
+        return search_result;
     }
 
     public List getResultCategory() {

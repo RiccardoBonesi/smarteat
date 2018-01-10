@@ -57,7 +57,7 @@
                         <s:iterator value="orderLines" var="line">
                             <tr class="allwhite">
                                 <td><s:property value="#line.quantity"/></td>
-                                <td class="mdl-data-table__cell--non-numeric"><s:property value="#line.dish.name"/></td>
+                                <td class="mdl-data-table__cell--non-numeric "><s:property value="#line.dish.name"/></td>
                                 <td class="mdl-data-table__cell--non-numeric"><s:property value="#line.dish.price"/>
                                     &#8364;
                                 </td>
