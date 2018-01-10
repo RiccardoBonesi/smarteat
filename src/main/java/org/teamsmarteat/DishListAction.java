@@ -51,6 +51,7 @@ public class DishListAction extends ActionSupport{
         Query queryCategory = em.createQuery("select c from CategoryEntity c");
         resultCategory = queryCategory.getResultList();
 
+        //TODO BONNY: aggiungere check del menù assegnato all'utente in uso
         return SUCCESS;
     }
 

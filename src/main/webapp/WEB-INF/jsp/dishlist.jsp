@@ -20,11 +20,47 @@
             vertical-align: center;
         }
 
+        .mdl-sheet__container {
+            position: fixed;
+            right: 32px;
+            bottom: 32px;
+            transform: rotate(0deg);
+        }
+
+        .mdl-sheet {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+
+            cursor: pointer;
+            transition: all 180ms;
+
+        .mdl-sheet__content {
+            display: none;
+        }
+
+        }
+
+        .mdl-sheet__icon {
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-12px, -12px);
+            font-size: 24px;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+        }
+
+
     </style>
 
 </head>
 <body>
-
 
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
@@ -53,8 +89,17 @@
 </div>
 
 
-
 <main class="mdl-layout__content mdl-color--grey-100">
+
+    <div class="mdl-sheet__container">
+
+        <s:form action="create_dish" method="post">
+        <button id="show-dialog" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+            <i class="material-icons">add</i>
+            </s:form>
+
+        </button>
+    </div>
 
 
     <div class="demo-list-icon mdl-list">
