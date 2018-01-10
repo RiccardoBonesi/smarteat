@@ -24,7 +24,9 @@
 
 </head>
 <body>
-<%--<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+
+
+<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
             <span class="mdl-layout-title">Dish List</span>
@@ -48,7 +50,10 @@
             </ul>
         </div>
     </header>
-</div>--%>
+</div>
+
+
+
 <main class="mdl-layout__content mdl-color--grey-100">
 
 
