@@ -114,7 +114,8 @@
         <s:iterator value="resultCategory" var="resCategory">
 
             <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
-                <input type="radio" class="mdl-radio__button" name="options">
+                <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
+                       value="${resCategory.categoryId}">
                 <span class="mdl-radio__label"><s:property value="#resCategory.name"/></span>
             </label>
         </s:iterator>

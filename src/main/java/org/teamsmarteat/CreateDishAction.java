@@ -24,6 +24,7 @@ public class CreateDishAction extends ActionSupport {
     private List<IngredientEntity> resultIngredient;
     private List<CategoryEntity> resultCategory;
     private IngredientEntity ingredientEntity;
+    private CategoryEntity categoryEntity;
     private static Logger logger = LogManager.getLogger(DishListAction.class);
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
 
@@ -77,6 +78,12 @@ public class CreateDishAction extends ActionSupport {
         return resultCategory;
     }
 
+    public CategoryEntity getCategoryEntity() {
+        return categoryEntity;
+    }
 
+    public void setCategoryEntity(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
+    }
 
 }
