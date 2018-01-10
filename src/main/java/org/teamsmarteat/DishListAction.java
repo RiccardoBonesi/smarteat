@@ -56,7 +56,7 @@ public class DishListAction extends ActionSupport implements SessionAware {
 
     private List<DishEntity> result;
 
-    public String execute() throws Exception {
+    public String execute() {
         UserEntity currentUser = (UserEntity) sessionMap.get("userEntity");
 
         int userId = currentUser.getUserId();
@@ -72,12 +72,10 @@ public class DishListAction extends ActionSupport implements SessionAware {
         em = factory.createEntityManager();
         Query queryCategory = em.createQuery("select c from CategoryEntity c");
         resultCategory = queryCategory.getResultList();
-
-        //TODO BONNY: aggiungere check del menù assegnato all'utente in uso
         return SUCCESS;
     }
 
-    public String delete_dish() throws Exception {
+    public String delete_dish(){
         if (dishId != 0) {
             EntityManager em = factory.createEntityManager();
             DishEntity dishEntity = em.find(DishEntity.class, dishId);
@@ -92,7 +90,7 @@ public class DishListAction extends ActionSupport implements SessionAware {
     }
 
 
-    public String search_dish() throws Exception {
+    public String search_dish() {
         EntityManager em = factory.createEntityManager();
 
         if (!(dishName.isEmpty() && dishName == null)) {
