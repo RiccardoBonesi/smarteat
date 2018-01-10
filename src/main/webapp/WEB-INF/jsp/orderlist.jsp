@@ -11,17 +11,8 @@
 
         .mdl-card{
             width: 100%;
-            color: white;
-
-        }
-
-        .mdl-card>mdl-card__supporting-text {
             height: 100%;
-
-        }
-
-        .mdl-card>mdl-card--border {
-            height: 50px;
+            color: white;
         }
 
     </style>
@@ -60,11 +51,11 @@
             <div class="mdl-cell">
                 <div class="demo-card mdl-card mdl-shadow--2dp">
                     <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Ordination <s:property value="#res.orderId"/></h2>
+                        <h2 class="mdl-card__title-text">Table <s:property value="#res.tableNumber"/></h2>
 
                     </div>
                     <div class="mdl-card__supporting-text">
-                        <b><h2 class="mdl-card__title-text">Date <s:date name="#res.date" format="dd/MMM/yyyy"/></h2></b>
+                        <b><h2 class="mdl-card__title-text">Date <s:date name="#res.date" format="dd/MM/yyyy"/></h2></b>
                         <s:iterator value="orderLines" var="line">
                             <s:property value="#line.quantity"/>
                             <s:property value="#line.dish.name"/><br>
@@ -80,7 +71,6 @@
                             View Details
                         </a>
                     </div>
-
                 </div>
             </div>
         </s:iterator>
