@@ -38,6 +38,7 @@ public class OrderListAction extends ActionSupport {
             if (order.getOrderLines().size()!=0 && sameDay && !order.isCheckout())
                 result.add(order);
         }
+
         return SUCCESS;
     }
 
