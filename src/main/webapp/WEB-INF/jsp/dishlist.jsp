@@ -70,14 +70,14 @@
 
             <s:form action="search_dish" method="post">
 
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                <button type="submit" class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                    <i class="material-icons">search</i>
-                </button>
-                <div class="mdl-textfield">
-                    <input class="mdl-textfield__input" type="text" id="search" name="dishName">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--icon" for="search">
+                        <i class="material-icons">search</i>
+                    </button>
+                    <div class="mdl-textfield">
+                        <input class="mdl-textfield__input" type="text" id="search" name="dishName">
+                    </div>
                 </div>
-            </div>
 
             </s:form>
         </div>
@@ -127,21 +127,21 @@
             </s:iterator>
 
 
-          <%--  <s:iterator value="result" var="dish">
-        <li class="mdl-list__item">
-    <span class="mdl-list__item-primary-content">
-        <div class="mdl-card-wide mdl-shadow--2dp">
-            <s:url var="dishDelete" action="delete_dish">
-                <s:param name="dishId" value="%{dishId}"/>
-            </s:url>
-            <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400" href="${dishDelete}">
-               <i class="material-icons">delete</i>
-            </a>
-            <s:property value="#dish.name"/>
+            <%--  <s:iterator value="result" var="dish">
+          <li class="mdl-list__item">
+      <span class="mdl-list__item-primary-content">
+          <div class="mdl-card-wide mdl-shadow--2dp">
+              <s:url var="dishDelete" action="delete_dish">
+                  <s:param name="dishId" value="%{dishId}"/>
+              </s:url>
+              <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400" href="${dishDelete}">
+                 <i class="material-icons">delete</i>
+              </a>
+              <s:property value="#dish.name"/>
 
-        </div>
-    </span>
-            </s:iterator>--%>
+          </div>
+      </span>
+              </s:iterator>--%>
 
 
     </div>

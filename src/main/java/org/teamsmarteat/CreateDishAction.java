@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import org.teamsmarteat.model.CategoryEntity;
 import org.teamsmarteat.model.DishEntity;
 import org.teamsmarteat.model.IngredientEntity;
+import org.teamsmarteat.model.MenuEntity;
 
 
 import javax.persistence.EntityManager;
@@ -68,6 +69,14 @@ public class CreateDishAction extends ActionSupport {
 
         dishEntity.setIngredients(checkboxIngredient);
 
+        dishEntity.setMenu(em.find(MenuEntity.class,1));
+
+
+        em.getTransaction().begin();
+        em.persist(dishEntity); //em.merge(u); for updates
+        em.getTransaction().commit();
+        em.close();
+        execute();
         return SUCCESS;
     }
 
