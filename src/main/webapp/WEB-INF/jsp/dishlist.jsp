@@ -90,61 +90,63 @@
     <div class="mdl-sheet__container">
 
         <s:form action="create_dish" method="post">
-        <button id="show-dialog" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <button id="show-dialog"
+                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
             <i class="material-icons">add</i>
             </s:form>
 
         </button>
     </div>
-
-
-    <div class="demo-list-icon mdl-list">
+    <%--<div class="demo-list-icon mdl-list">--%>
         <s:iterator value="resultCategory" var="resCategory">
 
-        <span class="mdl-list__item-primary-content">
-        <div class="mdl-card-wide mdl-shadow--2dp" style="width: 100%; background-color: #999999">
-            <h3><s:property value="#resCategory.name"/></h3>
-        </div>
-    </span>
-
-
-        <s:iterator value="resultDish" var="resDish">
-        <s:if test="%{#resDish.category.categoryId == #resCategory.categoryId && #resDish.enabled}">
-        <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-        <div class="mdl-card-wide mdl-shadow--2dp">
-            <s:url var="dishDelete" action="delete_dish">
-                <s:param name="dishId" value="%{dishId}"/>
-            </s:url>
-            <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400" href="${dishDelete}">
-               <i class="material-icons">delete</i>
-            </a>
-            <s:property value="#resDish.name"/>
-        </div>
-    </span>
-            </s:if>
+        <%--<span class="mdl-list__item-primary-content">--%>
+        <%--<div class="mdl-card-wide mdl-shadow--2dp" style="width: 100%; background-color: #999999">--%>
+            <%--<h3><s:property value="#resCategory.name"/></h3>--%>
+        <%--</div>--%>
+        <%--</span>--%>
+            <s:iterator value="resultDish" var="resDish" status="incr">
+                <s:if test="%{#resDish.category.categoryId == #resCategory.categoryId && #resDish.enabled}">
+                    <s:if test="%{#incr.index%3 == 0}">
+                        <div class="mdl-grid">
+                    </s:if>
+                    <div class="mdl-cell mdl-cell--4-col">
+                        <div class="mdl-card-wide mdl-shadow--2dp">
+                            <s:url var="dishDelete" action="delete_dish">
+                                <s:param name="dishId" value="%{dishId}"/>
+                            </s:url>
+                            <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400"
+                               href="${dishDelete}">
+                                <i class="material-icons">delete</i>
+                            </a>
+                            <s:property value="#resDish.name"/> <s:property value="%{#incr.index}"/>
+                        </div>
+                    </div>
+                    <s:if test="%{#incr.index%3 == 0}">
+                        </div>
+                    </s:if>
+                </s:if>
             </s:iterator>
-            </s:iterator>
+
+        </s:iterator>
+    <%--</div>--%>
 
 
-            <%--  <s:iterator value="result" var="dish">
-          <li class="mdl-list__item">
-      <span class="mdl-list__item-primary-content">
-          <div class="mdl-card-wide mdl-shadow--2dp">
-              <s:url var="dishDelete" action="delete_dish">
-                  <s:param name="dishId" value="%{dishId}"/>
-              </s:url>
-              <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400" href="${dishDelete}">
-                 <i class="material-icons">delete</i>
-              </a>
-              <s:property value="#dish.name"/>
+    <%--  <s:iterator value="result" var="dish">
+  <li class="mdl-list__item">
+<span class="mdl-list__item-primary-content">
+  <div class="mdl-card-wide mdl-shadow--2dp">
+      <s:url var="dishDelete" action="delete_dish">
+          <s:param name="dishId" value="%{dishId}"/>
+      </s:url>
+      <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400" href="${dishDelete}">
+         <i class="material-icons">delete</i>
+      </a>
+      <s:property value="#dish.name"/>
 
-          </div>
-      </span>
-              </s:iterator>--%>
-
-
-    </div>
+  </div>
+</span>
+      </s:iterator>--%>
 
 
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>

@@ -10,7 +10,7 @@ import java.util.Locale;
 @Table(name = "dish")
 public class DishEntity {
 
-    @Id
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "iddish")
     private int DishId;
 

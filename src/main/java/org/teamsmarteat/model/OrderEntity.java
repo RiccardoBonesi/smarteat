@@ -8,7 +8,7 @@ import java.util.List;
 @Table(name = "ordination")
 public class OrderEntity {
 
-    @Id
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "idorder")
     private int orderId;
 
