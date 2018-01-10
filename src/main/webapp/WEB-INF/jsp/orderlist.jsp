@@ -18,6 +18,7 @@
     </style>
 </head>
 <body>
+
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
@@ -43,6 +44,7 @@
         </div>
     </header>
 </div>
+
 <main class="mdl-layout__content mdl-color--grey-100">
     <div class="mdl-grid demo-content">
         <s:iterator value="result" var="res">
