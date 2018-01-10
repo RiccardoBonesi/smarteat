@@ -41,6 +41,10 @@
             <result name="success">/WEB-INF/jsp/order_detail.jsp</result>
         </action>
 
+        <action name="checkout" class="org.teamsmarteat.CheckoutAction" method="execute">
+            <result type="redirectAction">orderlist.action</result>
+        </action>
+
         <action name="login" class="org.teamsmarteat.LoginAction">
             <result name="success">/WEB-INF/jsp/dashboard.jsp</result>
             <result name="error">/WEB-INF/jsp/loginerror.jsp</result>
