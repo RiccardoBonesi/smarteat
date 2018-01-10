@@ -11,7 +11,6 @@ public class DashboardAction extends ActionSupport  implements SessionAware {
     Map sessionMap;
 
     public String execute() throws Exception {
-        int x=1;
         UserEntity currentUser = (UserEntity) sessionMap.get("userEntity");
         return SUCCESS;
     }

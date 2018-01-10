@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-    <title>Smart Eat</title>
+    <title>Smarteat</title>
 
     <style>
         * { box-sizing:border-box; }
