@@ -15,13 +15,15 @@ import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public class DishListAction extends ActionSupport{
+public class DishListAction extends ActionSupport {
     private int dishId;
     private String dishName;
     private DishEntity dishEntity;
+
     public DishEntity getDishEntity() {
         return dishEntity;
     }
+
     public void setDishEntity(DishEntity dishEntity) {
         this.dishEntity = dishEntity;
     }
@@ -54,7 +56,7 @@ public class DishListAction extends ActionSupport{
 
     public String execute() {
         EntityManager em = factory.createEntityManager();
-        if(resultDish == null) {
+        if (resultDish == null) {
             Query queryDish = em.createQuery("select d from DishEntity d inner join CategoryEntity c on d.category=c.categoryId order by c.categoryId");
             resultDish = queryDish.getResultList();
         }
@@ -66,27 +68,15 @@ public class DishListAction extends ActionSupport{
         return SUCCESS;
     }
 
-    public String delete_dish () {
-        EntityManager em = factory.createEntityManager();
-
-        //TODO: provare la soluzione di andre
+    public String delete_dish() {
         if (dishId != 0) {
-            CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaUpdate<DishEntity> update = cb.createCriteriaUpdate(DishEntity.class);
-            Root e = update.from(DishEntity.class);
-            update.set("enabled", 0);
-            update.where(cb.equal(e.get("DishId"),dishId));
+            EntityManager em = factory.createEntityManager();
+            DishEntity dishEntity = em.find(DishEntity.class, dishId);
             em.getTransaction().begin();
-            em.createQuery(update).executeUpdate();
+            dishEntity.setEnabled(false);
             em.getTransaction().commit();
             execute();
-           return SUCCESS;
-
-//           VECCHIA DELETE
-           /* dishEntity = em.find(DishEntity.class, dishId);
-            em.getTransaction().begin();
-            em.remove(dishEntity);
-            em.getTransaction().commit();*/
+            return SUCCESS;
         } else {
             return ERROR;
         }
@@ -96,17 +86,15 @@ public class DishListAction extends ActionSupport{
     public String search_dish() {
         EntityManager em = factory.createEntityManager();
 
-        if(! (dishName.isEmpty() && dishName==null)) {
+        if (!(dishName.isEmpty() && dishName == null)) {
             Query query = em.createQuery("SELECT d FROM DishEntity d WHERE d.name LIKE :dishName");
             resultDish = query.setParameter("dishName", "%" + dishName + "%").getResultList();
             execute();
             return SUCCESS;
-        }
-        else {
+        } else {
             execute();
             return SUCCESS;
         }
-
 
 
     }
@@ -126,7 +114,6 @@ public class DishListAction extends ActionSupport{
     public List getResultDish() {
         return resultDish;
     }
-
 
 
 }
