@@ -16,17 +16,28 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CreateDishAction extends ActionSupport {
 
     private DishEntity dishEntity;
-    private List<IngredientEntity> resultIngredient;
+    private List<IngredientEntity> resultIngredient,checkboxIngredient;
     private List<CategoryEntity> resultCategory;
     private IngredientEntity ingredientEntity;
     private CategoryEntity categoryEntity;
     private static Logger logger = LogManager.getLogger(DishListAction.class);
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
+
+    public List<String> getCheckBoxes() {
+        return checkBoxes;
+    }
+
+    public void setCheckBoxes(List<String> checkBoxes) {
+        this.checkBoxes = checkBoxes;
+    }
+
+    private List<String> checkBoxes;
 
     public String execute() {
         EntityManager em = factory.createEntityManager();
@@ -46,8 +57,16 @@ public class CreateDishAction extends ActionSupport {
         EntityManager em = factory.createEntityManager();
 
         dishEntity.setEnabled(true);
+        categoryEntity = em.find(CategoryEntity.class, categoryEntity.getCategoryId());
+        dishEntity.setCategory(categoryEntity);
 
+        checkboxIngredient = new ArrayList<IngredientEntity>();
 
+        for(String ingId:checkBoxes){
+            checkboxIngredient.add(em.find(IngredientEntity.class,Integer.valueOf(ingId)));
+        }
+
+        dishEntity.setIngredients(checkboxIngredient);
 
         return SUCCESS;
     }

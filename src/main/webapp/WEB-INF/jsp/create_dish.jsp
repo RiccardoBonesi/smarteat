@@ -59,6 +59,27 @@
 
     </style>
 
+
+    <script type="javascript">
+        var table = document.querySelector('table');
+        var headerCheckbox = table.querySelector('thead .mdl-data-table__select input');
+        var boxes = table.querySelectorAll('tbody .mdl-data-table__select');
+        var headerCheckHandler = function (event) {
+            if (event.target.checked) {
+                for (var i = 0, length = boxes.length; i < length; i++) {
+                    boxes[i].MaterialCheckbox.check();
+                    boxes[i].MaterialCheckbox.updateClasses();
+                }
+            } else {
+                for (var i = 0, length = boxes.length; i < length; i++) {
+                    boxes[i].MaterialCheckbox.uncheck();
+                    boxes[i].MaterialCheckbox.updateClasses();
+                }
+            }
+        };
+        headerCheckbox.addEventListener('change', headerCheckHandler);
+    </script>
+
 </head>
 <body>
 
@@ -85,13 +106,9 @@
 <main class="mdl-layout__content mdl-color--grey-100">
     <s:form action="create_dish_confirmation" method="post">
         <div class="mdl-sheet__container">
-
-
             <button id="show-dialog"
                     class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
                 <i class="material-icons">done</i>
-
-
             </button>
         </div>
 
@@ -121,26 +138,29 @@
         </s:iterator>
 
 
+        <div class="mdl-cell mdl-cell--9-col">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Abilitato</th>
+                    <th class="mdl-data-table__cell--non-numeric">Ingredient</th>
+                </tr>
+                </thead>
+                <tbody>
+                <s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple" name="checkBoxes" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator>
+                </tbody>
+            </table>
+        </div>
+
+
     </s:form>
-    <div class="demo-list-icon mdl-list">
-
-        <s:iterator value="resultIngredient" var="resIngredient">
-
-            <li class="mdl-list__item">
-                <span class="mdl-list__item-primary-content">
-                    <div class="mdl-card-wide mdl-shadow--2dp">
-
-                        <s:property value="#resIngredient.name"/>
-
-                    </div>
-
-                </span>
-            </li>
-
-        </s:iterator>
-    </div>
-
-
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
 </body>
