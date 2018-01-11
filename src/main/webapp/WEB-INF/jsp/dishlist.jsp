@@ -30,37 +30,11 @@
             z-index: 900;
         }
 
-        .mdl-sheet {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
 
-            cursor: pointer;
-            transition: all 180ms;
-        }
-
-        .mdl-sheet__content {
-            display: none;
-        }
-
-        .mdl-sheet__icon {
-            color: #fff;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-12px, -12px);
-            font-size: 24px;
-            width: 24px;
-            height: 24px;
-            line-height: 24px;
-        }
 
         .demo-card mdl-card mdl-shadow--2dp {
             padding-left: 15px;
-            height: 90px;
+            height: auto;
         }
 
         .setAlign {
@@ -122,8 +96,6 @@
             <h3><s:property value="#resCategory.name"/></h3>
         </div>
 
-
-
         <s:iterator value="resultDish" var="resDish" status="incr">
         <s:if test="%{#resDish.category.categoryId == #resCategory.categoryId && #resDish.enabled}">
         <div class="mdl-cell">
@@ -139,7 +111,6 @@
                             <i class="material-icons">delete</i>
                         </a>
                         <s:property value="#resDish.name"/>
-                        <s:property value="%{#incr.index}"/>
                         <h6><s:property value="#resDish.description"/></h6>
                     </div>
                 </div>
