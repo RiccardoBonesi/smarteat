@@ -10,14 +10,23 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
 
+        .mdl-cell--stretch {
+            height: 250px;
+        }
+
+        .child {
+            position: absolute;
+            bottom: 0px;
+            padding: 15px;
+        }
 
         .mdl-card-wide {
             width: 100%;
-
             height: 100%;
             padding: 15px;
             background-color: #fafafa;
             text-align: left;
+            position: relative;
         }
 
         .mdl-sheet__container {
@@ -75,13 +84,13 @@
 </div>
 
 
-<main class="mdl-layout__content mdl-color--grey-100">
+<main class="mdl-layout__content">
 
     <div class="mdl-sheet__container">
 
         <s:form action="create_dish" method="post">
         <button id="show-dialog"
-                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised">
+                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
             <i class="material-icons">add</i>
             </s:form>
 
@@ -92,7 +101,7 @@
         <s:iterator value="resultCategory" var="resCategory">
 
 
-        <div class="mdl-card-wide mdl-shadow--2dp" style="width: 100%; background-color: #999999">
+        <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200" style="width: 100%; background-color: #999999">
             <h3><s:property value="#resCategory.name"/></h3>
         </div>
 
@@ -100,9 +109,9 @@
         <s:if test="%{#resDish.category.categoryId == #resCategory.categoryId && #resDish.enabled}">
 
 
-        <div class=" mdl-cell--stretch mdl-cell mdl-cell--4-col ">
+        <div class="mdl-cell--stretch mdl-cell mdl-cell--4-col">
 
-            <div class="mdl-card-wide mdl-shadow--2dp" style="height:100%;">
+            <div class="mdl-card-wide mdl-shadow--2dp">
 
                 <s:url var="dishDelete" action="delete_dish">
                     <s:param name="dishId" value="%{dishId}"/>
@@ -116,13 +125,11 @@
                     <s:property value="#resDish.description"/>
                 </div>
 
-
-                <div align="right" style="bottom:0px;">
+                <div class="child" align="right">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
                        href="${dishDelete}" >
                         <i class="material-icons">delete</i>
                     </a>
-
                 </div>
 
             </div>

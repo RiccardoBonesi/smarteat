@@ -10,15 +10,23 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
 
+        .mdl-cell--stretch {
+            height: 250px;
+        }
+
+        .child {
+            position: absolute;
+            bottom: 0px;
+            padding: 15px;
+        }
 
         .mdl-card-wide {
             width: 100%;
-            height: auto;
+            height: 100%;
             padding: 15px;
             background-color: #fafafa;
             text-align: left;
-            margin-left: 20px;
-
+            position: relative;
         }
 
         .mdl-sheet__container {
@@ -26,20 +34,25 @@
             right: 32px;
             bottom: 32px;
             transform: rotate(0deg);
-
+            height: auto;
             z-index: 900;
         }
 
-        .demo-card mdl-card mdl-shadow--2dp {
-            padding-left: 15px;
+        .setAlign {
+
+            align-content: center;
             height: auto;
         }
 
-        .setAlign {
-            padding-left: 15px;
-            align-content: center;
+        .header {
+            position: relative;
         }
 
+        /* positions header-content at the bottom of header's context */
+        .header-content {
+            position: absolute;
+            bottom: 0;
+        }
 
     </style>
 
@@ -50,7 +63,7 @@
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">Promotion List</span>
+            <span class="mdl-layout-title">Active Promotion</span>
             <div class="mdl-layout-spacer"></div>
 
             <s:form action="search_dish" method="post">
@@ -71,48 +84,59 @@
 </div>
 
 
-<main class="mdl-layout__content mdl-color--grey-100">
+<main class="mdl-layout__content">
 
-    <%--<div class="mdl-sheet__container">
+    <div class="mdl-sheet__container">
 
         <s:form action="create_dish" method="post">
         <button id="show-dialog"
-                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised">
+                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
             <i class="material-icons">add</i>
             </s:form>
 
         </button>
-    </div>--%>
+    </div>
     <%--<div class="demo-list-icon mdl-list">--%>
     <div class="mdl-grid">
         <s:iterator value="result" var="resPromotion">
-        <div class="mdl-cell">
-            <div class="mdl-cell mdl-cell--4-col">
-                <div class="demo-card mdl-card mdl-shadow--2dp">
-                    <div class="mdl-card__title">
-                        <h2 class="mdl-card__title-text">Promotion <s:property value="#resPromotion.name"/></h2>
-                    </div>
-                    <s:iterator value="dishes" var="resDish">
-                        <div class="mdl-card__supporting-text">
-                            <b><s:property value="#resDish.name"/></b>
-                            <s:property value="#resDish.description"/>
-                        </div>
-                    </s:iterator>
-                    <div class="mdl-card__actions mdl-card--border">
-                        <s:url var="promoDelete" action="delete_promotion">
-                            <s:param name="promotionId" value="%{resPromotion}"/>
-                        </s:url>
-                        <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400"
-                           href="${promoDelete}">
-                            <i class="material-icons">delete</i>
-                        </a>
 
-                    </div>
-                </div>
-            </div>
+
+        <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200" style="width: 100%; background-color: #999999">
+            <h3><s:property value="#resPromotion.name"/></h3>
         </div>
 
+        <s:iterator value="dishes" var="resDish" status="incr">
+
+        <div class="mdl-cell--stretch mdl-cell mdl-cell--4-col">
+
+            <div class="mdl-card-wide mdl-shadow--2dp">
+
+                <s:url var="dishDelete" action="#">
+                    <s:param name="dishId" value="%{dishId}"/>
+                </s:url>
+
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text"><s:property value="#resDish.name"/></h2>
+                </div>
+
+                <div class="mdl-card__supporting-text">
+                    <s:property value="#resDish.description"/>
+                </div>
+
+                <div class="child" align="right">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                       href="${dishDelete}" >
+                        <i class="material-icons">delete</i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
         </s:iterator>
+
+        </s:iterator>
+
+
         <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
 </body>
