@@ -1,6 +1,7 @@
 package org.teamsmarteat.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "promotion")
@@ -18,6 +19,11 @@ public class PromotionEntity {
 
     @Column(name = "description")
     private String description;
+    @ManyToMany
+    @JoinTable(name = "promotion_menu",
+            joinColumns = @JoinColumn(name = "promotion_idpromotion"),
+            inverseJoinColumns = @JoinColumn(name = "dish_iddish"))
+    private List<DishEntity> dishes;
 
     public int getPromotionId() {
         return promotionId;
@@ -45,6 +51,14 @@ public class PromotionEntity {
 
     public String getDescription() {
         return description;
+    }
+
+    public List<DishEntity> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<DishEntity> dishes) {
+        this.dishes = dishes;
     }
 
     public void setDescription(String description) {
