@@ -56,30 +56,26 @@ public class DishListAction extends ActionSupport implements SessionAware {
 
     private List<DishEntity> result;
 
-    public String execute() throws Exception {
+    public String execute() {
         UserEntity currentUser = (UserEntity) sessionMap.get("userEntity");
 
         int userId = currentUser.getUserId();
 
         EntityManager em = factory.createEntityManager();
         if (resultDish == null) {
-            Query queryDish = em.createQuery("select d from DishEntity d inner join CategoryEntity c on d.category=c.categoryId order by c.categoryId");
-            resultDish = queryDish.getResultList();
-            /*Query queryDish = em.createQuery("select d from DishEntity d " +
+            Query queryDish = em.createQuery("select d from DishEntity d " +
                     "inner join CategoryEntity c on d.category=c.categoryId  " +
-                    "inner join RestaurantEntity r on d.menu = r.menu where r.user= :userId" +
+                    "inner join RestaurantEntity r on d.menu = r.menu where r.user.id= ? " +
                     "order by c.categoryId" );
-            resultDish = queryDish.setParameter("userId", userId).getResultList();*/
+            resultDish = queryDish.setParameter(0, userId).getResultList();
         }
         em = factory.createEntityManager();
         Query queryCategory = em.createQuery("select c from CategoryEntity c");
         resultCategory = queryCategory.getResultList();
-
-        //TODO BONNY: aggiungere check del menù assegnato all'utente in uso
         return SUCCESS;
     }
 
-    public String delete_dish() throws Exception {
+    public String delete_dish(){
         if (dishId != 0) {
             EntityManager em = factory.createEntityManager();
             DishEntity dishEntity = em.find(DishEntity.class, dishId);
@@ -94,7 +90,7 @@ public class DishListAction extends ActionSupport implements SessionAware {
     }
 
 
-    public String search_dish() throws Exception {
+    public String search_dish() {
         EntityManager em = factory.createEntityManager();
 
         if (!(dishName.isEmpty() && dishName == null)) {

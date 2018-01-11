@@ -1,3 +1,4 @@
+<%@ page import="org.teamsmarteat.model.UserEntity" %>
 <!DOCTYPE html PUBLIC
 "-//W3C//DTD XHTML 1.1 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -7,6 +8,7 @@
 <%@taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 
+<% UserEntity userEntity = (UserEntity)request.getSession().getAttribute("userEntity"); %>
 
 <html lang="en">
 <head>
@@ -46,6 +48,10 @@
     <style>
         .mdl-layout__header {
             height: fit-content;
+            /*border-radius: 50%;*/
+        }
+        .avatar {
+            border-radius: 50%;
         }
     </style>
 
@@ -60,7 +66,8 @@
 
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-            <img style="background: white" src="images/carioni.png" height="100" width="90" class="demo-avatar">
+            <img style="background: white" src="images/carioni.png" height="100" width="90" class="avatar">
+            <% out.print(userEntity.getUsername());%>
             <%--<div class="demo-avatar-dropdown">
                 <span>hello@example.com</span>
                 <div class="mdl-layout-spacer"></div>
