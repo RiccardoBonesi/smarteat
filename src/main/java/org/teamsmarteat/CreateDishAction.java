@@ -30,6 +30,19 @@ public class CreateDishAction extends ActionSupport {
     private static Logger logger = LogManager.getLogger(DishListAction.class);
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
 
+    private String ingredientName;
+
+
+    public String getIngredientName() {
+        return ingredientName;
+    }
+
+    public void setIngredientName(String ingredientName) {
+        this.ingredientName = ingredientName;
+    }
+
+
+
     public List<String> getCheckBoxes() {
         return checkBoxes;
     }
@@ -52,6 +65,37 @@ public class CreateDishAction extends ActionSupport {
         resultCategory = queryCategory.getResultList();
 
         return SUCCESS;
+    }
+
+    public String search_ingredient() {
+        EntityManager em = factory.createEntityManager();
+
+        if (!(ingredientName.isEmpty() && ingredientName == null)) {
+            Query query = em.createQuery("SELECT i FROM IngredientEntity i WHERE i.name LIKE ?");
+            resultIngredient = query.setParameter(0, "%" + ingredientName + "%").getResultList();
+            return SUCCESS;
+
+        }
+        else {
+            return ERROR;
+        }
+
+
+        /*if (!(dishName.isEmpty() && dishName == null)) {
+            Query query = em.createQuery("SELECT d FROM DishEntity d " +
+                    "INNER JOIN RestaurantEntity r on d.menu = r.menu " +
+                    "WHERE d.name LIKE ? AND r.user.id= ?");
+            resultDish = query.setParameter(0, "%" + dishName + "%")
+                    .setParameter(1, userId)
+                    .getResultList();
+            execute();
+            return SUCCESS;
+        } else {
+            execute();
+            return SUCCESS;
+        }*/
+
+
     }
 
 
