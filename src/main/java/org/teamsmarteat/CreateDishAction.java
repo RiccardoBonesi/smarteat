@@ -40,6 +40,8 @@ public class CreateDishAction extends ActionSupport {
 
     private List<String> checkBoxes;
 
+    //TODO: implementare ricerca ingredienti
+
     public String execute() {
         EntityManager em = factory.createEntityManager();
         Query queryDish = em.createQuery("select d from IngredientEntity d");
@@ -76,7 +78,9 @@ public class CreateDishAction extends ActionSupport {
         em.persist(dishEntity); //em.merge(u); for updates
         em.getTransaction().commit();
         em.close();
-        execute();
+//        execute();
+
+
         return SUCCESS;
     }
 
