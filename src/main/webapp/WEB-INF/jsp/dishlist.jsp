@@ -26,6 +26,8 @@
             right: 32px;
             bottom: 32px;
             transform: rotate(0deg);
+
+            z-index: 900;
         }
 
         .mdl-sheet {
@@ -108,7 +110,7 @@
 
         <s:form action="create_dish" method="post">
         <button id="show-dialog"
-                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised">
             <i class="material-icons">add</i>
             </s:form>
 
@@ -118,28 +120,35 @@
     <div class="mdl-grid">
         <s:iterator value="resultCategory" var="resCategory">
 
+
+
+        <div class="mdl-card-wide mdl-shadow--2dp" style="width: 100%; background-color: #999999">
+            <h3><s:property value="#resCategory.name"/></h3>
+        </div>
+
+
+
         <s:iterator value="resultDish" var="resDish" status="incr">
         <s:if test="%{#resDish.category.categoryId == #resCategory.categoryId && #resDish.enabled}">
         <div class="mdl-cell">
-            <c:choose>
-                <c:when test="${resCategory.categoryId=='1'}">
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <div class="demo-card mdl-card mdl-shadow--2dp">
-                            <div class="setAlign">
-                                <s:url var="dishDelete" action="delete_dish">
-                                    <s:param name="dishId" value="%{dishId}"/>
-                                </s:url>
-                                <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400"
-                                   href="${dishDelete}">
-                                    <i class="material-icons">delete</i>
-                                </a>
-                                <s:property value="#resDish.name"/>
-                                <s:property value="%{#incr.index}"/>
-                                <h6><s:property value="#resDish.description"/></h6>
-                            </div>
-                        </div>
+
+            <div class="mdl-cell mdl-cell--4-col">
+                <div class="demo-card mdl-card mdl-shadow--2dp">
+                    <div class="setAlign">
+                        <s:url var="dishDelete" action="delete_dish">
+                            <s:param name="dishId" value="%{dishId}"/>
+                        </s:url>
+                        <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400"
+                           href="${dishDelete}">
+                            <i class="material-icons">delete</i>
+                        </a>
+                        <s:property value="#resDish.name"/>
+                        <s:property value="%{#incr.index}"/>
+                        <h6><s:property value="#resDish.description"/></h6>
                     </div>
-                </c:when>
+                </div>
+            </div>
+
                 <%--<div class="mdl-cell mdl-cell--4-col">
                     <div class="demo-card mdl-card mdl-shadow--2dp">
                         <div class="setAlign">
@@ -156,7 +165,7 @@
                         </div>
                     </div>
                 </div>--%>
-            </c:choose>
+
         </div>
 
 
