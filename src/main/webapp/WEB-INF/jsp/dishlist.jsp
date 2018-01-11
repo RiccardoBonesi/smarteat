@@ -69,7 +69,10 @@
         }
 
 
+
+
     </style>
+
 
 </head>
 <body>
@@ -81,23 +84,16 @@
             <div class="mdl-layout-spacer"></div>
 
             <s:form action="search_dish" method="post">
-
-                <div class="content-grid mdl-grid">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                        <div class="mdl-cell mdl-cell--4-col">
-                            <button type="submit" class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                                <i class="material-icons">search</i>
-                            </button>
-                        </div>
-                        <div class="mdl-cell mdl-cell--8-col">
-                            <div class="mdl-textfield">
-                                <input class="mdl-textfield__input" type="text" id="search" name="dishName"/>
-                            </div>
-                        </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search" >
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" type="text" id="search" name="dishName" placeholder="Search dish">
+                        <label class="mdl-textfield__label"></label>
                     </div>
                 </div>
             </s:form>
-
 
         </div>
     </header>
