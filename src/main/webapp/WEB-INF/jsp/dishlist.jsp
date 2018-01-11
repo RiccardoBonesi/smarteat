@@ -13,12 +13,11 @@
 
         .mdl-card-wide {
             width: 100%;
-            height: auto;
+
+            height: 100%;
             padding: 15px;
             background-color: #fafafa;
             text-align: left;
-            margin-left: 20px;
-
         }
 
         .mdl-sheet__container {
@@ -26,24 +25,25 @@
             right: 32px;
             bottom: 32px;
             transform: rotate(0deg);
-
+            height: auto;
             z-index: 900;
         }
 
+        .setAlign {
 
-
-        .demo-card mdl-card mdl-shadow--2dp {
-            padding-left: 15px;
+            align-content: center;
             height: auto;
         }
 
-        .setAlign {
-            padding-left: 15px;
-            align-content: center;
+        .header {
+            position: relative;
         }
 
-
-
+        /* positions header-content at the bottom of header's context */
+        .header-content {
+            position: absolute;
+            bottom: 0;
+        }
 
     </style>
 
@@ -59,11 +59,12 @@
 
             <s:form action="search_dish" method="post">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search" >
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
                         <i class="material-icons">search</i>
                     </label>
                     <div class="mdl-textfield__expandable-holder">
-                        <input class="mdl-textfield__input" type="text" id="search" name="dishName" placeholder="Search dish">
+                        <input class="mdl-textfield__input" type="text" id="search" name="dishName"
+                               placeholder="Search dish">
                         <label class="mdl-textfield__label"></label>
                     </div>
                 </div>
@@ -91,73 +92,45 @@
         <s:iterator value="resultCategory" var="resCategory">
 
 
-
         <div class="mdl-card-wide mdl-shadow--2dp" style="width: 100%; background-color: #999999">
             <h3><s:property value="#resCategory.name"/></h3>
         </div>
 
         <s:iterator value="resultDish" var="resDish" status="incr">
         <s:if test="%{#resDish.category.categoryId == #resCategory.categoryId && #resDish.enabled}">
-        <div class="mdl-cell">
 
-            <div class="mdl-cell mdl-cell--4-col">
-                <div class="demo-card mdl-card mdl-shadow--2dp">
-                    <div class="setAlign">
-                        <s:url var="dishDelete" action="delete_dish">
-                            <s:param name="dishId" value="%{dishId}"/>
-                        </s:url>
-                        <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400"
-                           href="${dishDelete}">
-                            <i class="material-icons">delete</i>
-                        </a>
-                        <s:property value="#resDish.name"/>
-                        <h6><s:property value="#resDish.description"/></h6>
-                    </div>
+
+        <div class=" mdl-cell--stretch mdl-cell mdl-cell--4-col ">
+
+            <div class="mdl-card-wide mdl-shadow--2dp" style="height:100%;">
+
+                <s:url var="dishDelete" action="delete_dish">
+                    <s:param name="dishId" value="%{dishId}"/>
+                </s:url>
+
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text"><s:property value="#resDish.name"/></h2>
                 </div>
+
+                <div class="mdl-card__supporting-text">
+                    <s:property value="#resDish.description"/>
+                </div>
+
+
+                <div align="right" style="bottom:0px;">
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                       href="${dishDelete}" >
+                        <i class="material-icons">delete</i>
+                    </a>
+
+                </div>
+
             </div>
-
-                <%--<div class="mdl-cell mdl-cell--4-col">
-                    <div class="demo-card mdl-card mdl-shadow--2dp">
-                        <div class="setAlign">
-                            <s:url var="dishDelete" action="delete_dish">
-                                <s:param name="dishId" value="%{dishId}"/>
-                            </s:url>
-                            <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400"
-                               href="${dishDelete}">
-                                <i class="material-icons">delete</i>
-                            </a>
-                            <s:property value="#resDish.name"/>
-                            <s:property value="%{#incr.index}"/>
-                            <h6><s:property value="#resDish.description"/></h6>
-                        </div>
-                    </div>
-                </div>--%>
-
         </div>
-
-
         </s:if>
         </s:iterator>
 
         </s:iterator>
-        <%--</div>--%>
-
-
-        <%--  <s:iterator value="result" var="dish">
-      <li class="mdl-list__item">
-    <span class="mdl-list__item-primary-content">
-      <div class="mdl-card-wide mdl-shadow--2dp">
-          <s:url var="dishDelete" action="delete_dish">
-              <s:param name="dishId" value="%{dishId}"/>
-          </s:url>
-          <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400" href="${dishDelete}">
-             <i class="material-icons">delete</i>
-          </a>
-          <s:property value="#dish.name"/>
-
-      </div>
-    </span>
-          </s:iterator>--%>
 
 
         <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
