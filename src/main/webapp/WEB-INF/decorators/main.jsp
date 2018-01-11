@@ -86,7 +86,7 @@
             <a class="mdl-navigation__link" href="<s:url action='dashboard'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
             <a class="mdl-navigation__link" href="<s:url action='orderlist'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">list</i>Order List</a>
             <a class="mdl-navigation__link" href="<s:url action='dishlist'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">list</i>Dish List</a>
-            <a class="mdl-navigation__link" href="<s:url action='menu_management'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Menu Management</a>
+            <a class="mdl-navigation__link" href="<s:url action='promotion'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promotion</a>
             <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
             <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
             <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>

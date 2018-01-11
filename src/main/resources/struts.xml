@@ -46,8 +46,8 @@
             <result name="success">/WEB-INF/jsp/dishlist.jsp</result>
         </action>
 
-        <action name="menu_management" class="org.teamsmarteat.MenuManagement" method="execute">
-            <result name="success">/WEB-INF/jsp/menu_management.jsp</result>
+        <action name="promotion" class="org.teamsmarteat.PromotionAction" method="execute">
+            <result name="success">/WEB-INF/jsp/promotionlist.jsp</result>
         </action>
 
         <action name="view_detail" class="org.teamsmarteat.OrderLineAction" method="execute">
