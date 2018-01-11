@@ -92,10 +92,16 @@ public class DishListAction extends ActionSupport implements SessionAware {
 
     public String search_dish() {
         EntityManager em = factory.createEntityManager();
+        UserEntity currentUser = (UserEntity) sessionMap.get("userEntity");
+        int userId = currentUser.getUserId();
 
         if (!(dishName.isEmpty() && dishName == null)) {
-            Query query = em.createQuery("SELECT d FROM DishEntity d WHERE d.name LIKE :dishName");
-            resultDish = query.setParameter("dishName", "%" + dishName + "%").getResultList();
+            Query query = em.createQuery("SELECT d FROM DishEntity d " +
+                    "INNER JOIN RestaurantEntity r on d.menu = r.menu " +
+                    "WHERE d.name LIKE ? AND r.user.id= ?");
+            resultDish = query.setParameter(0, "%" + dishName + "%")
+                        .setParameter(1, userId)
+                        .getResultList();
             execute();
             return SUCCESS;
         } else {
