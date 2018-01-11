@@ -17,8 +17,8 @@
             padding: 15px;
             background-color: #fafafa;
             text-align: left;
-            margin-left: 20px;
 
+            height: auto;
         }
 
         .mdl-sheet__container {
@@ -26,23 +26,20 @@
             right: 32px;
             bottom: 32px;
             transform: rotate(0deg);
-
+            height: auto;
             z-index: 900;
         }
 
-
-
         .demo-card mdl-card mdl-shadow--2dp {
-            padding-left: 15px;
+
             height: auto;
         }
 
         .setAlign {
-            padding-left: 15px;
+
             align-content: center;
+            height: auto;
         }
-
-
 
 
     </style>
@@ -59,11 +56,12 @@
 
             <s:form action="search_dish" method="post">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search" >
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
                         <i class="material-icons">search</i>
                     </label>
                     <div class="mdl-textfield__expandable-holder">
-                        <input class="mdl-textfield__input" type="text" id="search" name="dishName" placeholder="Search dish">
+                        <input class="mdl-textfield__input" type="text" id="search" name="dishName"
+                               placeholder="Search dish">
                         <label class="mdl-textfield__label"></label>
                     </div>
                 </div>
@@ -91,7 +89,6 @@
         <s:iterator value="resultCategory" var="resCategory">
 
 
-
         <div class="mdl-card-wide mdl-shadow--2dp" style="width: 100%; background-color: #999999">
             <h3><s:property value="#resCategory.name"/></h3>
         </div>
@@ -106,12 +103,17 @@
                         <s:url var="dishDelete" action="delete_dish">
                             <s:param name="dishId" value="%{dishId}"/>
                         </s:url>
+
+                        <div class="mdl-card__title">
+                            <s:property value="#resDish.name"/>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            <s:property value="#resDish.description"/>
+                        </div>
                         <a class="mdl-button mdl-js-button mdl-button--icon mdl-color-text--blue-grey-400"
                            href="${dishDelete}">
                             <i class="material-icons">delete</i>
                         </a>
-                        <s:property value="#resDish.name"/>
-                        <h6><s:property value="#resDish.description"/></h6>
                     </div>
                 </div>
             </div>
