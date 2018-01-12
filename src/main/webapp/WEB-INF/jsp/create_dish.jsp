@@ -102,7 +102,6 @@
     <s:form action="create_dish_confirmation" method="post" id="form-id">
 
 
-
         <label class="mdl-button mdl-button--icon" for="search">
             <i class="material-icons">search</i>
         </label>
@@ -116,23 +115,27 @@
 
         <div class="mdl-sheet__container">
             <input id="show-dialog" type="button"
-                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" onclick="msg()">
-                <i class="material-icons">done</i>
+                   class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
+                   onclick="msg()">
+            <i class="material-icons">done</i>
             </input>
         </div>
 
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_name" type="text" name="dishEntity.name"/>
+            <input class="mdl-textfield__input" id="text_dish_name" type="text" name="dishEntity.name"
+                   value="${dishEntity.name}"/>
             <label class="mdl-textfield__label" for="text_dish_name">Name</label>
         </div>
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_description" type="text" name="dishEntity.description"/>
+            <input class="mdl-textfield__input" id="text_dish_description" type="text" name="dishEntity.description"
+                   value="${dishEntity.description}"/>
             <label class="mdl-textfield__label" for="text_dish_description">Description</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"/>
+            <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"
+                   value="${dishEntity.price}"/>
             <label class="mdl-textfield__label" for="text_dish_price">Price</label>
         </div>
         <input type="hidden" id="action_value_id" value="search_ing" name="action_value">
@@ -157,18 +160,26 @@
                 </thead>
                 <tbody>
                 <s:iterator value="resultIngredient" var="resIngredient">
-                    <tr>
+                <tr>
+                    <s:if test="%{checkboxIngredient.contains(#resIngredient)}">
+                        <td>asd</td>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="true" fieldValue="%{ingredientId}"/></td>
+                    </s:if>
+                    <s:else>
+                        <td>asdelse</td>
                         <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
                                         name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
-                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
-                        <td><s:property value="#resIngredient.name"/></td>
+                    </s:else>
+                    <td><s:property value="#resIngredient.name"/></td>
 
-                    </tr>
+
+
+                </tr>
                 </s:iterator>
 
             </table>
         </div>
-
 
 
     </s:form>

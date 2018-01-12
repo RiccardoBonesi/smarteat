@@ -35,12 +35,12 @@
         </action>
 
         <action name="create_dish_confirmation" class="org.teamsmarteat.CreateDishAction" method="confirm_dish">
-            <result type="redirectAction">dishlist.action</result>
-        </action>
-
-        <action name="search_ingredient" class="org.teamsmarteat.CreateDishAction" method="search_ingredient">
             <result name="success">/WEB-INF/jsp/create_dish.jsp</result>
         </action>
+
+        <!--<action name="search_ingredient" class="org.teamsmarteat.CreateDishAction" method="search_ingredient">-->
+            <!--<result name="success">/WEB-INF/jsp/create_dish.jsp</result>-->
+        <!--</action>-->
 
         <action name="delete_dish" class="org.teamsmarteat.DishListAction" method="delete_dish">
             <result name="success">/WEB-INF/jsp/dishlist.jsp</result>
