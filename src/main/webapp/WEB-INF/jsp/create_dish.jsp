@@ -165,6 +165,471 @@
 
                     </tr>
                 </s:iterator>
+                <s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator><s:iterator value="resultIngredient" var="resIngredient">
+                    <tr>
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
+                        <td><s:property value="#resIngredient.name"/></td>
+
+                    </tr>
+                </s:iterator>
                 </tbody>
             </table>
         </div>
