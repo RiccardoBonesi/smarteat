@@ -23,7 +23,7 @@ import java.util.List;
 public class CreateDishAction extends ActionSupport {
 
     private DishEntity dishEntity;
-    private List<IngredientEntity> resultIngredient,checkboxIngredient;
+    private List<IngredientEntity> resultIngredient, checkboxIngredient;
     private List<CategoryEntity> resultCategory;
     private IngredientEntity ingredientEntity;
     private CategoryEntity categoryEntity;
@@ -42,7 +42,6 @@ public class CreateDishAction extends ActionSupport {
     }
 
 
-
     public List<String> getCheckBoxes() {
         return checkBoxes;
     }
@@ -53,12 +52,13 @@ public class CreateDishAction extends ActionSupport {
 
     private List<String> checkBoxes;
 
-    //TODO: implementare ricerca ingredienti
-
     public String execute() {
         EntityManager em = factory.createEntityManager();
-        Query queryDish = em.createQuery("select d from IngredientEntity d");
-        resultIngredient = queryDish.getResultList();
+
+        if (ingredientName == null) {
+            Query queryDish = em.createQuery("select d from IngredientEntity d");
+            resultIngredient = queryDish.getResultList();
+        }
 
         em = factory.createEntityManager();
         Query queryCategory = em.createQuery("select c from CategoryEntity c");
@@ -73,10 +73,10 @@ public class CreateDishAction extends ActionSupport {
         if (!(ingredientName.isEmpty() && ingredientName == null)) {
             Query query = em.createQuery("SELECT i FROM IngredientEntity i WHERE i.name LIKE ?");
             resultIngredient = query.setParameter(0, "%" + ingredientName + "%").getResultList();
+            execute();
             return SUCCESS;
 
-        }
-        else {
+        } else {
             return ERROR;
         }
 
@@ -99,7 +99,7 @@ public class CreateDishAction extends ActionSupport {
     }
 
 
-    public String confirm_dish () {
+    public String confirm_dish() {
 
         EntityManager em = factory.createEntityManager();
 
@@ -109,13 +109,13 @@ public class CreateDishAction extends ActionSupport {
 
         checkboxIngredient = new ArrayList<IngredientEntity>();
 
-        for(String ingId:checkBoxes){
-            checkboxIngredient.add(em.find(IngredientEntity.class,Integer.valueOf(ingId)));
+        for (String ingId : checkBoxes) {
+            checkboxIngredient.add(em.find(IngredientEntity.class, Integer.valueOf(ingId)));
         }
 
         dishEntity.setIngredients(checkboxIngredient);
 
-        dishEntity.setMenu(em.find(MenuEntity.class,1));
+        dishEntity.setMenu(em.find(MenuEntity.class, 1));
 
 
         em.getTransaction().begin();
@@ -127,7 +127,6 @@ public class CreateDishAction extends ActionSupport {
 
         return SUCCESS;
     }
-
 
 
     public IngredientEntity getIngredientEntity() {
