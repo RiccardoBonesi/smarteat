@@ -26,7 +26,6 @@ public class CheckoutAction extends ActionSupport {
     }
 
     public String execute(){
-        //set bit to 1
         EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         EntityManager em = factory.createEntityManager();
 
