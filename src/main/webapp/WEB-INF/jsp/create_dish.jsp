@@ -165,7 +165,7 @@
 
                     </tr>
                 </s:iterator>
-                </tbody>
+
             </table>
         </div>
 
