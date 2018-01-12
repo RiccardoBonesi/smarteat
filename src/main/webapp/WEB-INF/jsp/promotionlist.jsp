@@ -139,8 +139,9 @@
 
             <div class="mdl-card-wide mdl-shadow--2dp">
 
-                <s:url var="dishDelete" action="#">
+                <s:url var="dishDelete" action="deleteDishPromotion">
                     <s:param name="dishId" value="%{dishId}"/>
+                    <s:param name="promotionId" value="%{promotionId}"/>
                 </s:url>
 
                 <div class="mdl-card__title">

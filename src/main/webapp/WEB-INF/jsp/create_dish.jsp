@@ -88,17 +88,6 @@
         <div class="mdl-layout__header-row">
             <span class="mdl-layout-title">Dish List</span>
             <div class="mdl-layout-spacer"></div>
-            <%--<s:form action="search_dish" method="post">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                    <i class="material-icons">search</i>
-                </label>
-                <div class="mdl-textfield__expandable-holder">
-                    <input class="mdl-textfield__input" type="text" id="search">
-                    <label class="mdl-textfield__label" for="search">Enter your query...</label>
-                </div>
-            </div>
-            </s:form>--%>
         </div>
     </header>
 </div>
@@ -107,19 +96,15 @@
 <main class="mdl-layout__content mdl-color--grey-100">
 
     <s:form action="search_ingredient" method="post">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-                <input class="mdl-textfield__input" type="text" id="search" name="ingredientName"
-                       placeholder="Search ingredient">
-                <label class="mdl-textfield__label"></label>
-            </div>
+        <label class="mdl-button mdl-button--icon" for="search">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+            <input class="mdl-textfield__input" type="text" id="search" name="ingredientName"
+                   placeholder="Search ingredient">
+            <label class="mdl-textfield__label"></label>
         </div>
     </s:form>
-
-
 
 
     <s:form action="create_dish_confirmation" method="post">
