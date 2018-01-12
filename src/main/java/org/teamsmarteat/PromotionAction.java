@@ -17,16 +17,16 @@ public class PromotionAction extends ActionSupport implements SessionAware {
 
     Map sessionMap;
     private int promotionId;
+    private String promotionName;
 
-    public String getPromotionNme() {
-        return promotionNme;
+    public String getPromotionName() {
+        return promotionName;
     }
 
-    public void setPromotionNme(String promotionNme) {
-        this.promotionNme = promotionNme;
+    public void setPromotionName(String promotionName) {
+        this.promotionName = promotionName;
     }
 
-    private String promotionNme;
     private int dishId;
     private List<PromotionEntity> result;
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
@@ -62,7 +62,9 @@ public class PromotionAction extends ActionSupport implements SessionAware {
 
     @Override
     public String execute() {
-        queryPromotions();
+        if (result == null) {
+            queryPromotions();
+        }
         return SUCCESS;
     }
 
@@ -106,23 +108,11 @@ public class PromotionAction extends ActionSupport implements SessionAware {
         UserEntity currentUser = (UserEntity) sessionMap.get("userEntity");
         int userId = currentUser.getUserId();
 
-        /*if (!(promotionNme.isEmpty() && promotionNme == null)) {
+        if (!(promotionName.isEmpty() && promotionName == null)) {
             Query query = em.createQuery("SELECT p FROM PromotionEntity p " +
-                    "INNER JOIN RestaurantEntity r on p. = r.menu " +
-                    "WHERE d.name LIKE ? AND r.user.id= ?");
-            result = query.setParameter(0, "%" + promotionNme + "%")
-                    .setParameter(1, userId)
-                    .getResultList();
-            execute();
-            return SUCCESS;
-        }*/
-
-
-        /*if (!(dishName.isEmpty() && dishName == null)) {
-            Query query = em.createQuery("SELECT d FROM DishEntity d " +
-                    "INNER JOIN RestaurantEntity r on d.menu = r.menu " +
-                    "WHERE d.name LIKE ? AND r.user.id= ?");
-            resultDish = query.setParameter(0, "%" + dishName + "%")
+                    "INNER JOIN RestaurantEntity r on p.restaurant.restaurantId = r.restaurantId " +
+                    "WHERE p.name LIKE ? AND r.user.id= ?");
+            result = query.setParameter(0, "%" + promotionName + "%")
                     .setParameter(1, userId)
                     .getResultList();
             execute();
@@ -130,8 +120,7 @@ public class PromotionAction extends ActionSupport implements SessionAware {
         } else {
             execute();
             return SUCCESS;
-        }*/
-        return SUCCESS;
+        }
 
     }
 
