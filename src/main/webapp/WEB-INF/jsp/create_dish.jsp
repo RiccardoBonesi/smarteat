@@ -9,58 +9,12 @@
 <head>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-
-
-        .mdl-card-wide {
-            width: 100%;
-            height: auto;
-            padding: 15px;
-            background-color: #fafafa;
-            text-align: center;
-            vertical-align: center;
-        }
-
         .mdl-sheet__container {
             position: fixed;
             right: 32px;
             bottom: 32px;
             transform: rotate(0deg);
         }
-
-        .mdl-sheet {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-
-            cursor: pointer;
-            transition: all 180ms;
-
-        .mdl-sheet__content {
-            display: none;
-
-        }
-
-        }
-
-        .mdl-sheet__icon {
-            color: #fff;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-12px, -12px);
-            font-size: 24px;
-            width: 24px;
-            height: 24px;
-            line-height: 24px;
-        }
-
-        .buttonSubmitHide {
-            visibility: hidden;
-        }
-
     </style>
 
 
@@ -146,8 +100,8 @@
 
 
                 <s:if test="%{categoryEntity.categoryId == #resCategory.categoryId}">
-                <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
-                       value="${resCategory.categoryId}" checked>
+                    <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
+                           value="${resCategory.categoryId}" checked>
                 </s:if>
                 <s:else>
                     <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
@@ -180,7 +134,6 @@
                                         name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
                     </s:else>
                     <td><s:property value="#resIngredient.name"/></td>
-
 
 
                 </tr>
