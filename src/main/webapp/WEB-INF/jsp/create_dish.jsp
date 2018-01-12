@@ -143,8 +143,16 @@
         <s:iterator value="resultCategory" var="resCategory">
 
             <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+
+
+                <s:if test="%{categoryEntity.categoryId == #resCategory.categoryId}">
                 <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
-                       value="${resCategory.categoryId}">
+                       value="${resCategory.categoryId}" checked>
+                </s:if>
+                <s:else>
+                    <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
+                           value="${resCategory.categoryId}">
+                </s:else>
                 <span class="mdl-radio__label"><s:property value="#resCategory.name"/></span>
             </label>
         </s:iterator>
@@ -162,12 +170,12 @@
                 <s:iterator value="resultIngredient" var="resIngredient">
                 <tr>
                     <s:if test="%{checkboxIngredient.contains(#resIngredient)}">
-                        <td>asd</td>
+
                         <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
                                         name="checkBoxes" value="true" fieldValue="%{ingredientId}"/></td>
                     </s:if>
                     <s:else>
-                        <td>asdelse</td>
+
                         <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
                                         name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
                     </s:else>

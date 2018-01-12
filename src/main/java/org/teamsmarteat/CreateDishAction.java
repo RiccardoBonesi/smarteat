@@ -98,7 +98,6 @@ public class CreateDishAction extends ActionSupport {
     public String confirm_dish() {
 
         EntityManager em = factory.createEntityManager();
-
         if (action_value.equalsIgnoreCase("search_ing")) {
 
             Query query = em.createQuery("SELECT i FROM IngredientEntity i WHERE i.name LIKE ?");
@@ -114,7 +113,8 @@ public class CreateDishAction extends ActionSupport {
 
 
             execute();
-            return SUCCESS;
+            return ERROR;
+
         } else {
             dishEntity.setEnabled(true);
             categoryEntity = em.find(CategoryEntity.class, categoryEntity.getCategoryId());

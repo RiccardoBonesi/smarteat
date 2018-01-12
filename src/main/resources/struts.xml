@@ -35,7 +35,8 @@
         </action>
 
         <action name="create_dish_confirmation" class="org.teamsmarteat.CreateDishAction" method="confirm_dish">
-            <result name="success">/WEB-INF/jsp/create_dish.jsp</result>
+            <result name="error">/WEB-INF/jsp/create_dish.jsp</result>
+            <result name="success" type = "redirectAction">dishlist.action</result>
         </action>
 
         <!--<action name="search_ingredient" class="org.teamsmarteat.CreateDishAction" method="search_ingredient">-->
