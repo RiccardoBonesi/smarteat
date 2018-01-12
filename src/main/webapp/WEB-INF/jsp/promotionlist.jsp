@@ -113,14 +113,14 @@
             <span class="mdl-layout-title">Active Promotion</span>
             <div class="mdl-layout-spacer"></div>
 
-            <s:form action="search_dish" method="post">
+            <s:form action="search_promotion" method="post">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                     <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
                         <i class="material-icons">search</i>
                     </label>
                     <div class="mdl-textfield__expandable-holder">
-                        <input class="mdl-textfield__input" type="text" id="search" name="dishName"
-                               placeholder="Search dish">
+                        <input class="mdl-textfield__input" type="text" id="search" name="promotionName"
+                               placeholder="Search promotion">
                         <label class="mdl-textfield__label"></label>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
 
         <div class="mdl-sheet__container">
             <%--create promo--%>
-            <s:form action="create_dish" method="post">
+            <s:form action="addPromo" method="post">
             <button id="show-dialog"
                     class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
                 <i class="material-icons">add</i>
@@ -194,7 +194,6 @@
                                 <i class="material-icons">delete</i>
                             </a>
                         </div>
-
                     </div>
                 </div>
             </s:iterator>

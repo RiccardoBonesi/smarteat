@@ -2,7 +2,6 @@ package org.teamsmarteat.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 @Entity
 @Table(name = "order_line")
@@ -13,14 +12,15 @@ public class OrderLineEntity {
     public static class OrderLinePK implements Serializable {
         private int dish_iddish;
         private int order_idorder;
-        private int promotion_idpromotion;
+        @GeneratedValue(strategy=GenerationType.IDENTITY)
+        private int idorderline;
 
         public OrderLinePK () {}
 
-        public OrderLinePK (int dishId, int orderId, int promotionId) {
+        public OrderLinePK (int dishId, int orderId, int idorderline) {
             this.dish_iddish = dishId;
             this.order_idorder = orderId;
-            this.promotion_idpromotion = promotionId;
+            this.idorderline = idorderline;
         }
 
         public int getDish_iddish() {
@@ -39,12 +39,12 @@ public class OrderLineEntity {
             this.order_idorder = order_idorder;
         }
 
-        public int getPromotion_idpromotion() {
-            return promotion_idpromotion;
+        public int getIdorderline() {
+            return idorderline;
         }
 
-        public void setPromotion_idpromotion(int promotion_idpromotion) {
-            this.promotion_idpromotion = promotion_idpromotion;
+        public void setIdorderline(int orderLineId) {
+            this.idorderline = orderLineId;
         }
     }
 

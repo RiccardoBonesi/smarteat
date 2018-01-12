@@ -25,6 +25,17 @@ public class PromotionEntity {
             inverseJoinColumns = @JoinColumn(name = "dish_iddish"))
     private List<DishEntity> dishes;
 
+    @ManyToOne
+    private RestaurantEntity restaurant;
+
+    public RestaurantEntity getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(RestaurantEntity restaurant) {
+        this.restaurant = restaurant;
+    }
+
     public int getPromotionId() {
         return promotionId;
     }

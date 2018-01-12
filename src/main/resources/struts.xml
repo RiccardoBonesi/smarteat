@@ -50,6 +50,10 @@
             <result name="success">/WEB-INF/jsp/dishlist.jsp</result>
         </action>
 
+        <action name="search_promotion" class="org.teamsmarteat.PromotionAction" method="search_promotion">
+            <result name="success">/WEB-INF/jsp/promotionlist.jsp</result>
+        </action>
+
         <action name="promotion" class="org.teamsmarteat.PromotionAction" method="execute">
             <result name="success">/WEB-INF/jsp/promotionlist.jsp</result>
         </action>
