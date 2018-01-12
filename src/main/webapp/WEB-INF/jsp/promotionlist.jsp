@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
 
+        #addbutton {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 75px;
+            width: 75px;
+        }
         .mdl-cell--stretch {
             height: 250px;
         }
@@ -33,7 +43,15 @@
             height: 21%;
 
         }
-
+        .material-icons.mdl-48 {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            font-size: 72px;
+        }
         .child {
             position: absolute;
             bottom: 0px;
@@ -182,7 +200,7 @@
             <div id="addDishpromo" class="mdl-cell--stretch mdl-cell mdl-cell--4-col">
                 <div class="mdl-card-wide mdl-shadow--2dp">
                     <div class="center-div" style="display: inline-block">
-                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="display: inline-block"
+                        <a id="addbutton" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="display: inline-block"
                            href="#">
                             <i class="material-icons mdl-48">add</i>
                         </a>
