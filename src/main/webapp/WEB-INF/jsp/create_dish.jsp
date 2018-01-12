@@ -40,6 +40,7 @@
 
         .mdl-sheet__content {
             display: none;
+
         }
 
         }
@@ -56,6 +57,9 @@
             line-height: 24px;
         }
 
+        .buttonSubmitHide {
+            visibility: hidden;
+        }
 
     </style>
 
@@ -95,24 +99,26 @@
 
 <main class="mdl-layout__content mdl-color--grey-100">
 
-    <s:form action="search_ingredient" method="post">
+    <s:form action="create_dish_confirmation" method="post" id="form-id">
+
+
+
         <label class="mdl-button mdl-button--icon" for="search">
             <i class="material-icons">search</i>
         </label>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
             <input class="mdl-textfield__input" type="text" id="search" name="ingredientName"
                    placeholder="Search ingredient">
+            <input type="submit" style="display: none; visibility: hidden">
             <label class="mdl-textfield__label"></label>
         </div>
-    </s:form>
 
 
-    <s:form action="create_dish_confirmation" method="post">
         <div class="mdl-sheet__container">
-            <button id="show-dialog"
-                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+            <input id="show-dialog" type="button"
+                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" onclick="msg()">
                 <i class="material-icons">done</i>
-            </button>
+            </input>
         </div>
 
 
@@ -129,7 +135,7 @@
             <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"/>
             <label class="mdl-textfield__label" for="text_dish_price">Price</label>
         </div>
-
+        <input type="hidden" id="action_value_id" value="search_ing" name="action_value">
 
         <s:iterator value="resultCategory" var="resCategory">
 
@@ -159,12 +165,24 @@
 
                     </tr>
                 </s:iterator>
-                </tbody>
+
             </table>
         </div>
 
 
+
     </s:form>
+
+
+    <script type="text/javascript">
+
+        function msg() {
+            document.getElementById("action_value_id").value = "not_search_ing";
+            document.getElementById("form-id").submit();
+        }
+
+    </script>
+
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
 </body>
