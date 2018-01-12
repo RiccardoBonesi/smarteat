@@ -56,11 +56,6 @@ public class PromotionAction extends ActionSupport {
         EntityManager em = factory.createEntityManager();
         Query query = em.createQuery("SELECT p from PromotionEntity p");
         result = query.getResultList();
-        for (int i = 0; i <= result.size(); i++) {
-            if (result.get(i).getDishes().size() == 0) {
-                result.remove(i);
-            }
-        }
     }
 
     public String deleteDish() {

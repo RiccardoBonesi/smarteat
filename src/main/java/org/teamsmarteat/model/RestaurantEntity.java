@@ -16,6 +16,9 @@ public class RestaurantEntity {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "number_tables")
+    private int maxTables;
+
     @ManyToOne
     private MenuEntity menu;
 
@@ -60,5 +63,13 @@ public class RestaurantEntity {
 
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    public int getMaxTables() {
+        return maxTables;
+    }
+
+    public void setMaxTables(int maxTables) {
+        this.maxTables = maxTables;
     }
 }
