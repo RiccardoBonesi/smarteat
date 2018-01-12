@@ -270,63 +270,10 @@
 
     </style>
 
-    <%--<script type="javascript">--%>
-
-    <%--$('input').blur(function() {--%>
-    <%--var $this = $(this);--%>
-    <%--if ($this.val())--%>
-    <%--$this.addClass('is-focused');--%>
-    <%--else--%>
-    <%--$this.removeClass('is-focused');--%>
-    <%--});--%>
-
-
-    <%--$(window, document, undefined).ready(function() {--%>
-
-    <%--var $ripples = $('.ripples');--%>
-
-    <%--$ripples.on('click.Ripples', function(e) {--%>
-
-    <%--var $this = $(this);--%>
-    <%--var $offset = $this.parent().offset();--%>
-    <%--var $circle = $this.find('.ripplesCircle');--%>
-
-    <%--var x = e.pageX - $offset.left;--%>
-    <%--var y = e.pageY - $offset.top;--%>
-
-    <%--$circle.css({--%>
-    <%--top: y + 'px',--%>
-    <%--left: x + 'px'--%>
-    <%--});--%>
-
-    <%--$this.addClass('is-active');--%>
-
-    <%--});--%>
-
-    <%--$ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {--%>
-    <%--$(this).removeClass('is-active');--%>
-    <%--});--%>
-
-    <%--});--%>
-    <%--</script>--%>
-
 
 </head>
 <body background="images/bgimage.jpeg">
-<%--OLD LOGIN--%>
-<%--<s:form action="login" method="post">
 
-    <s:label for="userText">Username</s:label>
-    <s:textfield  id="userText" name="userEntity.username" value="Lars"/>
-
-    <s:password  id="userPass" name="userEntity.password"/>
-    <s:label  for="userPass">Password</s:label>
-
-    <s:submit value="Login"/>
-</s:form>--%>
-
-
-<%--preso da: https://codepen.io/joshadamous/pen/yyyqJZ--%>
 <hgroup>
     <h1 style="color:white">Smarteat</h1>
 </hgroup>

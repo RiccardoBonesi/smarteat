@@ -64,9 +64,9 @@ public class DishListAction extends ActionSupport implements SessionAware {
         EntityManager em = factory.createEntityManager();
         if (resultDish == null) {
             Query queryDish = em.createQuery("select d from DishEntity d " +
-                    "inner join CategoryEntity c on d.category=c.categoryId  " +
+                    "inner join CategoryEntity c on d.category.id=c.categoryId  " +
                     "inner join RestaurantEntity r on d.menu = r.menu where r.user.id= ? " +
-                    "order by c.categoryId" );
+                    "order by c.categoryId");
             resultDish = queryDish.setParameter(0, userId).getResultList();
         }
         em = factory.createEntityManager();

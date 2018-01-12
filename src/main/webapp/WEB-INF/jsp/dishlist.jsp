@@ -55,8 +55,6 @@
         }
 
     </style>
-
-
 </head>
 <body>
 
@@ -96,7 +94,7 @@
 
         </button>
     </div>
-    <%--<div class="demo-list-icon mdl-list">--%>
+
     <div class="mdl-grid">
         <s:iterator value="resultCategory" var="resCategory">
 
@@ -107,7 +105,6 @@
 
         <s:iterator value="resultDish" var="resDish" status="incr">
         <s:if test="%{#resDish.category.categoryId == #resCategory.categoryId && #resDish.enabled}">
-
 
         <div class="mdl-cell--stretch mdl-cell mdl-cell--4-col">
 

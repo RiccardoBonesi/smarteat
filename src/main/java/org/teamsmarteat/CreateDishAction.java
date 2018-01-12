@@ -17,13 +17,22 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CreateDishAction extends ActionSupport {
 
     private DishEntity dishEntity;
-    private List<IngredientEntity> resultIngredient, checkboxIngredient;
+    private List<IngredientEntity> resultIngredient;
+
+    public List<IngredientEntity> getCheckboxIngredient() {
+        return checkboxIngredient;
+    }
+
+    public void setCheckboxIngredient(List<IngredientEntity> checkboxIngredient) {
+        this.checkboxIngredient = checkboxIngredient;
+    }
+
+    private List<IngredientEntity> checkboxIngredient;
     private List<CategoryEntity> resultCategory;
     private IngredientEntity ingredientEntity;
     private CategoryEntity categoryEntity;
@@ -61,14 +70,23 @@ public class CreateDishAction extends ActionSupport {
 
     private List<String> checkBoxes;
 
+
+    //TODO TENERE SEMPRE VISIBILI LE CHECKBOXE GIA SELEZIONATE APPENDENDO QUELLE SELEZIONATE AL RISULTATO DELLA QUERY SUGLI INGREDIENTI
+
     public String execute() {
         EntityManager em = factory.createEntityManager();
 
-        if (ingredientName == null) {
+
+        if (resultIngredient == null) {
             Query queryDish = em.createQuery("select d from IngredientEntity d");
             resultIngredient = queryDish.getResultList();
-        }
+        }else{
+            resultIngredient.addAll(checkboxIngredient);
 
+            Set<IngredientEntity> hs = new LinkedHashSet<>(resultIngredient);
+            resultIngredient.clear();
+            resultIngredient.addAll(hs);
+        }
         em = factory.createEntityManager();
         Query queryCategory = em.createQuery("select c from CategoryEntity c");
         resultCategory = queryCategory.getResultList();
@@ -80,12 +98,22 @@ public class CreateDishAction extends ActionSupport {
     public String confirm_dish() {
 
         EntityManager em = factory.createEntityManager();
+        if (action_value.equalsIgnoreCase("search_ing")) {
 
-        if (!(ingredientName.isEmpty() && ingredientName == null)) {
             Query query = em.createQuery("SELECT i FROM IngredientEntity i WHERE i.name LIKE ?");
             resultIngredient = query.setParameter(0, "%" + ingredientName + "%").getResultList();
+
+            checkboxIngredient = new ArrayList<IngredientEntity>();
+
+            if (!(checkBoxes == null)) {
+                for (String ingId : checkBoxes) {
+                    checkboxIngredient.add(em.find(IngredientEntity.class, Integer.valueOf(ingId)));
+                }
+            }
+
+
             execute();
-            return SUCCESS;
+            return ERROR;
 
         } else {
             dishEntity.setEnabled(true);
@@ -93,9 +121,10 @@ public class CreateDishAction extends ActionSupport {
             dishEntity.setCategory(categoryEntity);
 
             checkboxIngredient = new ArrayList<IngredientEntity>();
-
-            for (String ingId : checkBoxes) {
-                checkboxIngredient.add(em.find(IngredientEntity.class, Integer.valueOf(ingId)));
+            if (!(checkBoxes == null)) {
+                for (String ingId : checkBoxes) {
+                    checkboxIngredient.add(em.find(IngredientEntity.class, Integer.valueOf(ingId)));
+                }
             }
 
             dishEntity.setIngredients(checkboxIngredient);
@@ -107,11 +136,11 @@ public class CreateDishAction extends ActionSupport {
             em.persist(dishEntity); //em.merge(u); for updates
             em.getTransaction().commit();
             em.close();
-//        execute();
-
 
             return SUCCESS;
         }
+
+
     }
 
 

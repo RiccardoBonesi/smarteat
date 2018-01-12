@@ -9,58 +9,12 @@
 <head>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
-
-
-        .mdl-card-wide {
-            width: 100%;
-            height: auto;
-            padding: 15px;
-            background-color: #fafafa;
-            text-align: center;
-            vertical-align: center;
-        }
-
         .mdl-sheet__container {
             position: fixed;
             right: 32px;
             bottom: 32px;
             transform: rotate(0deg);
         }
-
-        .mdl-sheet {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-
-            cursor: pointer;
-            transition: all 180ms;
-
-        .mdl-sheet__content {
-            display: none;
-
-        }
-
-        }
-
-        .mdl-sheet__icon {
-            color: #fff;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-12px, -12px);
-            font-size: 24px;
-            width: 24px;
-            height: 24px;
-            line-height: 24px;
-        }
-
-        .buttonSubmitHide {
-            visibility: hidden;
-        }
-
     </style>
 
 
@@ -102,7 +56,6 @@
     <s:form action="create_dish_confirmation" method="post" id="form-id">
 
 
-
         <label class="mdl-button mdl-button--icon" for="search">
             <i class="material-icons">search</i>
         </label>
@@ -116,23 +69,27 @@
 
         <div class="mdl-sheet__container">
             <input id="show-dialog" type="button"
-                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" onclick="msg()">
-                <i class="material-icons">done</i>
+                   class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
+                   onclick="msg()">
+            <i class="material-icons">done</i>
             </input>
         </div>
 
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_name" type="text" name="dishEntity.name"/>
+            <input class="mdl-textfield__input" id="text_dish_name" type="text" name="dishEntity.name"
+                   value="${dishEntity.name}"/>
             <label class="mdl-textfield__label" for="text_dish_name">Name</label>
         </div>
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_description" type="text" name="dishEntity.description"/>
+            <input class="mdl-textfield__input" id="text_dish_description" type="text" name="dishEntity.description"
+                   value="${dishEntity.description}"/>
             <label class="mdl-textfield__label" for="text_dish_description">Description</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"/>
+            <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"
+                   value="${dishEntity.price}"/>
             <label class="mdl-textfield__label" for="text_dish_price">Price</label>
         </div>
         <input type="hidden" id="action_value_id" value="search_ing" name="action_value">
@@ -140,8 +97,16 @@
         <s:iterator value="resultCategory" var="resCategory">
 
             <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
-                <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
-                       value="${resCategory.categoryId}">
+
+
+                <s:if test="%{categoryEntity.categoryId == #resCategory.categoryId}">
+                    <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
+                           value="${resCategory.categoryId}" checked>
+                </s:if>
+                <s:else>
+                    <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
+                           value="${resCategory.categoryId}">
+                </s:else>
                 <span class="mdl-radio__label"><s:property value="#resCategory.name"/></span>
             </label>
         </s:iterator>
@@ -157,18 +122,25 @@
                 </thead>
                 <tbody>
                 <s:iterator value="resultIngredient" var="resIngredient">
-                    <tr>
+                <tr>
+                    <s:if test="%{checkboxIngredient.contains(#resIngredient)}">
+
+                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="true" fieldValue="%{ingredientId}"/></td>
+                    </s:if>
+                    <s:else>
+
                         <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
                                         name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
-                            <%--<td><s:property value="#resIngredient.name"/></td>--%>
-                        <td><s:property value="#resIngredient.name"/></td>
+                    </s:else>
+                    <td><s:property value="#resIngredient.name"/></td>
 
-                    </tr>
+
+                </tr>
                 </s:iterator>
 
             </table>
         </div>
-
 
 
     </s:form>
