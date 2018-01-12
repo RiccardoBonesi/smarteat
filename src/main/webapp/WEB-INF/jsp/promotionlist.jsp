@@ -135,7 +135,7 @@
 
         <div class="mdl-sheet__container">
             <%--create promo--%>
-            <s:form action="create_dish" method="post">
+            <s:form action="addPromo" method="post">
             <button id="show-dialog"
                     class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
                 <i class="material-icons">add</i>
