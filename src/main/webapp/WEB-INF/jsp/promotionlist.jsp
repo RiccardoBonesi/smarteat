@@ -20,11 +20,12 @@
             height: 75px;
             width: 75px;
         }
+
         .mdl-cell--stretch {
             height: 250px;
         }
-        
-        #piu{
+
+        #piu {
             font-size: 60px;
         }
 
@@ -43,6 +44,7 @@
             height: 21%;
 
         }
+
         .material-icons.mdl-48 {
             position: absolute;
             margin: auto;
@@ -52,6 +54,7 @@
             left: 0;
             font-size: 72px;
         }
+
         .child {
             position: absolute;
             bottom: 0px;
@@ -133,16 +136,27 @@
 
 <main class="mdl-layout__content">
 
-        <div class="mdl-sheet__container">
-            <%--create promo--%>
-            <s:form action="create_dish" method="post">
-            <button id="show-dialog"
-                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
-                <i class="material-icons">add</i>
-                </s:form>
+    <div class="mdl-sheet__container">
+        <%--create promo--%>
+        <s:form action="create_dish" method="post">
+        <button id="show-dialog"
+                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
+            <i class="material-icons">add</i>
+            </s:form>
 
-            </button>
-        </div>
+        </button>
+    </div>
+    <%--<s:if test="show">--%>
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+    <script type="text/javascript">
+        if (${show}) {
+            alert("Cannot delete promotion since there are some orders linked to that promotion. Please delete that orders and retry. ")
+        }
+    </script>
+    <%--</s:if>--%>
     <%--<div class="demo-list-icon mdl-list">--%>
     <div class="mdl-grid">
         <s:iterator value="result" var="resPromotion">
@@ -157,8 +171,8 @@
                         <th style="padding-bottom: 18px;">
 
                             <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white"
-                                href="${promotionDelete}">
-                            <i class="material-icons">clear</i></a>
+                               href="${promotionDelete}">
+                                <i class="material-icons">clear</i></a>
                         </th>
 
                         <th>
@@ -167,6 +181,8 @@
                     </tr>
                     </thead>
                 </table>
+                    <%--<s:textfield name="some_name" value="%{show}"/>--%>
+
             </div>
 
             <s:iterator value="dishes" var="resDish" status="incr">
@@ -205,7 +221,8 @@
                             <s:param name="dishId" value="%{dishId}"/>
                             <s:param name="promotionId" value="%{promotionId}"/>
                         </s:url>
-                        <a id="addbutton" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="display: inline-block"
+                        <a id="addbutton" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                           style="display: inline-block"
                            href="${addButton}">
                             <i class="material-icons mdl-48">add</i>
                         </a>

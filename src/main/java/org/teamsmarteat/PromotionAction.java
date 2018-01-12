@@ -2,6 +2,7 @@ package org.teamsmarteat;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.teamsmarteat.model.DishEntity;
+import org.teamsmarteat.model.OrderLineEntity;
 import org.teamsmarteat.model.PromotionEntity;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ public class PromotionAction extends ActionSupport {
     private int promotionId;
     private int dishId;
     private List<PromotionEntity> result;
+    public boolean show = false;
 
     private PromotionAction() {
     }
@@ -43,6 +45,13 @@ public class PromotionAction extends ActionSupport {
         this.promotionId = promotionId;
     }
 
+    public boolean isShow() {
+        return show;
+    }
+
+    public void setShow(boolean show) {
+        this.show = show;
+    }
 
     @Override
     public String execute() {
@@ -72,17 +81,29 @@ public class PromotionAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String deletePromo(){
+    public String deletePromo() {
 
         EntityManager em = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
+        List<OrderLineEntity> orderLine = new ArrayList<OrderLineEntity>();
 
-        PromotionEntity promo = em.find(PromotionEntity.class, promotionId);
-        em.getTransaction().begin();
+        Query query = em.createQuery("select o from OrderLineEntity o" +
+                " where o.promotion.id= ? ");
+        List<OrderLineEntity> result = query.setParameter(0, promotionId).getResultList();
+        if (result.size() > 0) {
+            show = true;
+            queryPromotions();
+            return ERROR;
+        } else {
+            PromotionEntity promo = em.find(PromotionEntity.class, promotionId);
+            em.getTransaction().begin();
 
-        em.remove(promo);
-        em.getTransaction().commit();
-        queryPromotions();
-        return SUCCESS;
+            em.remove(promo);
+            em.getTransaction().commit();
+            queryPromotions();
+            return SUCCESS;
+        }
+
+
     }
 
 }
