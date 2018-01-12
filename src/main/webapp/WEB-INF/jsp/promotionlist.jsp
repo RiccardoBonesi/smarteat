@@ -133,35 +133,37 @@
 
 <main class="mdl-layout__content">
 
-    <div class="mdl-sheet__container">
+        <div class="mdl-sheet__container">
+            <%--create promo--%>
+            <s:form action="create_dish" method="post">
+            <button id="show-dialog"
+                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
+                <i class="material-icons">add</i>
+                </s:form>
 
-        <s:form action="create_dish" method="post">
-        <button id="show-dialog"
-                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
-            <i class="material-icons">add</i>
-            </s:form>
-
-        </button>
-    </div>
+            </button>
+        </div>
     <%--<div class="demo-list-icon mdl-list">--%>
     <div class="mdl-grid">
         <s:iterator value="result" var="resPromotion">
             <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200"
                  style="width: 100%; background-color: #999999">
+                <s:url var="promotionDelete" action="deletePromotion">
+                    <s:param name="promotionId" value="%{promotionId}"/>
+                </s:url>
                 <table class="mdl-data-table mdl-js-data-table " style="border: none">
                     <thead>
                     <tr>
+                        <th style="padding-bottom: 18px;">
 
-                        <th style="padding-bottom: 18px;"><a
-                                class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white"
-                                href="${promotionId}">
+                            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white"
+                                href="${promotionDelete}">
                             <i class="material-icons">clear</i></a>
                         </th>
 
                         <th>
                             <h3><s:property value="#resPromotion.name"/></h3>
                         </th>
-
                     </tr>
                     </thead>
                 </table>
@@ -200,8 +202,12 @@
             <div id="addDishpromo" class="mdl-cell--stretch mdl-cell mdl-cell--4-col">
                 <div class="mdl-card-wide mdl-shadow--2dp">
                     <div class="center-div" style="display: inline-block">
+                        <s:url var="addButton" action="addDishPromotion">
+                            <s:param name="dishId" value="%{dishId}"/>
+                            <s:param name="promotionId" value="%{promotionId}"/>
+                        </s:url>
                         <a id="addbutton" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="display: inline-block"
-                           href="#">
+                           href="${addButton}">
                             <i class="material-icons mdl-48">add</i>
                         </a>
                     </div>

@@ -2,7 +2,6 @@ package org.teamsmarteat;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.teamsmarteat.model.DishEntity;
-import org.teamsmarteat.model.OrderEntity;
 import org.teamsmarteat.model.PromotionEntity;
 
 import javax.persistence.EntityManager;
@@ -74,6 +73,19 @@ public class PromotionAction extends ActionSupport {
                 promo.getDishes().remove(dish);
             em.getTransaction().commit();
         }
+        queryPromotions();
+        return SUCCESS;
+    }
+
+    public String deletePromo(){
+
+        EntityManager em = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
+
+        PromotionEntity promo = em.find(PromotionEntity.class, promotionId);
+        em.getTransaction().begin();
+
+        em.remove(promo);
+        em.getTransaction().commit();
         queryPromotions();
         return SUCCESS;
     }
