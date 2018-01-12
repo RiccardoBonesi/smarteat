@@ -1,20 +1,36 @@
 package org.teamsmarteat;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.SessionAware;
 import org.teamsmarteat.model.DishEntity;
 import org.teamsmarteat.model.PromotionEntity;
+import org.teamsmarteat.model.UserEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class PromotionAction extends ActionSupport {
+public class PromotionAction extends ActionSupport implements SessionAware {
 
+    Map sessionMap;
     private int promotionId;
+    private String promotionName;
+
+    public String getPromotionName() {
+        return promotionName;
+    }
+
+    public void setPromotionName(String promotionName) {
+        this.promotionName = promotionName;
+    }
+
     private int dishId;
     private List<PromotionEntity> result;
+    private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
+
 
     private PromotionAction() {
     }
@@ -46,7 +62,9 @@ public class PromotionAction extends ActionSupport {
 
     @Override
     public String execute() {
-        queryPromotions();
+        if (result == null) {
+            queryPromotions();
+        }
         return SUCCESS;
     }
 
@@ -72,7 +90,7 @@ public class PromotionAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String deletePromo(){
+    public String deletePromo() {
 
         EntityManager em = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
 
@@ -83,6 +101,32 @@ public class PromotionAction extends ActionSupport {
         em.getTransaction().commit();
         queryPromotions();
         return SUCCESS;
+    }
+
+    public String search_promotion() {
+        EntityManager em = factory.createEntityManager();
+        UserEntity currentUser = (UserEntity) sessionMap.get("userEntity");
+        int userId = currentUser.getUserId();
+
+        if (!(promotionName.isEmpty() && promotionName == null)) {
+            Query query = em.createQuery("SELECT p FROM PromotionEntity p " +
+                    "INNER JOIN RestaurantEntity r on p.restaurant.restaurantId = r.restaurantId " +
+                    "WHERE p.name LIKE ? AND r.user.id= ?");
+            result = query.setParameter(0, "%" + promotionName + "%")
+                    .setParameter(1, userId)
+                    .getResultList();
+            execute();
+            return SUCCESS;
+        } else {
+            execute();
+            return SUCCESS;
+        }
+
+    }
+
+    @Override
+    public void setSession(Map session) {
+        this.sessionMap = session;
     }
 
 }
