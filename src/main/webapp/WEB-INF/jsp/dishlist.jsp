@@ -94,7 +94,7 @@
 
         </button>
     </div>
-    <%--<div class="demo-list-icon mdl-list">--%>
+
     <div class="mdl-grid">
         <s:iterator value="resultCategory" var="resCategory">
 
