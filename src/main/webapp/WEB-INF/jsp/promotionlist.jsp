@@ -174,7 +174,6 @@
                                 <i class="material-icons">delete</i>
                             </a>
                         </div>
-
                     </div>
                 </div>
             </s:iterator>
