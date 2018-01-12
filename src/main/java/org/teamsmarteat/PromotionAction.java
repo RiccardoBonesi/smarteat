@@ -17,7 +17,8 @@ public class PromotionAction extends ActionSupport {
     private int dishId;
     private List<PromotionEntity> result;
 
-    private PromotionAction() {}
+    private PromotionAction() {
+    }
 
     public List getResult() {
         return result;
@@ -44,7 +45,6 @@ public class PromotionAction extends ActionSupport {
     }
 
 
-
     @Override
     public String execute() {
         queryPromotions();
@@ -68,10 +68,12 @@ public class PromotionAction extends ActionSupport {
         EntityManager em = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
         DishEntity dish = em.find(DishEntity.class, dishId);
         PromotionEntity promo = em.find(PromotionEntity.class, promotionId);
-        em.getTransaction().begin();
-        if (promo.getDishes().contains(dish))
-            promo.getDishes().remove(dish);
-        em.getTransaction().commit();
+        if (promo != null && dish != null) {
+            em.getTransaction().begin();
+            if (promo.getDishes().contains(dish))
+                promo.getDishes().remove(dish);
+            em.getTransaction().commit();
+        }
         queryPromotions();
         return SUCCESS;
     }
