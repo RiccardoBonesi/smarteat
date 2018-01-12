@@ -52,6 +52,11 @@
 
         <action name="promotion" class="org.teamsmarteat.PromotionAction" method="execute">
             <result name="success">/WEB-INF/jsp/promotionlist.jsp</result>
+
+        </action>
+
+        <action name="deleteDishPromotion" class="org.teamsmarteat.PromotionAction" method="deleteDish">
+            <result name="success">/WEB-INF/jsp/promotionlist.jsp</result>
         </action>
 
         <action name="view_detail" class="org.teamsmarteat.OrderLineAction" method="execute">

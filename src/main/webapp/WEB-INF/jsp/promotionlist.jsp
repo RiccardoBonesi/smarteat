@@ -10,10 +10,48 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <style>
 
+        #addbutton {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 75px;
+            width: 75px;
+        }
         .mdl-cell--stretch {
             height: 250px;
         }
+        
+        #piu{
+            font-size: 60px;
+        }
 
+        .mdl-data-table {
+            background-color: rgb(64, 196, 255);
+        }
+
+        .center-div {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 25%;
+            height: 21%;
+
+        }
+        .material-icons.mdl-48 {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            font-size: 72px;
+        }
         .child {
             position: absolute;
             bottom: 0px;
@@ -52,6 +90,15 @@
         .header-content {
             position: absolute;
             bottom: 0;
+        }
+
+        .aParent {
+            float: left;
+            clear: none;
+        }
+
+        #addDishpromo {
+            align-content: center;
         }
 
     </style>
@@ -99,45 +146,71 @@
     <%--<div class="demo-list-icon mdl-list">--%>
     <div class="mdl-grid">
         <s:iterator value="result" var="resPromotion">
+            <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200"
+                 style="width: 100%; background-color: #999999">
+                <table class="mdl-data-table mdl-js-data-table " style="border: none">
+                    <thead>
+                    <tr>
 
+                        <th style="padding-bottom: 18px;"><a
+                                class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white"
+                                href="${promotionId}">
+                            <i class="material-icons">clear</i></a>
+                        </th>
 
-        <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200" style="width: 100%; background-color: #999999">
-            <h3><s:property value="#resPromotion.name"/></h3>
-        </div>
+                        <th>
+                            <h3><s:property value="#resPromotion.name"/></h3>
+                        </th>
 
-        <s:iterator value="dishes" var="resDish" status="incr">
-
-        <div class="mdl-cell--stretch mdl-cell mdl-cell--4-col">
-
-            <div class="mdl-card-wide mdl-shadow--2dp">
-
-                <s:url var="dishDelete" action="#">
-                    <s:param name="dishId" value="%{dishId}"/>
-                </s:url>
-
-                <div class="mdl-card__title">
-                    <h2 class="mdl-card__title-text"><s:property value="#resDish.name"/></h2>
-                </div>
-
-                <div class="mdl-card__supporting-text">
-                    <s:property value="#resDish.description"/>
-                </div>
-
-                <div class="child" align="right">
-                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                       href="${dishDelete}" >
-                        <i class="material-icons">delete</i>
-                    </a>
-                </div>
-
+                    </tr>
+                    </thead>
+                </table>
             </div>
-        </div>
+
+            <s:iterator value="dishes" var="resDish" status="incr">
+
+                <div class="mdl-cell--stretch mdl-cell mdl-cell--4-col">
+
+                    <div class="mdl-card-wide mdl-shadow--2dp">
+
+                        <s:url var="dishDelete" action="deleteDishPromotion">
+                            <s:param name="dishId" value="%{dishId}"/>
+                            <s:param name="promotionId" value="%{promotionId}"/>
+                        </s:url>
+
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text"><s:property value="#resDish.name"/></h2>
+                        </div>
+
+                        <div class="mdl-card__supporting-text">
+                            <s:property value="#resDish.description"/>
+                        </div>
+
+                        <div class="child" align="right">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                               href="${dishDelete}">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </s:iterator>
+
+            <div id="addDishpromo" class="mdl-cell--stretch mdl-cell mdl-cell--4-col">
+                <div class="mdl-card-wide mdl-shadow--2dp">
+                    <div class="center-div" style="display: inline-block">
+                        <a id="addbutton" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" style="display: inline-block"
+                           href="#">
+                            <i class="material-icons mdl-48">add</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </s:iterator>
+    </div>
 
-        </s:iterator>
-
-
-        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
 </body>
 

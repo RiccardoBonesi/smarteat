@@ -22,5 +22,6 @@ public class EntityManagerTest {
     @Test
     public void testFind() {
         Assert.assertEquals(MenuEntity.class, em.find(MenuEntity.class, 1).getClass());
+        Assert.assertNull(em.find(MenuEntity.class,21415));
     }
 }
