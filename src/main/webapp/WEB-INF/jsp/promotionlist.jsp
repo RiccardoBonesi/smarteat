@@ -14,6 +14,12 @@
             height: 250px;
         }
 
+
+        .mdl-data-table{
+            background-color: rgb(64,196,255);
+        }
+
+
         .child {
             position: absolute;
             bottom: 0px;
@@ -28,6 +34,7 @@
             text-align: left;
             position: relative;
         }
+
 
         .mdl-sheet__container {
             position: fixed;
@@ -52,6 +59,11 @@
         .header-content {
             position: absolute;
             bottom: 0;
+        }
+
+        .aParent {
+            float: left;
+            clear: none;
         }
 
     </style>
@@ -101,8 +113,24 @@
         <s:iterator value="result" var="resPromotion">
 
 
-        <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200" style="width: 100%; background-color: #999999">
-            <h3><s:property value="#resPromotion.name"/></h3>
+        <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200"
+             style="width: 100%; background-color: #999999">
+            <table class="mdl-data-table mdl-js-data-table " style="border: none">
+                <thead>
+                <tr>
+
+                    <th style="padding-bottom: 18px;"><a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white"
+                                                         href="${promotionId}">
+                        <i class="material-icons">clear</i></a>
+                    </th>
+
+                    <th>
+                        <h3><s:property value="#resPromotion.name"/></h3>
+                    </th>
+
+                </tr>
+                </thead>
+            </table>
         </div>
 
         <s:iterator value="dishes" var="resDish" status="incr">
@@ -125,7 +153,7 @@
 
                 <div class="child" align="right">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                       href="${dishDelete}" >
+                       href="${dishDelete}">
                         <i class="material-icons">delete</i>
                     </a>
                 </div>
@@ -133,6 +161,8 @@
             </div>
         </div>
         </s:iterator>
+
+
 
         </s:iterator>
 
