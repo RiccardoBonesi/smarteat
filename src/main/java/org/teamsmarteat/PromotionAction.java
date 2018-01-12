@@ -1,20 +1,36 @@
 package org.teamsmarteat;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.SessionAware;
 import org.teamsmarteat.model.DishEntity;
 import org.teamsmarteat.model.PromotionEntity;
+import org.teamsmarteat.model.UserEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-public class PromotionAction extends ActionSupport {
+public class PromotionAction extends ActionSupport implements SessionAware {
 
+    Map sessionMap;
     private int promotionId;
+
+    public String getPromotionNme() {
+        return promotionNme;
+    }
+
+    public void setPromotionNme(String promotionNme) {
+        this.promotionNme = promotionNme;
+    }
+
+    private String promotionNme;
     private int dishId;
     private List<PromotionEntity> result;
+    private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
+
 
     private PromotionAction() {
     }
@@ -72,7 +88,7 @@ public class PromotionAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String deletePromo(){
+    public String deletePromo() {
 
         EntityManager em = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
 
@@ -83,6 +99,45 @@ public class PromotionAction extends ActionSupport {
         em.getTransaction().commit();
         queryPromotions();
         return SUCCESS;
+    }
+
+    public String search_promotion() {
+        EntityManager em = factory.createEntityManager();
+        UserEntity currentUser = (UserEntity) sessionMap.get("userEntity");
+        int userId = currentUser.getUserId();
+
+        /*if (!(promotionNme.isEmpty() && promotionNme == null)) {
+            Query query = em.createQuery("SELECT p FROM PromotionEntity p " +
+                    "INNER JOIN RestaurantEntity r on p. = r.menu " +
+                    "WHERE d.name LIKE ? AND r.user.id= ?");
+            result = query.setParameter(0, "%" + promotionNme + "%")
+                    .setParameter(1, userId)
+                    .getResultList();
+            execute();
+            return SUCCESS;
+        }*/
+
+
+        /*if (!(dishName.isEmpty() && dishName == null)) {
+            Query query = em.createQuery("SELECT d FROM DishEntity d " +
+                    "INNER JOIN RestaurantEntity r on d.menu = r.menu " +
+                    "WHERE d.name LIKE ? AND r.user.id= ?");
+            resultDish = query.setParameter(0, "%" + dishName + "%")
+                    .setParameter(1, userId)
+                    .getResultList();
+            execute();
+            return SUCCESS;
+        } else {
+            execute();
+            return SUCCESS;
+        }*/
+        return SUCCESS;
+
+    }
+
+    @Override
+    public void setSession(Map session) {
+        this.sessionMap = session;
     }
 
 }
