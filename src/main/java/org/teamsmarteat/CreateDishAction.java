@@ -30,6 +30,15 @@ public class CreateDishAction extends ActionSupport {
     private static Logger logger = LogManager.getLogger(DishListAction.class);
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
 
+    public String getAction_value() {
+        return action_value;
+    }
+
+    public void setAction_value(String action_value) {
+        this.action_value = action_value;
+    }
+
+    private String action_value;
     private String ingredientName;
 
 
@@ -64,10 +73,12 @@ public class CreateDishAction extends ActionSupport {
         Query queryCategory = em.createQuery("select c from CategoryEntity c");
         resultCategory = queryCategory.getResultList();
 
+
         return SUCCESS;
     }
 
-    public String search_ingredient() {
+    public String confirm_dish() {
+
         EntityManager em = factory.createEntityManager();
 
         if (!(ingredientName.isEmpty() && ingredientName == null)) {
@@ -77,55 +88,30 @@ public class CreateDishAction extends ActionSupport {
             return SUCCESS;
 
         } else {
-            return ERROR;
-        }
+            dishEntity.setEnabled(true);
+            categoryEntity = em.find(CategoryEntity.class, categoryEntity.getCategoryId());
+            dishEntity.setCategory(categoryEntity);
+
+            checkboxIngredient = new ArrayList<IngredientEntity>();
+
+            for (String ingId : checkBoxes) {
+                checkboxIngredient.add(em.find(IngredientEntity.class, Integer.valueOf(ingId)));
+            }
+
+            dishEntity.setIngredients(checkboxIngredient);
+
+            dishEntity.setMenu(em.find(MenuEntity.class, 1));
 
 
-        /*if (!(dishName.isEmpty() && dishName == null)) {
-            Query query = em.createQuery("SELECT d FROM DishEntity d " +
-                    "INNER JOIN RestaurantEntity r on d.menu = r.menu " +
-                    "WHERE d.name LIKE ? AND r.user.id= ?");
-            resultDish = query.setParameter(0, "%" + dishName + "%")
-                    .setParameter(1, userId)
-                    .getResultList();
-            execute();
-            return SUCCESS;
-        } else {
-            execute();
-            return SUCCESS;
-        }*/
-
-
-    }
-
-
-    public String confirm_dish() {
-
-        EntityManager em = factory.createEntityManager();
-
-        dishEntity.setEnabled(true);
-        categoryEntity = em.find(CategoryEntity.class, categoryEntity.getCategoryId());
-        dishEntity.setCategory(categoryEntity);
-
-        checkboxIngredient = new ArrayList<IngredientEntity>();
-
-        for (String ingId : checkBoxes) {
-            checkboxIngredient.add(em.find(IngredientEntity.class, Integer.valueOf(ingId)));
-        }
-
-        dishEntity.setIngredients(checkboxIngredient);
-
-        dishEntity.setMenu(em.find(MenuEntity.class, 1));
-
-
-        em.getTransaction().begin();
-        em.persist(dishEntity); //em.merge(u); for updates
-        em.getTransaction().commit();
-        em.close();
+            em.getTransaction().begin();
+            em.persist(dishEntity); //em.merge(u); for updates
+            em.getTransaction().commit();
+            em.close();
 //        execute();
 
 
-        return SUCCESS;
+            return SUCCESS;
+        }
     }
 
 
