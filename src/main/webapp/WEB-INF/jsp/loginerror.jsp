@@ -1,4 +1,4 @@
-<meta name="decorator" content="no" />
+<meta name="decorator" content="no"/>
 <center>
     <font color="white">Sorry username or password error!</font>
 </center>
