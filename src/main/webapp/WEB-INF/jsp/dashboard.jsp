@@ -4,8 +4,6 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <%@taglib prefix="s" uri="/struts-tags" %>
-<%--<% UserEntity userEntity = (UserEntity)request.getSession().getAttribute("userEntity"); %>--%>
-
 
 <html lang="en">
 <head>

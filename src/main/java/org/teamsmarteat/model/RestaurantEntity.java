@@ -19,11 +19,14 @@ public class RestaurantEntity {
     @Column(name = "number_tables")
     private int maxTables;
 
-    @ManyToOne
-    private MenuEntity menu;
+    @Column(name = "userid")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
 
     @ManyToOne
-    private UserEntity user;
+    private MenuEntity menu;
 
     public int getRestaurantId() {
         return restaurantId;
@@ -57,12 +60,20 @@ public class RestaurantEntity {
         this.menu = menu;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getMaxTables() {

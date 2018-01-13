@@ -27,6 +27,17 @@ public class OrderEntity {
     @OneToMany(fetch=FetchType.EAGER, mappedBy = "order")
     private List<OrderLineEntity> orderLines;
 
+    @ManyToOne
+    private RestaurantEntity restaurant;
+
+    public RestaurantEntity getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(RestaurantEntity restaurant) {
+        this.restaurant = restaurant;
+    }
+
     public int getOrderId() {
         return orderId;
     }
