@@ -136,7 +136,6 @@
 
 <main class="mdl-layout__content">
 
-<<<<<<< HEAD
     <div class="mdl-sheet__container">
         <%--create promo--%>
         <s:form action="create_dish" method="post">

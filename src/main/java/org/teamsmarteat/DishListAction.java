@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 import org.teamsmarteat.model.CategoryEntity;
 import org.teamsmarteat.model.DishEntity;
-import org.teamsmarteat.model.UserEntity;
 
 
 import javax.persistence.EntityManager;
@@ -57,15 +56,13 @@ public class DishListAction extends ActionSupport implements SessionAware {
     private List<DishEntity> result;
 
     public String execute() {
-        UserEntity currentUser = (UserEntity) sessionMap.get("userEntity");
-
-        int userId = currentUser.getUserId();
+        String userId = (String) sessionMap.get("user");
 
         EntityManager em = factory.createEntityManager();
         if (resultDish == null) {
             Query queryDish = em.createQuery("select d from DishEntity d " +
-                    "inner join CategoryEntity c on d.category.id=c.categoryId  " +
-                    "inner join RestaurantEntity r on d.menu = r.menu where r.user.id= ? " +
+                    "inner join CategoryEntity c on d.category.id = c.categoryId  " +
+                    "inner join RestaurantEntity r on d.menu = r.menu where r.username = ? " +
                     "order by c.categoryId");
             resultDish = queryDish.setParameter(0, userId).getResultList();
         }
@@ -92,13 +89,12 @@ public class DishListAction extends ActionSupport implements SessionAware {
 
     public String search_dish() {
         EntityManager em = factory.createEntityManager();
-        UserEntity currentUser = (UserEntity) sessionMap.get("userEntity");
-        int userId = currentUser.getUserId();
+        String userId = (String) sessionMap.get("user");
 
         if (!(dishName.isEmpty() && dishName == null)) {
             Query query = em.createQuery("SELECT d FROM DishEntity d " +
                     "INNER JOIN RestaurantEntity r on d.menu = r.menu " +
-                    "WHERE d.name LIKE ? AND r.user.id= ?");
+                    "WHERE d.name LIKE ? AND r.username = ?");
             resultDish = query.setParameter(0, "%" + dishName + "%")
                         .setParameter(1, userId)
                         .getResultList();

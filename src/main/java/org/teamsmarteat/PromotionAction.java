@@ -5,7 +5,6 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.teamsmarteat.model.DishEntity;
 import org.teamsmarteat.model.OrderLineEntity;
 import org.teamsmarteat.model.PromotionEntity;
-import org.teamsmarteat.model.UserEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -121,19 +120,16 @@ public class PromotionAction extends ActionSupport implements SessionAware {
             queryPromotions();
             return SUCCESS;
         }
-
-
     }
 
     public String search_promotion() {
         EntityManager em = factory.createEntityManager();
-        UserEntity currentUser = (UserEntity) sessionMap.get("userEntity");
-        int userId = currentUser.getUserId();
+        String userId = (String) sessionMap.get("user");
 
         if (!(promotionName.isEmpty() && promotionName == null)) {
             Query query = em.createQuery("SELECT p FROM PromotionEntity p " +
                     "INNER JOIN RestaurantEntity r on p.restaurant.restaurantId = r.restaurantId " +
-                    "WHERE p.name LIKE ? AND r.user.id= ?");
+                    "WHERE p.name LIKE ? AND r.username = ?");
             result = query.setParameter(0, "%" + promotionName + "%")
                     .setParameter(1, userId)
                     .getResultList();
