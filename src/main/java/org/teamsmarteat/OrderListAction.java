@@ -3,6 +3,7 @@ package org.teamsmarteat;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.interceptor.SessionAware;
 import org.teamsmarteat.model.OrderEntity;
 
 
@@ -11,31 +12,33 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
-public class OrderListAction extends ActionSupport {
+public class OrderListAction extends ActionSupport implements SessionAware {
 
+
+    Map sessionMap;
     private static Logger logger = LogManager.getLogger(OrderListAction.class);
 
     private List<OrderEntity> result;
 
-    public String execute () {
+    public String execute() {
+        String userId = (String) sessionMap.get("user");
         result = new ArrayList<>();
         EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         EntityManager em = factory.createEntityManager();
-        Query query= em.createQuery("SELECT o from OrderEntity o");
-        List<OrderEntity> orders = query.getResultList();
+        Query query = em.createQuery("SELECT o from OrderEntity o " +
+                "inner join RestaurantEntity r on o.restaurant.restaurantId = r.restaurantId " +
+                "where r.username = ?");
+        List<OrderEntity> orders = query.setParameter(0, userId).getResultList();
         Calendar calendar = Calendar.getInstance();
         Calendar today = Calendar.getInstance();
         today.setTime(new Date());
-        for (OrderEntity order: orders) {
+        for (OrderEntity order : orders) {
             calendar.setTime(order.getDate());
             boolean sameDay = calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
                     calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR);
-            if (order.getOrderLines().size()!=0 && sameDay && !order.isCheckout())
+            if (order.getOrderLines().size() != 0 && sameDay && !order.isCheckout())
                 result.add(order);
         }
 
@@ -46,6 +49,10 @@ public class OrderListAction extends ActionSupport {
         return result;
     }
 
+    @Override
+    public void setSession(Map session) {
+        this.sessionMap = session;
+    }
 
 
 }
