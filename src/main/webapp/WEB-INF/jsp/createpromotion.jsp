@@ -92,7 +92,7 @@
                    value="${promotionEntity.price}"/>
             <label class="mdl-textfield__label" for="text_dish_price">Price</label>
         </div>
-        <input type="hidden" id="action_value_id" value="search_ing" name="action_value">
+        <input type="hidden" id="action_value_id" value="search_dish" name="action_value">
 
         <s:iterator value="resultCategory" var="resCategory">
 
@@ -121,19 +121,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                <s:iterator value="resultIngredient" var="resIngredient">
+                <s:iterator value="resultDish" var="resDish">
                 <tr>
-                    <s:if test="%{checkboxIngredient.contains(#resIngredient)}">
+                    <s:if test="%{checkboxDish.contains(#resDish)}">
 
                         <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
-                                        name="checkBoxes" value="true" fieldValue="%{ingredientId}"/></td>
+                                        name="checkBoxes" value="true" fieldValue="%{dishId}"/></td>
                     </s:if>
                     <s:else>
 
                         <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
-                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
+                                        name="checkBoxes" value="false" fieldValue="%{dishId}"/></td>
                     </s:else>
-                    <td><s:property value="#resIngredient.name"/></td>
+                    <td><s:property value="#resDish.name"/></td>
 
 
                 </tr>
@@ -149,7 +149,7 @@
     <script type="text/javascript">
 
         function msg() {
-            document.getElementById("action_value_id").value = "not_search_ing";
+            document.getElementById("action_value_id").value = "not_search_dish";
             document.getElementById("form-id").submit();
         }
 

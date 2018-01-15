@@ -56,15 +56,7 @@
     <s:form action="create_dish_confirmation" method="post" id="form-id">
 
 
-        <label class="mdl-button mdl-button--icon" for="search">
-            <i class="material-icons">search</i>
-        </label>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" type="text" id="search" name="ingredientName"
-                   placeholder="Search ingredient">
-            <input type="submit" style="display: none; visibility: hidden">
-            <label class="mdl-textfield__label"></label>
-        </div>
+
 
 
         <div class="mdl-sheet__container">
@@ -111,6 +103,15 @@
             </label>
         </s:iterator>
 
+        <label class="mdl-button mdl-button--icon" for="search">
+            <i class="material-icons">search</i>
+        </label>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+            <input class="mdl-textfield__input" type="text" id="search" name="ingredientName"
+                   placeholder="Search ingredient">
+            <input type="submit" style="display: none; visibility: hidden">
+            <label class="mdl-textfield__label"></label>
+        </div>
 
         <div class="mdl-cell mdl-cell--9-col">
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
