@@ -60,11 +60,11 @@
 
 
         <div class="mdl-sheet__container">
-            <input id="show-dialog" type="button"
+            <button id="show-dialog" type="submit"
                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
                    onclick="msg()">
-            <i class="material-icons">done</i>
-            </input>
+            <i class="material-icons  mdl-color-text--white">done</i>
+            </button>
         </div>
 
 
@@ -81,7 +81,7 @@
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
             <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"
-                   value="${dishEntity.price}"/>
+                   value="${dishEntity.price}" />
             <label class="mdl-textfield__label" for="text_dish_price">Price</label>
         </div>
         <input type="hidden" id="action_value_id" value="search_ing" name="action_value">

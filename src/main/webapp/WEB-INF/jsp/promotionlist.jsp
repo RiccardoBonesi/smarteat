@@ -136,6 +136,7 @@
 
 <main class="mdl-layout__content">
 
+
     <div class="mdl-sheet__container">
         <%--create promo--%>
         <s:form action="create_promotion" method="post">
