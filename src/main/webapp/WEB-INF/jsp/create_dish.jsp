@@ -55,6 +55,68 @@
 
     <s:form action="create_dish_confirmation" method="post" id="form-id">
 
+        <div class="mdl-sheet__container">
+            <button id="show-dialog" type="submit"
+                   class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
+                   onclick="msg()">
+            <i class="material-icons  mdl-color-text--white">done</i>
+            </button>
+        </div>
+
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                    <input class="mdl-textfield__input" id="text_dish_name" type="text" name="dishEntity.name"
+                           value="${dishEntity.name}"/>
+                    <label class="mdl-textfield__label" for="text_dish_name">Name</label>
+                </div>
+            </div>
+
+
+            <div class="mdl-cell mdl-cell--4-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                    <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"
+                           value="${dishEntity.price}"/>
+                    <label class="mdl-textfield__label" for="text_dish_price">Price</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                    <input class="mdl-textfield__input" id="text_dish_description" rows="3" type="text"
+                           name="dishEntity.description"
+                           value="${dishEntity.description}"/>
+                    <label class="mdl-textfield__label" for="text_dish_description">Description</label>
+                </div>
+            </div>
+
+
+            <div class="mdl-cell mdl-cell--4-col">
+                <s:iterator value="resultCategory" var="resCategory">
+
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+
+
+                        <s:if test="%{categoryEntity.categoryId == #resCategory.categoryId}">
+                            <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
+                                   value="${resCategory.categoryId}" checked>
+                        </s:if>
+                        <s:else>
+                            <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
+                                   value="${resCategory.categoryId}">
+                        </s:else>
+                        <span class="mdl-radio__label"><s:property value="#resCategory.name"/></span>
+                    </label>
+                </s:iterator>
+            </div>
+        </div>
+
+
+        <input type="hidden" id="action_value_id" value="search_ing" name="action_value">
+
 
         <label class="mdl-button mdl-button--icon" for="search">
             <i class="material-icons">search</i>
@@ -67,49 +129,7 @@
         </div>
 
 
-        <div class="mdl-sheet__container">
-            <button id="show-dialog" type="submit"
-                   class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
-                   onclick="msg()">
-            <i class="material-icons  mdl-color-text--white">done</i>
-            </button>
-        </div>
 
-
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_name" type="text" name="dishEntity.name"
-                   value="${dishEntity.name}"/>
-            <label class="mdl-textfield__label" for="text_dish_name">Name</label>
-        </div>
-
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_description" type="text" name="dishEntity.description"
-                   value="${dishEntity.description}"/>
-            <label class="mdl-textfield__label" for="text_dish_description">Description</label>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"
-                   value="${dishEntity.price}"/>
-            <label class="mdl-textfield__label" for="text_dish_price">Price</label>
-        </div>
-        <input type="hidden" id="action_value_id" value="search_ing" name="action_value">
-
-        <s:iterator value="resultCategory" var="resCategory">
-
-            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
-
-
-                <s:if test="%{categoryEntity.categoryId == #resCategory.categoryId}">
-                    <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
-                           value="${resCategory.categoryId}" checked>
-                </s:if>
-                <s:else>
-                    <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
-                           value="${resCategory.categoryId}">
-                </s:else>
-                <span class="mdl-radio__label"><s:property value="#resCategory.name"/></span>
-            </label>
-        </s:iterator>
 
 
         <div class="mdl-cell mdl-cell--9-col">
