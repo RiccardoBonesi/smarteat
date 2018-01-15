@@ -145,6 +145,11 @@ public class PromotionAction extends ActionSupport implements SessionAware {
 
     }
 
+    public String addDishPromotion() {
+        return SUCCESS;
+    }
+
+
     @Override
     public void setSession(Map session) {
         this.sessionMap = session;
