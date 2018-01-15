@@ -72,8 +72,8 @@
             <result name="success">/WEB-INF/jsp/createpromotion.jsp</result>
         </action>
         <action name="create_promotion_confirmation" class="org.teamsmarteat.CreatePromotionAction" method="confirm_promotion">
-            <result name="success">/WEB-INF/jsp/createpromotion.jsp</result>
             <result name="error">/WEB-INF/jsp/createpromotion.jsp</result>
+            <result name="success" type = "redirectAction">promotion.action</result>
         </action>
 
         <action name="view_detail" class="org.teamsmarteat.OrderLineAction" method="execute">
