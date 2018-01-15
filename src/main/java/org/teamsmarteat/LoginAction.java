@@ -14,39 +14,41 @@ public class LoginAction extends ActionSupport implements SessionAware {
     private String username;
     private String password;
     private boolean loginFailed = false;
+    private List<RestaurantEntity> result;
     Map sessionMap;
 
+    public List<RestaurantEntity> getResult() {
+        return result;
+    }
+
+    public void setResult(List<RestaurantEntity> result) {
+        this.result = result;
+    }
 
     public String execute() {
-        String user = username;
-        String pwd = password;
-        if (username.isEmpty() && password.isEmpty()) {
-            return LOGIN;
-        } else {
+        sessionMap.put("user", username);
+        sessionMap.put("psw", password);
+        return SUCCESS;
+    }
 
+
+
+    public void validate() {
+        if (username.isEmpty() || password.isEmpty()) {
+            addFieldError("username", "");
+            loginFailed = true;
+        } else if (!username.isEmpty() && !password.isEmpty()) {
             EntityManagerFactory entityManagerFactory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
             EntityManager em = entityManagerFactory.createEntityManager();
             Query query = em.createQuery("select r from RestaurantEntity r " +
                     "where r.username= :userUsername " +
                     "and r.password= :userPassword");
-
-            List<RestaurantEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
-
-            if (result.size() > 0) {
-                sessionMap.put("user", user);
-                sessionMap.put("psw", password);
-                return SUCCESS;
+            List<RestaurantEntity> result = query.setParameter("userUsername", username).setParameter("userPassword", password).getResultList();
+            if (result == null || result.size() == 0) {
+                addFieldError("username", "");
+                loginFailed = true;
             }
-
-            return ERROR;
         }
-
-    }
-
-    public String loginError() {
-        int x = 1;
-        loginFailed = true;
-        return SUCCESS;
     }
 
     @Override

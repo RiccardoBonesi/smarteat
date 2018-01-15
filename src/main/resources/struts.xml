@@ -85,15 +85,9 @@
         </action>
 
         <action name="login" class="org.teamsmarteat.LoginAction">
-            <result name="login">/WEB-INF/jsp/index.jsp</result>
+            <result name="input">/WEB-INF/jsp/index.jsp</result>
             <result name="success">/WEB-INF/jsp/dashboard.jsp</result>
-            <result name="error" type = "redirectAction">loginerror.action</result>
         </action>
-
-        <action name="loginerror" class="org.teamsmarteat.LoginAction" method="loginError">
-            <result name="success">/WEB-INF/jsp/index.jsp</result>
-        </action>
-
 
     </package>
 
