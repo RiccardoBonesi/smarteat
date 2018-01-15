@@ -60,6 +60,10 @@
             <result name="success">/WEB-INF/jsp/promotionlist.jsp</result>
         </action>
 
+        <action name="addDishPromotion" class="org.teamsmarteat.PromotionAction" method="addDishPromotion">
+            <result name="success">/WEB-INF/jsp/adddishpromotion.jsp</result>
+        </action>
+
         <action name="deletePromotion" class="org.teamsmarteat.PromotionAction" method="deletePromo">
             <result name="success">/WEB-INF/jsp/promotionlist.jsp</result>
             <result name="error">/WEB-INF/jsp/promotionlist.jsp</result>
