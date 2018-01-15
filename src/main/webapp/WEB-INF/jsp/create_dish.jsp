@@ -15,6 +15,22 @@
             bottom: 32px;
             transform: rotate(0deg);
         }
+
+        .mdl-card-wide {
+            background: white;
+            height: 40px;
+            padding-left: 15px;
+            padding-top: 5px;
+
+            font-size: larger;
+
+        }
+
+        .mdl-textfield__label {
+            font-size: larger;
+        }
+
+
     </style>
 
 
@@ -68,16 +84,18 @@
             <div class="mdl-cell mdl-cell--6-col">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
                     <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"
-                           value="${dishEntity.price}" />
+                           value="${dishEntity.price}"/>
                     <label class="mdl-textfield__label" for="text_dish_price">Price</label>
                 </div>
             </div>
         </div>
 
+
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--6-col">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-                    <input class="mdl-textfield__input" id="text_dish_description" type="text" name="dishEntity.description"
+                    <input class="mdl-textfield__input" id="text_dish_description" type="text"
+                           name="dishEntity.description"
                            value="${dishEntity.description}"/>
                     <label class="mdl-textfield__label" for="text_dish_description">Description</label>
                 </div>
@@ -105,11 +123,7 @@
         </div>
 
 
-
         <input type="hidden" id="action_value_id" value="search_ing" name="action_value">
-
-
-
 
 
         <label class="mdl-button mdl-button--icon" for="search">
@@ -131,34 +145,35 @@
         </div>
 
 
-        <div class="mdl-cell mdl-cell--9-col">
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                <thead>
-                <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Abilitato</th>
-                    <th class="mdl-data-table__cell--non-numeric">Ingredient</th>
-                </tr>
-                </thead>
-                <tbody>
-                <s:iterator value="resultIngredient" var="resIngredient">
-                <tr>
-                    <s:if test="%{checkboxIngredient.contains(#resIngredient)}">
+        <div class="mdl-grid">
 
-                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
-                                        name="checkBoxes" value="true" fieldValue="%{ingredientId}"/></td>
-                    </s:if>
-                    <s:else>
+            <s:iterator value="resultIngredient" var="resIngredient">
 
-                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
-                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/></td>
-                    </s:else>
-                    <td><s:property value="#resIngredient.name"/></td>
+                <div class="mdl-cell--stretch mdl-cell mdl-cell--3-col">
+
+                    <div class="mdl-card-wide mdl-shadow--2dp">
+                            <%--<tr>--%>
+                        <s:if test="%{checkboxIngredient.contains(#resIngredient)}">
+
+                            <s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                        theme="simple"
+                                        name="checkBoxes" value="true" fieldValue="%{ingredientId}"/>
+                        </s:if>
+                        <s:else>
+
+                            <s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
+                                        theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{ingredientId}"/>
+                        </s:else>
+                        <s:property value="#resIngredient.name"/>
 
 
-                </tr>
-                </s:iterator>
+                            <%--</tr>--%>
+                    </div>
+                </div>
+            </s:iterator>
 
-            </table>
+
         </div>
 
 
@@ -175,6 +190,7 @@
     </script>
 
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
 </main>
 </body>
 
