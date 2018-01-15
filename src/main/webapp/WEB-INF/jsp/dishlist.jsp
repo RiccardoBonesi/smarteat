@@ -38,22 +38,6 @@
             z-index: 900;
         }
 
-        .setAlign {
-
-            align-content: center;
-            height: auto;
-        }
-
-        .header {
-            position: relative;
-        }
-
-        /* positions header-content at the bottom of header's context */
-        .header-content {
-            position: absolute;
-            bottom: 0;
-        }
-
     </style>
 </head>
 <body>
@@ -87,19 +71,19 @@
     <div class="mdl-sheet__container">
 
         <s:form action="create_dish" method="post">
-        <button id="show-dialog"
-                class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
-            <i class="material-icons">add</i>
-            </s:form>
-
-        </button>
+            <button id="show-dialog"
+                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
+                <i class="material-icons">add</i>
+            </button>
+        </s:form>
     </div>
 
     <div class="mdl-grid">
         <s:iterator value="resultCategory" var="resCategory">
 
 
-        <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200" style="width: 100%; background-color: #999999">
+        <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200"
+             style="width: 100%; background-color: #999999">
             <h3><s:property value="#resCategory.name"/></h3>
         </div>
 
@@ -124,7 +108,7 @@
 
                 <div class="child" align="right">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                       href="${dishDelete}" >
+                       href="${dishDelete}">
                         <i class="material-icons">delete</i>
                     </a>
                 </div>
