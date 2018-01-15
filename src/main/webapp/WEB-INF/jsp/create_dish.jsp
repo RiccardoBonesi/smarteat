@@ -94,9 +94,10 @@
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--6-col">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-                    <input class="mdl-textfield__input" id="text_dish_description" type="text"
-                           name="dishEntity.description"
-                           value="${dishEntity.description}"/>
+                    <textarea class="mdl-textfield__input" id="text_dish_description"
+                              name="dishEntity.description"
+                              rows="3"
+                              cols="3"></textarea>
                     <label class="mdl-textfield__label" for="text_dish_description">Description</label>
                 </div>
             </div>
