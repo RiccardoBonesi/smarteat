@@ -20,6 +20,7 @@ import java.util.*;
 public class CreateDishAction extends ActionSupport implements SessionAware {
 
     Map sessionMap;
+    private static final String INVALID = "invalid";
     private DishEntity dishEntity;
     private List<IngredientEntity> resultIngredient;
     private List checkboxIngredient;
@@ -31,6 +32,15 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
     private String action_value;
     private String ingredientName;
     private List<String> checkBoxes;
+    private boolean loginFailed = false;
+
+    public boolean isLoginFailed() {
+        return loginFailed;
+    }
+
+    public void setLoginFailed(boolean loginFailed) {
+        this.loginFailed = loginFailed;
+    }
 
     public String execute() {
         EntityManager em = factory.createEntityManager();
@@ -74,24 +84,10 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
             return ERROR;
 
         } else {
-            dishEntity.setEnabled(true);
-            if (categoryEntity != null && (!dishEntity.getName().isEmpty()) && dishEntity.getPrice() > 0) {
-                categoryEntity = em.find(CategoryEntity.class, categoryEntity.getCategoryId());
-                dishEntity.setCategory(categoryEntity);
-            } else {
-                return "nocategory";
+            if (!(checkBoxes != null && categoryEntity != null && (!dishEntity.getName().isEmpty()) && dishEntity.getPrice() > 0)) {
+                loginFailed = true;
+                return INVALID;
             }
-
-
-            checkboxIngredient = new ArrayList<IngredientEntity>();
-            if (!(checkBoxes == null)) {
-                for (String ingId : checkBoxes) {
-                    checkboxIngredient.add(em.find(IngredientEntity.class, Integer.valueOf(ingId)));
-                }
-            }
-
-            dishEntity.setIngredients(checkboxIngredient);
-
             String user = (String) sessionMap.get("user");
             String pwd = (String) sessionMap.get("psw");
             Query query = em.createQuery("select r from RestaurantEntity r " +
@@ -99,10 +95,15 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
                     "and r.password= :userPassword");
 
             List<RestaurantEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
-
-
+            checkboxIngredient = new ArrayList<IngredientEntity>();
+            for (String ingId : checkBoxes) {
+                checkboxIngredient.add(em.find(IngredientEntity.class, Integer.valueOf(ingId)));
+            }
+            dishEntity.setEnabled(true);
+            dishEntity.setCategory(categoryEntity);
+            checkboxIngredient = new ArrayList<IngredientEntity>();
+            dishEntity.setIngredients(checkboxIngredient);
             dishEntity.setMenu(result.get(0).getMenu());
-
 
             em.getTransaction().begin();
             em.persist(dishEntity); //em.merge(u); for updates

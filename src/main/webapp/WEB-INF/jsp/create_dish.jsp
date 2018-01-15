@@ -65,7 +65,9 @@
 
 
 <main class="mdl-layout__content mdl-color--grey-100">
-
+    <div>
+        ${loginFailed}
+    </div>
     <s:form action="create_dish_confirmation" method="post" id="form-id">
 
 
@@ -176,7 +178,29 @@
 
 
     </s:form>
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
 
+    <s:if test="%{loginFailed==true}">
+
+        <script>
+            r(function () {
+                var notification = document.querySelector('.mdl-js-snackbar');
+                notification.MaterialSnackbar.showSnackbar(
+                    {
+                        message: 'Invalid username or password'
+                    }
+                );
+            });
+
+            function r(f) {
+                /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
+            }
+
+        </script>
+    </s:if>
 
     <script type="text/javascript">
 
