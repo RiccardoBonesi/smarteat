@@ -70,12 +70,7 @@
 
     <div class="mdl-sheet__container">
 
-        <s:form action="create_dish" method="post">
-            <button id="show-dialog"
-                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored  mdl-button--raised mdl-color-text--white">
-                <i class="material-icons">add</i>
-            </button>
-        </s:form>
+
     </div>
 
     <div class="mdl-grid">
@@ -94,7 +89,8 @@
 
             <div class="mdl-card-wide mdl-shadow--2dp">
 
-                <s:url var="dishDelete" action="delete_dish">
+                <s:url var="dishAdd" action="confirmDish">
+                    <s:param name="promotionId" value="%{promotionId}"/>
                     <s:param name="dishId" value="%{dishId}"/>
                 </s:url>
 
@@ -108,8 +104,8 @@
 
                 <div class="child" align="right">
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-                       href="${dishDelete}">
-                        <i class="material-icons">delete</i>
+                       href="${dishAdd}">
+                        <i class="material-icons">add</i>
                     </a>
                 </div>
 

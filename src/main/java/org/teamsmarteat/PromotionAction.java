@@ -146,6 +146,7 @@ public class PromotionAction extends ActionSupport implements SessionAware {
     }
 
     public String addDishPromotion() {
+//        sessionMap.put("currentPromo", password);
         return SUCCESS;
     }
 

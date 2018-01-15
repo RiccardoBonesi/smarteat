@@ -237,7 +237,6 @@
                 <div class="mdl-card-wide mdl-shadow--2dp">
                     <div class="center-div" style="display: inline-block">
                         <s:url var="addButton" action="addDishPromotion">
-                            <s:param name="dishId" value="%{dishId}"/>
                             <s:param name="promotionId" value="%{promotionId}"/>
                         </s:url>
                         <a id="addbutton" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
