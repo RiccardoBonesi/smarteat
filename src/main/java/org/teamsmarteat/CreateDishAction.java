@@ -17,7 +17,7 @@ import javax.persistence.criteria.Root;
 
 import java.util.*;
 
-public class CreateDishAction extends ActionSupport implements SessionAware{
+public class CreateDishAction extends ActionSupport implements SessionAware {
 
     Map sessionMap;
     private DishEntity dishEntity;
@@ -31,9 +31,6 @@ public class CreateDishAction extends ActionSupport implements SessionAware{
     private String action_value;
     private String ingredientName;
     private List<String> checkBoxes;
-
-
-    //TODO TENERE SEMPRE VISIBILI LE CHECKBOXE GIA SELEZIONATE APPENDENDO QUELLE SELEZIONATE AL RISULTATO DELLA QUERY SUGLI INGREDIENTI
 
     public String execute() {
         EntityManager em = factory.createEntityManager();
