@@ -80,8 +80,13 @@ public class CreateDishAction extends ActionSupport {
 
         } else {
             dishEntity.setEnabled(true);
-            categoryEntity = em.find(CategoryEntity.class, categoryEntity.getCategoryId());
-            dishEntity.setCategory(categoryEntity);
+            if (categoryEntity!=null || dishEntity.getName()==null || dishEntity.getPrice()==0){
+                categoryEntity = em.find(CategoryEntity.class, categoryEntity.getCategoryId());
+                dishEntity.setCategory(categoryEntity);
+            } else{
+                return "nocategory";
+            }
+
 
             checkboxIngredient = new ArrayList<IngredientEntity>();
             if (!(checkBoxes == null)) {

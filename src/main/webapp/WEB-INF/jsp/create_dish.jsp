@@ -89,7 +89,7 @@
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
             <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"
-                   value="${dishEntity.price}"/>
+                   value="${dishEntity.price}" />
             <label class="mdl-textfield__label" for="text_dish_price">Price</label>
         </div>
         <input type="hidden" id="action_value_id" value="search_ing" name="action_value">
