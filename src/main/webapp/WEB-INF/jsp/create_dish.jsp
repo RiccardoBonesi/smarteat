@@ -65,9 +65,6 @@
 
 
 <main class="mdl-layout__content mdl-color--grey-100">
-    <div>
-        ${loginFailed}
-    </div>
     <s:form action="create_dish_confirmation" method="post" id="form-id">
 
 
@@ -190,7 +187,7 @@
                 var notification = document.querySelector('.mdl-js-snackbar');
                 notification.MaterialSnackbar.showSnackbar(
                     {
-                        message: 'Invalid username or password'
+                        message: 'One or more field are not filled'
                     }
                 );
             });

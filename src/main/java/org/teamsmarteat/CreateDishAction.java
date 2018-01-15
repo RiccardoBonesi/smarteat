@@ -86,6 +86,7 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
         } else {
             if (!(checkBoxes != null && categoryEntity != null && (!dishEntity.getName().isEmpty()) && dishEntity.getPrice() > 0)) {
                 loginFailed = true;
+                execute();
                 return INVALID;
             }
             String user = (String) sessionMap.get("user");
