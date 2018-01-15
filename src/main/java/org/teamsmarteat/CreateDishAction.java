@@ -4,10 +4,8 @@ package org.teamsmarteat;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.teamsmarteat.model.CategoryEntity;
-import org.teamsmarteat.model.DishEntity;
-import org.teamsmarteat.model.IngredientEntity;
-import org.teamsmarteat.model.MenuEntity;
+import org.apache.struts2.interceptor.SessionAware;
+import org.teamsmarteat.model.*;
 
 
 import javax.persistence.EntityManager;
@@ -19,8 +17,9 @@ import javax.persistence.criteria.Root;
 
 import java.util.*;
 
-public class CreateDishAction extends ActionSupport {
+public class CreateDishAction extends ActionSupport implements SessionAware{
 
+    Map sessionMap;
     private DishEntity dishEntity;
     private List<IngredientEntity> resultIngredient;
     private List<IngredientEntity> checkboxIngredient;
@@ -80,10 +79,10 @@ public class CreateDishAction extends ActionSupport {
 
         } else {
             dishEntity.setEnabled(true);
-            if (categoryEntity!=null && dishEntity.getName().isEmpty() && dishEntity.getPrice()>0){
+            if (categoryEntity != null && (!dishEntity.getName().isEmpty()) && dishEntity.getPrice() > 0) {
                 categoryEntity = em.find(CategoryEntity.class, categoryEntity.getCategoryId());
                 dishEntity.setCategory(categoryEntity);
-            } else{
+            } else {
                 return "nocategory";
             }
 
@@ -97,7 +96,16 @@ public class CreateDishAction extends ActionSupport {
 
             dishEntity.setIngredients(checkboxIngredient);
 
-            dishEntity.setMenu(em.find(MenuEntity.class, 1));
+            String user = (String) sessionMap.get("user");
+            String pwd = (String) sessionMap.get("psw");
+            Query query = em.createQuery("select r from RestaurantEntity r " +
+                    "where r.username= :userUsername " +
+                    "and r.password= :userPassword");
+
+            List<RestaurantEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
+
+
+            dishEntity.setMenu(result.get(0).getMenu());
 
 
             em.getTransaction().begin();
@@ -176,4 +184,8 @@ public class CreateDishAction extends ActionSupport {
         this.checkBoxes = checkBoxes;
     }
 
+    @Override
+    public void setSession(Map session) {
+        this.sessionMap = session;
+    }
 }

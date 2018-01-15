@@ -82,7 +82,7 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
 
             List<RestaurantEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
 
-            promotionEntity.setRestaurant(em.find(RestaurantEntity.class, 1));
+            promotionEntity.setRestaurant(result.get(0));
             em.getTransaction().begin();
             em.persist(promotionEntity); //em.merge(u); for updates
             em.getTransaction().commit();
