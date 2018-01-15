@@ -68,11 +68,11 @@
 
 
         <div class="mdl-sheet__container">
-            <input id="show-dialog" type="button"
+            <button id="show-dialog" type="submit"
                    class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
                    onclick="msg()">
-            <i class="material-icons">done</i>
-            </input>
+            <i class="material-icons  mdl-color-text--white">done</i>
+            </button>
         </div>
 
 
