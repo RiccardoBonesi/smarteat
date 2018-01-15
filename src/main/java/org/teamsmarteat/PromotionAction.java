@@ -78,11 +78,14 @@ public class PromotionAction extends ActionSupport implements SessionAware {
     }
 
     private void queryPromotions() {
+        String userId = (String) sessionMap.get("user");
         result = new ArrayList<PromotionEntity>();
         EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         EntityManager em = factory.createEntityManager();
-        Query query = em.createQuery("SELECT p from PromotionEntity p");
-        result = query.getResultList();
+        Query query = em.createQuery("SELECT p from PromotionEntity p " +
+                "inner join RestaurantEntity r on p.restaurant.restaurantId = r.restaurantId " +
+                "where r.username = ?");
+        result = query.setParameter(0, userId).getResultList();
     }
 
     public String deleteDish() {
