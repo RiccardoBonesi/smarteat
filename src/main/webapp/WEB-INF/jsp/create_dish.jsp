@@ -80,7 +80,7 @@
             <div class="mdl-cell mdl-cell--6-col">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
                     <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"
-                           value="${dishEntity.price}" />
+                           value="${dishEntity.price}" step="0.01"/>
                     <label class="mdl-textfield__label" for="text_dish_price">Price</label>
                 </div>
             </div>
