@@ -105,6 +105,25 @@
         }
 
     </style>
+    <script type="text/javascript">
+        if (${show}) {
+            r(function () {
+                var notification = document.querySelector('.mdl-js-snackbar');
+                notification.MaterialSnackbar.showSnackbar(
+                    {
+                        message: 'You can\'t delete this promotion! A ordination is using it!'
+                    }
+                );
+            });
+
+            function r(f) {
+                /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
+            }
+
+
+            //alert("Cannot delete promotion since there are some orders linked to that promotion. Please delete that orders and retry. ")
+        }
+    </script>
 
 
 </head>
@@ -147,16 +166,15 @@
 
         </button>
     </div>
+
+
     <%--<s:if test="show">--%>
     <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
         <div class="mdl-snackbar__text"></div>
         <button class="mdl-snackbar__action" type="button"></button>
     </div>
-    <script type="text/javascript">
-        if (${show}) {
-            alert("Cannot delete promotion since there are some orders linked to that promotion. Please delete that orders and retry. ")
-        }
-    </script>
+
+
     <%--</s:if>--%>
     <%--<div class="demo-list-icon mdl-list">--%>
     <div class="mdl-grid">

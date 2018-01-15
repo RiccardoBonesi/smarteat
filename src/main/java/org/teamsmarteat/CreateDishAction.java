@@ -80,7 +80,7 @@ public class CreateDishAction extends ActionSupport {
 
         } else {
             dishEntity.setEnabled(true);
-            if (categoryEntity!=null || dishEntity.getName()==null || dishEntity.getPrice()==0){
+            if (categoryEntity!=null && dishEntity.getName().isEmpty() && dishEntity.getPrice()>0){
                 categoryEntity = em.find(CategoryEntity.class, categoryEntity.getCategoryId());
                 dishEntity.setCategory(categoryEntity);
             } else{

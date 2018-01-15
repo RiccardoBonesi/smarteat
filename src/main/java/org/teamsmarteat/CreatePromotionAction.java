@@ -63,6 +63,8 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
 
         } else {
 
+            String user = (String) sessionMap.get("user");
+            String pwd = (String) sessionMap.get("psw");
 
             checkboxDish = new ArrayList<DishEntity>();
             if (!(checkBoxes == null)) {
@@ -73,6 +75,12 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
 
             promotionEntity.setDishes(checkboxDish);
             String userId = (String) sessionMap.get("user");
+
+            Query query = em.createQuery("select r from RestaurantEntity r " +
+                    "where r.username= :userUsername " +
+                    "and r.password= :userPassword");
+
+            List<RestaurantEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
 
             promotionEntity.setRestaurant(em.find(RestaurantEntity.class, 1));
             em.getTransaction().begin();
