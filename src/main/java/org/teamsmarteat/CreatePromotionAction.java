@@ -12,6 +12,8 @@ import java.util.*;
 public class CreatePromotionAction extends ActionSupport implements SessionAware {
 
     Map sessionMap;
+    private static final String INVALID = "invalid";
+    private boolean loginFailed = false;
     private List<DishEntity> resultDish;
     private List<CategoryEntity> resultCategory;
     private List checkboxDish;
@@ -20,6 +22,14 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
     private String action_value;
     private List<String> checkBoxes;
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
+
+    public boolean isLoginFailed() {
+        return loginFailed;
+    }
+
+    public void setLoginFailed(boolean loginFailed) {
+        this.loginFailed = loginFailed;
+    }
 
     public String execute() {
         EntityManager em = factory.createEntityManager();
@@ -61,7 +71,11 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
             return ERROR;
 
         } else {
-
+            if (checkBoxes == null || promotionEntity.getName().isEmpty() || promotionEntity.getPrice() <= 0) {
+                loginFailed = true;
+                execute();
+                return INVALID;
+            }
             String user = (String) sessionMap.get("user");
             String pwd = (String) sessionMap.get("psw");
 

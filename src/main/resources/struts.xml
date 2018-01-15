@@ -80,6 +80,7 @@
         </action>
         <action name="create_promotion_confirmation" class="org.teamsmarteat.CreatePromotionAction" method="confirm_promotion">
             <result name="error">/WEB-INF/jsp/createpromotion.jsp</result>
+            <result name="invalid">/WEB-INF/jsp/createpromotion.jsp</result>
             <result name="success" type = "redirectAction">promotion.action</result>
         </action>
 

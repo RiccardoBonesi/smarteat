@@ -94,8 +94,7 @@
                     <textarea class="mdl-textfield__input" id="text_dish_description"
                               name="promotionEntity.description"
                               rows="3"
-                              cols="3"
-                              value="${promotionEntity.description}"></textarea>
+                              cols="3"></textarea>
                     <label class="mdl-textfield__label" for="text_dish_description">Description</label>
                 </div>
             </div>
@@ -156,7 +155,29 @@
 
 
     </s:form>
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
 
+    <s:if test="%{loginFailed==true}">
+
+        <script>
+            r(function () {
+                var notification = document.querySelector('.mdl-js-snackbar');
+                notification.MaterialSnackbar.showSnackbar(
+                    {
+                        message: 'One or more fields are not filled'
+                    }
+                );
+            });
+
+            function r(f) {
+                /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
+            }
+
+        </script>
+    </s:if>
 
     <script type="text/javascript">
 

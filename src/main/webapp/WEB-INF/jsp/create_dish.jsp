@@ -187,7 +187,7 @@
                 var notification = document.querySelector('.mdl-js-snackbar');
                 notification.MaterialSnackbar.showSnackbar(
                     {
-                        message: 'One or more field are not filled'
+                        message: 'One or more fields are not filled'
                     }
                 );
             });
