@@ -13,6 +13,7 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
 
     Map sessionMap;
     private List<DishEntity> resultDish;
+    private List<CategoryEntity> resultCategory;
     private List<DishEntity> checkboxDish;
     private PromotionEntity promotionEntity;
     private String dishName;
@@ -34,6 +35,9 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
             resultDish.clear();
             resultDish.addAll(hs);
         }
+        em = factory.createEntityManager();
+        Query queryCategory = em.createQuery("select c from CategoryEntity c");
+        resultCategory = queryCategory.getResultList();
         return SUCCESS;
     }
 
@@ -129,6 +133,14 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
 
     public void setCheckBoxes(List<String> checkBoxes) {
         this.checkBoxes = checkBoxes;
+    }
+
+    public List<CategoryEntity> getResultCategory() {
+        return resultCategory;
+    }
+
+    public void setResultCategory(List<CategoryEntity> resultCategory) {
+        this.resultCategory = resultCategory;
     }
 
     @Override

@@ -10,30 +10,36 @@
     <title>Smarteat</title>
 
     <style>
-        * { box-sizing:border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             font-family: Helvetica;
-            background-image:url(/images/bgimage.jpeg);
+            background-image: url(/images/bgimage.jpeg);
 
-            background-repeat:no-repeat;
+            background-repeat: no-repeat;
 
-            background-size:cover;
+            background-size: cover;
 
         }
 
-
-
         hgroup {
-            text-align:center;
+            text-align: center;
             margin-top: 4em;
         }
 
-        h1, h3 { font-weight: 300; }
+        h1, h3 {
+            font-weight: 300;
+        }
 
-        h1 { color: #636363; }
+        h1 {
+            color: #636363;
+        }
 
-        h3 { color: #4a89dc; }
+        h3 {
+            color: #4a89dc;
+        }
 
         form {
             width: 380px;
@@ -41,7 +47,7 @@
             padding: 3em 2em 2em 2em;
             background: #fafafa;
             border: 1px solid #ebebeb;
-            box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+            box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 1px 0px, rgba(0, 0, 0, 0.09804) 0px 1px 2px 0px;
         }
 
         .group {
@@ -63,8 +69,9 @@
             border-bottom: 1px solid #757575;
         }
 
-        input:focus { outline: none; }
-
+        input:focus {
+            outline: none;
+        }
 
         /* Label */
 
@@ -82,69 +89,21 @@
 
         /* active */
 
-        /*input:focus ~ label, input.used ~ label {*/
-        /*top: -20px;*/
-        /*transform: scale(.75); left: -2px;*/
-        /*!* font-size: 14px; *!*/
-        /*color: #4a89dc;*/
-        /*}*/
-
-
-        /* Underline */
-
-        /*.bar {*/
-        /*position: relative;*/
-        /*display: block;*/
-        /*width: 100%;*/
-        /*}*/
-
-        /*.bar:before, .bar:after {*/
-        /*content: '';*/
-        /*height: 2px;*/
-        /*width: 0;*/
-        /*bottom: 0px;*/
-        /*position: absolute;*/
-        /*background: #4a89dc;*/
-        /*transition: all 0.2s ease;*/
-        /*}*/
-
-        /*.bar:before { left: 50%; }*/
-
-        /*.bar:after { right: 50%; }*/
-
-
-        /* active */
-
-        /*input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }*/
-
-
-        /* Highlight */
-
-        .highlight {
-            position: absolute;
-            height: 60%;
-            width: 100px;
-            top: 25%;
-            left: 0;
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
-
-        /* active */
-
         input:focus ~ .highlight {
             animation: inputHighlighter 0.3s ease;
         }
 
-
         /* Animations */
 
         @keyframes inputHighlighter {
-            from { background: #4a89dc; }
-            to 	{ width: 0; background: transparent; }
+            from {
+                background: #4a89dc;
+            }
+            to {
+                width: 0;
+                background: transparent;
+            }
         }
-
 
         /* Button */
 
@@ -167,8 +126,10 @@
             cursor: pointer;
             transition: all 0.15s ease;
         }
-        .button:focus { outline: 0; }
 
+        .button:focus {
+            outline: 0;
+        }
 
         /* Button modifiers */
 
@@ -177,8 +138,9 @@
             text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
         }
 
-        .buttonBlue:hover { background: #357bd8; }
-
+        .buttonBlue:hover {
+            background: #357bd8;
+        }
 
         /* Ripples container */
 
@@ -191,7 +153,6 @@
             overflow: hidden;
             background: transparent;
         }
-
 
         /* Ripples circle */
 
@@ -211,13 +172,16 @@
             animation: ripples .4s ease-in;
         }
 
-
         /* Ripples animation */
 
         @keyframes ripples {
-            0% { opacity: 0; }
+            0% {
+                opacity: 0;
+            }
 
-            25% { opacity: 1; }
+            25% {
+                opacity: 1;
+            }
 
             100% {
                 width: 200%;
@@ -226,7 +190,9 @@
             }
         }
 
-        footer { text-align: center; }
+        footer {
+            text-align: center;
+        }
 
         footer p {
             color: #888;
@@ -250,9 +216,13 @@
             transition: all .2s ease;
         }
 
-        footer img:hover { opacity: .83; }
+        footer img:hover {
+            opacity: .83;
+        }
 
-        footer img:focus , footer a:focus { outline: none; }
+        footer img:focus, footer a:focus {
+            outline: none;
+        }
 
         .mdl-textfield--floating-label input[type=password]:-webkit-autofill ~ label {
             transform: translate3d(0, -20px, 0);
@@ -273,31 +243,33 @@
 
 </head>
 <body background="images/bgimage.jpeg">
+<main>
 
-<hgroup>
-    <h1 style="color:white">Smarteat</h1>
-</hgroup>
-<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
-<!-- Material Design icon font -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<s:form action="login" method="post">
+    <hgroup>
+        <h1 style="color:white">Smarteat</h1>
+    </hgroup>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <s:form action="login" method="post">
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-        <input class="mdl-textfield__input" value="Lars" type="text" id="userText2" name="username" />
-        <label class="mdl-textfield__label" for="userText2">Username</label>
-    </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+            <input class="mdl-textfield__input" value="Lars" type="text" id="userText2" name="username"/>
+            <label class="mdl-textfield__label" for="userText2">Username</label>
+        </div>
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="password" id="userText3" name="password" />
-        <label class="mdl-textfield__label" for="userText3">Password</label>
-    </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="password" id="userText3" name="password"/>
+            <label class="mdl-textfield__label" for="userText3">Password</label>
+        </div>
 
-    <button type="submit" class="button buttonBlue">Login
-        <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
-    </button>
+        <button type="submit" class="button buttonBlue">Login
+            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+        </button>
 
-</s:form>
 
+    </s:form>
+</main>
 </body>
 </html>
