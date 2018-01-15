@@ -7,7 +7,7 @@
 <%@taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 
-<% String user = (String)request.getSession().getAttribute("user"); %>
+<% String user = (String) request.getSession().getAttribute("user"); %>
 
 <html lang="en">
 <head>
@@ -38,7 +38,8 @@
     <link rel="canonical" href="http://www.example.com/">
     -->
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -49,6 +50,7 @@
             height: fit-content;
             /*border-radius: 50%;*/
         }
+
         .avatar {
             border-radius: 50%;
         }
@@ -62,10 +64,9 @@
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600"></header>
 
 
-
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-            <img style="background: white" src="images/carioni.png" height="100" width="90" class="avatar">
+            <img style="background: white" src="images/account.png" height="100" width="100" class="avatar">
             <% out.print(user);%>
             <%--<div class="demo-avatar-dropdown">
                 <span>hello@example.com</span>
@@ -82,16 +83,14 @@
             </div>--%>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-            <a class="mdl-navigation__link" href="<s:url action='orderlist'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Order List</a>
-            <a class="mdl-navigation__link" href="<s:url action='dishlist'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">list</i>Dish List</a>
-            <a class="mdl-navigation__link" href="<s:url action='promotion'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promotion</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Purchases</a>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
-            <div class="mdl-layout-spacer"></div>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+            <a class="mdl-navigation__link" href="<s:url action='orderlist'/>"><i
+                    class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Order List</a>
+            <a class="mdl-navigation__link" href="<s:url action='dishlist'/>"><i
+                    class="mdl-color-text--blue-grey-400 material-icons" role="presentation">list</i>Dish List</a>
+            <a class="mdl-navigation__link" href="<s:url action='promotion'/>"><i
+                    class="mdl-color-text--blue-grey-400 material-icons"
+                    role="presentation">local_offer</i>Promotion</a>
+
         </nav>
     </div>
     <decorator:body/>
