@@ -15,6 +15,20 @@
             bottom: 32px;
             transform: rotate(0deg);
         }
+
+        .mdl-card-wide {
+            background: white;
+            height: 40px;
+            padding-left: 15px;
+            padding-top: 5px;
+
+            font-size: larger;
+
+        }
+
+        .mdl-textfield__label {
+            font-size: larger;
+        }
     </style>
 
 
@@ -44,7 +58,7 @@
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">Dish List</span>
+            <span class="mdl-layout-title">New Promotion</span>
             <div class="mdl-layout-spacer"></div>
         </div>
     </header>
@@ -54,6 +68,42 @@
 <main class="mdl-layout__content mdl-color--grey-100">
 
     <s:form action="create_promotion_confirmation" method="post" id="form-id">
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                    <input class="mdl-textfield__input" id="text_dish_name" type="text" name="promotionEntity.name"
+                           value="${promotionEntity.name}"/>
+                    <label class="mdl-textfield__label" for="text_dish_name">Name</label>
+                </div>
+            </div>
+
+            <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                    <input class="mdl-textfield__input" id="text_dish_price" type="number" name="promotionEntity.price"
+                           value="${promotionEntity.price}"/>
+                    <label class="mdl-textfield__label" for="text_dish_price">Price</label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--6-col">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
+                    <textarea class="mdl-textfield__input" id="text_dish_description"
+                              name="promotionEntity.description"
+                              rows="3"
+                              cols="3"
+                              value="${promotionEntity.description}"></textarea>
+                    <label class="mdl-textfield__label" for="text_dish_description">Description</label>
+                </div>
+            </div>
+
+        </div>
+
+
+        <input type="hidden" id="action_value_id" value="search_dish" name="action_value">
 
 
         <label class="mdl-button mdl-button--icon" for="search">
@@ -76,71 +126,32 @@
         </div>
 
 
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_name" type="text" name="promotionEntity.name"
-                   value="${promotionEntity.name}"/>
-            <label class="mdl-textfield__label" for="text_dish_name">Name</label>
-        </div>
-
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_description" type="text"
-                   name="promotionEntity.description"
-                   value="${promotionEntity.description}"/>
-            <label class="mdl-textfield__label" for="text_dish_description">Description</label>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" id="text_dish_price" type="number" name="promotionEntity.price"
-                   value="${promotionEntity.price}"/>
-            <label class="mdl-textfield__label" for="text_dish_price">Price</label>
-        </div>
-        <input type="hidden" id="action_value_id" value="search_dish" name="action_value">
-
-        <s:iterator value="resultCategory" var="resCategory">
-
-            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+        <div class="mdl-grid">
 
 
-                <s:if test="%{categoryEntity.categoryId == #resCategory.categoryId}">
-                    <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
-                           value="${resCategory.categoryId}" checked>
-                </s:if>
-                <s:else>
-                    <input type="radio" class="mdl-radio__button" name="categoryEntity.categoryId"
-                           value="${resCategory.categoryId}">
-                </s:else>
-                <span class="mdl-radio__label"><s:property value="#resCategory.name"/></span>
-            </label>
-        </s:iterator>
+            <s:iterator value="resultDish" var="resDish">
+                <div class="mdl-cell--stretch mdl-cell mdl-cell--3-col">
+
+                    <div class="mdl-card-wide mdl-shadow--2dp">
+
+                        <s:if test="%{checkboxDish.contains(#resDish)}">
+
+                            <s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="true" fieldValue="%{dishId}"/>
+                        </s:if>
+                        <s:else>
+
+                            <s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
+                                        name="checkBoxes" value="false" fieldValue="%{dishId}"/>
+                        </s:else>
+                        <s:property value="#resDish.name"/>
 
 
-        <div class="mdl-cell mdl-cell--9-col">
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                <thead>
-                <tr>
-                    <th class="mdl-data-table__cell--non-numeric">Abilitato</th>
-                    <th class="mdl-data-table__cell--non-numeric">Ingredient</th>
-                </tr>
-                </thead>
-                <tbody>
-                <s:iterator value="resultDish" var="resDish">
-                <tr>
-                    <s:if test="%{checkboxDish.contains(#resDish)}">
-
-                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
-                                        name="checkBoxes" value="true" fieldValue="%{dishId}"/></td>
-                    </s:if>
-                    <s:else>
-
-                        <td><s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
-                                        name="checkBoxes" value="false" fieldValue="%{dishId}"/></td>
-                    </s:else>
-                    <td><s:property value="#resDish.name"/></td>
+                    </div>
+                </div>
+            </s:iterator>
 
 
-                </tr>
-                </s:iterator>
-
-            </table>
         </div>
 
 
