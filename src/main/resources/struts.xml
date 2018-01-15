@@ -64,7 +64,7 @@
             <result name="success">/WEB-INF/jsp/adddishpromotion.jsp</result>
         </action>
         <action name="confirmDish" class="org.teamsmarteat.AddDishToPromotionAction" method="addDish">
-            <result name="success">/WEB-INF/jsp/adddishpromotion.jsp</result>
+            <result name="success" type = "redirectAction">promotion.action</result>
         </action>
 
         <action name="deletePromotion" class="org.teamsmarteat.PromotionAction" method="deletePromo">
