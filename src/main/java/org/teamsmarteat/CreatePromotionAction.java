@@ -33,7 +33,7 @@ public class CreatePromotionAction extends ActionSupport {
 
 
         if (resultDish == null) {
-            Query queryDish = em.createQuery("select d from IngredientEntity d");
+            Query queryDish = em.createQuery("select d from DishEntity d");
             resultDish = queryDish.getResultList();
         }else{
             resultDish.addAll(checkboxDish);
