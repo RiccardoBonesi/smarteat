@@ -23,7 +23,6 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
 
     public String execute() {
         EntityManager em = factory.createEntityManager();
-        checkboxDish = new ArrayList<DishEntity>();
 
         if (resultDish == null) {
             Query queryDish = em.createQuery("select d from DishEntity d");
@@ -48,6 +47,8 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
 
             Query query = em.createQuery("SELECT i FROM DishEntity i WHERE i.name LIKE ?");
             resultDish = query.setParameter(0, "%" + dishName + "%").getResultList();
+
+            checkboxDish = new ArrayList<DishEntity>();
 
             if (!(checkBoxes == null)) {
                 for (String dishId : checkBoxes) {

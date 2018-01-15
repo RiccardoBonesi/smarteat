@@ -1,7 +1,4 @@
-<!DOCTYPE html PUBLIC
-"-//W3C//DTD XHTML 1.1 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html>
 <%@taglib prefix="s" uri="/struts-tags" %>
 
 
@@ -76,7 +73,7 @@
             <div class="mdl-cell mdl-cell--6-col">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
                     <input class="mdl-textfield__input" id="text_dish_name" type="text" name="dishEntity.name"
-                           value="${dishEntity.name}"/>
+                           value="${dishEntity.name}" />
                     <label class="mdl-textfield__label" for="text_dish_name">Name</label>
                 </div>
             </div>
@@ -84,7 +81,7 @@
             <div class="mdl-cell mdl-cell--6-col">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
                     <input class="mdl-textfield__input" id="text_dish_price" type="number" name="dishEntity.price"
-                           value="${dishEntity.price}"/>
+                           value="${dishEntity.price}" />
                     <label class="mdl-textfield__label" for="text_dish_price">Price</label>
                 </div>
             </div>
@@ -154,7 +151,7 @@
 
                     <div class="mdl-card-wide mdl-shadow--2dp">
                             <%--<tr>--%>
-                        <s:if test="%{checkboxIngredient.contains(#resIngredient)}">
+                        <s:if test="%{checkboxIngredient != null && checkboxIngredient.contains(#resIngredient)}">
 
                             <s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"
                                         theme="simple"

@@ -134,7 +134,7 @@
 
                     <div class="mdl-card-wide mdl-shadow--2dp">
 
-                        <s:if test="%{checkboxDish.contains(#resDish)}">
+                        <s:if test="%{checkboxDish != null && checkboxDish.contains(#resDish)}">
 
                             <s:checkbox styleClass="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" theme="simple"
                                         name="checkBoxes" value="true" fieldValue="%{dishId}"/>

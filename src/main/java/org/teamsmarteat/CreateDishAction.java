@@ -33,8 +33,9 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
     private List<String> checkBoxes;
 
     public String execute() {
-        checkboxIngredient = new ArrayList<IngredientEntity>();
         EntityManager em = factory.createEntityManager();
+
+
         if (resultIngredient == null) {
             Query queryDish = em.createQuery("select d from IngredientEntity d");
             resultIngredient = queryDish.getResultList();
@@ -61,12 +62,13 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
             Query query = em.createQuery("SELECT i FROM IngredientEntity i WHERE i.name LIKE ?");
             resultIngredient = query.setParameter(0, "%" + ingredientName + "%").getResultList();
 
+            checkboxIngredient = new ArrayList<IngredientEntity>();
+
             if (!(checkBoxes == null)) {
                 for (String ingId : checkBoxes) {
                     checkboxIngredient.add(em.find(IngredientEntity.class, Integer.valueOf(ingId)));
                 }
             }
-
 
             execute();
             return ERROR;
@@ -112,6 +114,7 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
 
 
     }
+
 
 
     public IngredientEntity getIngredientEntity() {
