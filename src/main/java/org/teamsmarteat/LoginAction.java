@@ -20,6 +20,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
     public String execute() {
         String user = username;
         String pwd = password;
+        user = "Lars";
+        pwd="BananaU24";
         if (username.isEmpty() && password.isEmpty()) {
             return LOGIN;
         } else {
