@@ -7,6 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
+    <meta name="decorator" content="no"/>
     <title>Smarteat</title>
 
     <style>
@@ -85,7 +86,6 @@
             top: 10px;
             transition: all 0.2s ease;
         }
-
 
         /* active */
 
@@ -239,7 +239,10 @@
         }
 
     </style>
-
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 <body background="images/bgimage.jpeg">
@@ -255,7 +258,7 @@
     <s:form action="login" method="post">
 
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-demo">
-            <input class="mdl-textfield__input" value="Lars" type="text" id="userText2" name="username"/>
+            <input class="mdl-textfield__input" type="text" id="userText2" name="username"/>
             <label class="mdl-textfield__label" for="userText2">Username</label>
         </div>
 
@@ -270,6 +273,34 @@
 
 
     </s:form>
+
+    <%--<button id="demo-show-snackbar" class="mdl-button mdl-js-button mdl-button--raised" type="button" onclick="showToast()">Show Snackbar</button>--%>
+    <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+
+    <s:if test="%{loginFailed==true}">
+
+        <script>
+            r(function () {
+                var notification = document.querySelector('.mdl-js-snackbar');
+                notification.MaterialSnackbar.showSnackbar(
+                    {
+                        message: 'and..working!!'
+                    }
+                );
+            });
+
+            function r(f) {
+                /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
+            }
+
+
+        </script>
+    </s:if>
 </main>
 </body>
+
+
 </html>

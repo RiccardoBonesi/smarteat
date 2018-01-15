@@ -13,7 +13,54 @@ import java.util.Map;
 public class LoginAction extends ActionSupport implements SessionAware {
     private String username;
     private String password;
+    private boolean loginFailed = false;
     Map sessionMap;
+
+
+    public String execute() {
+        String user = username;
+        String pwd = password;
+        if (username.isEmpty() && password.isEmpty()) {
+            return LOGIN;
+        } else {
+
+            EntityManagerFactory entityManagerFactory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
+            EntityManager em = entityManagerFactory.createEntityManager();
+            Query query = em.createQuery("select r from RestaurantEntity r " +
+                    "where r.username= :userUsername " +
+                    "and r.password= :userPassword");
+
+            List<RestaurantEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
+
+            if (result.size() > 0) {
+                sessionMap.put("user", user);
+                sessionMap.put("psw", password);
+                return SUCCESS;
+            }
+
+            return ERROR;
+        }
+
+    }
+
+    public String loginError() {
+        int x = 1;
+        loginFailed = true;
+        return SUCCESS;
+    }
+
+    @Override
+    public void setSession(Map session) {
+        this.sessionMap = session;
+    }
+
+    public boolean isLoginFailed() {
+        return loginFailed;
+    }
+
+    public void setLoginFailed(boolean loginFailed) {
+        this.loginFailed = loginFailed;
+    }
 
     public String getUsername() {
         return username;
@@ -29,34 +76,5 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String execute() {
-        String user = username;
-        String pwd = password;
-        pwd="BananaU2";
-        EntityManagerFactory entityManagerFactory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
-        EntityManager em = entityManagerFactory.createEntityManager();
-        Query query= em.createQuery("select r from RestaurantEntity r " +
-                "where r.username= :userUsername " +
-                "and r.password= :userPassword");
-
-        List<RestaurantEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
-
-        if(result.size()>0){
-            sessionMap.put("user",user);
-            sessionMap.put("psw",password);
-            return SUCCESS;
-        }else{
-            return ERROR;
-        }
-
-
-    }
-
-    @Override
-    public void setSession(Map session)
-    {
-        this.sessionMap=session;
     }
 }
