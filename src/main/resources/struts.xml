@@ -86,7 +86,7 @@
 
         <action name="login" class="org.teamsmarteat.LoginAction">
             <result name="input">/WEB-INF/jsp/index.jsp</result>
-            <result name="success">/WEB-INF/jsp/dashboard.jsp</result>
+            <result name="success">/WEB-INF/jsp/orderlist.jsp</result>
         </action>
 
     </package>

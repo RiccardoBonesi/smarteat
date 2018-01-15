@@ -82,8 +82,7 @@
             </div>--%>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-            <a class="mdl-navigation__link" href="<s:url action='dashboard'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
-            <a class="mdl-navigation__link" href="<s:url action='orderlist'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">list</i>Order List</a>
+            <a class="mdl-navigation__link" href="<s:url action='orderlist'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Order List</a>
             <a class="mdl-navigation__link" href="<s:url action='dishlist'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">list</i>Dish List</a>
             <a class="mdl-navigation__link" href="<s:url action='promotion'/>"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promotion</a>
             <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
