@@ -23,51 +23,14 @@ public class CreateDishAction extends ActionSupport {
 
     private DishEntity dishEntity;
     private List<IngredientEntity> resultIngredient;
-
-    public List<IngredientEntity> getCheckboxIngredient() {
-        return checkboxIngredient;
-    }
-
-    public void setCheckboxIngredient(List<IngredientEntity> checkboxIngredient) {
-        this.checkboxIngredient = checkboxIngredient;
-    }
-
     private List<IngredientEntity> checkboxIngredient;
     private List<CategoryEntity> resultCategory;
     private IngredientEntity ingredientEntity;
     private CategoryEntity categoryEntity;
     private static Logger logger = LogManager.getLogger(DishListAction.class);
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
-
-    public String getAction_value() {
-        return action_value;
-    }
-
-    public void setAction_value(String action_value) {
-        this.action_value = action_value;
-    }
-
     private String action_value;
     private String ingredientName;
-
-
-    public String getIngredientName() {
-        return ingredientName;
-    }
-
-    public void setIngredientName(String ingredientName) {
-        this.ingredientName = ingredientName;
-    }
-
-
-    public List<String> getCheckBoxes() {
-        return checkBoxes;
-    }
-
-    public void setCheckBoxes(List<String> checkBoxes) {
-        this.checkBoxes = checkBoxes;
-    }
-
     private List<String> checkBoxes;
 
 
@@ -80,7 +43,7 @@ public class CreateDishAction extends ActionSupport {
         if (resultIngredient == null) {
             Query queryDish = em.createQuery("select d from IngredientEntity d");
             resultIngredient = queryDish.getResultList();
-        }else{
+        } else {
             resultIngredient.addAll(checkboxIngredient);
 
             Set<IngredientEntity> hs = new LinkedHashSet<>(resultIngredient);
@@ -174,6 +137,38 @@ public class CreateDishAction extends ActionSupport {
 
     public void setCategoryEntity(CategoryEntity categoryEntity) {
         this.categoryEntity = categoryEntity;
+    }
+
+    public List<String> getCheckBoxes() {
+        return checkBoxes;
+    }
+
+    public List<IngredientEntity> getCheckboxIngredient() {
+        return checkboxIngredient;
+    }
+
+    public void setCheckboxIngredient(List<IngredientEntity> checkboxIngredient) {
+        this.checkboxIngredient = checkboxIngredient;
+    }
+
+    public String getAction_value() {
+        return action_value;
+    }
+
+    public void setAction_value(String action_value) {
+        this.action_value = action_value;
+    }
+
+    public String getIngredientName() {
+        return ingredientName;
+    }
+
+    public void setIngredientName(String ingredientName) {
+        this.ingredientName = ingredientName;
+    }
+
+    public void setCheckBoxes(List<String> checkBoxes) {
+        this.checkBoxes = checkBoxes;
     }
 
 }
