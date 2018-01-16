@@ -7,8 +7,7 @@
 
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <style>
+<style>
 
         #addbutton {
             position: absolute;
@@ -23,10 +22,7 @@
 
         .mdl-cell--stretch {
             height: 250px;
-        }
-
-        #piu {
-            font-size: 60px;
+            margin-left: 0px;
         }
 
         .mdl-data-table {
@@ -64,7 +60,6 @@
         .mdl-card-wide {
             width: 100%;
             height: 100%;
-            padding: 15px;
             background-color: #fafafa;
             text-align: left;
             position: relative;
@@ -89,15 +84,15 @@
             position: relative;
         }
 
+        .intestazione {
+            padding-top: 8px;
+            font-size: large;
+        }
+
         /* positions header-content at the bottom of header's context */
         .header-content {
             position: absolute;
             bottom: 0;
-        }
-
-        .aParent {
-            float: left;
-            clear: none;
         }
 
         #addDishpromo {
@@ -187,15 +182,14 @@
                 <table class="mdl-data-table mdl-js-data-table " style="border: none">
                     <thead>
                     <tr>
-                        <th style="padding-bottom: 18px;">
-
+                        <th style="width: 100%">
                             <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white"
                                href="${promotionDelete}">
                                 <i class="material-icons">clear</i></a>
                         </th>
 
                         <th>
-                            <h3><s:property value="#resPromotion.name"/></h3>
+                            <h4><s:property value="#resPromotion.name"/></h4>
                         </th>
                     </tr>
                     </thead>
