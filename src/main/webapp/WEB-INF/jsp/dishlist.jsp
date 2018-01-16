@@ -11,6 +11,8 @@
 
         .mdl-cell--stretch {
             height: 250px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .child {
@@ -22,7 +24,6 @@
         .mdl-card-wide {
             width: 100%;
             height: 100%;
-            padding: 15px;
             background-color: #fafafa;
             text-align: left;
             position: relative;
@@ -82,8 +83,8 @@
 
 
         <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200"
-             style="width: 100%; background-color: #999999">
-            <h3><s:property value="#resCategory.name"/></h3>
+             style="height: 80px;padding-left: 15px; margin-left:8px; margin-right:8px; width: 100%; background-color: #999999">
+            <h4><s:property value="#resCategory.name"/></h4>
         </div>
 
         <s:iterator value="resultDish" var="resDish" status="incr">
