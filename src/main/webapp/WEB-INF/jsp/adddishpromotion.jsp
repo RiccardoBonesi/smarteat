@@ -46,7 +46,7 @@
             <span class="mdl-layout-title">Dish List</span>
             <div class="mdl-layout-spacer"></div>
 
-            <s:form action="search_dish" method="post">
+            <s:form action="search_promotion_dish" method="post">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                     <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
                         <i class="material-icons">search</i>
@@ -75,7 +75,8 @@
         <s:iterator value="resultCategory" var="resCategory">
 
 
-        <div style="margin-left: 8px; margin-right: 8px; padding-left: 15px" class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200"
+        <div style="margin-left: 8px; margin-right: 8px; padding-left: 15px"
+             class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200"
              style="width: 100%; background-color: #999999">
             <h3><s:property value="#resCategory.name"/></h3>
         </div>
@@ -106,6 +107,8 @@
                         <i class="material-icons">add</i>
                     </a>
                 </div>
+                <input type="hidden" id="action_value_id" value="search_ing" name="action_value">
+
 
             </div>
         </div>
@@ -113,6 +116,7 @@
         </s:iterator>
 
         </s:iterator>
+        <%--<input type="hidden" id="action_value_id" value="search_ing" name="action_value">--%>
 
 
         <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>

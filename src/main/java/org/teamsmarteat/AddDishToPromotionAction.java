@@ -65,6 +65,28 @@ public class AddDishToPromotionAction extends ActionSupport implements SessionAw
         return SUCCESS;
     }
 
+    public String search_dish() {
+        EntityManager em = factory.createEntityManager();
+        String userId = (String) sessionMap.get("user");
+
+        if (!(dishName.isEmpty() && dishName == null)) {
+            Query query = em.createQuery("select d from DishEntity d " +
+                    "inner join CategoryEntity c on d.category.id = c.categoryId  " +
+                    "inner join RestaurantEntity r on d.menu = r.menu where  d.name like ? " +
+                    "and  r.username = ? " +
+                    "order by c.categoryId");
+            resultDish = query.setParameter(0, "%" + dishName + "%")
+                    .setParameter(1, userId)
+                    .getResultList();
+            execute();
+            return SUCCESS;
+        } else {
+            execute();
+            return SUCCESS;
+        }
+
+    }
+
     public List getResult() {
         return result;
     }
