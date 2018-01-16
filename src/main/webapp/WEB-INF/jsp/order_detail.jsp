@@ -55,6 +55,9 @@
                         <%--<h1>Order <s:property value="#res.orderId"/></h1>--%>
                     <h3>Table <s:property value="#res.tableNumber"/></h3>
                     <h4>Total: <s:property value="#res.amount"/> &#8364; </h4>
+                    <s:url var="orderCheckout" action="checkout">
+                        <s:param name="orderId" value="%{orderId}"/>
+                    </s:url>
                     <div id="sposta">
                         <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--green-600 mdl-color-text--white"
                            href="${orderCheckout}">
@@ -119,9 +122,6 @@
                 </div>
             </div>
         </s:iterator>
-        <s:url var="orderCheckout" action="checkout">
-            <s:param name="orderId" value="%{orderId}"/>
-        </s:url>
     </div>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
