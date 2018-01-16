@@ -22,7 +22,8 @@
 
         .mdl-cell--stretch {
             height: 250px;
-            margin-left: 0px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .mdl-data-table {
@@ -82,11 +83,6 @@
 
         .header {
             position: relative;
-        }
-
-        .intestazione {
-            padding-top: 8px;
-            font-size: large;
         }
 
         /* positions header-content at the bottom of header's context */
@@ -175,20 +171,20 @@
     <div class="mdl-grid">
         <s:iterator value="result" var="resPromotion">
             <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200"
-                 style="width: 100%; background-color: #999999">
+                 style="margin-right:8px; margin-left:8px; width: 100%; background-color: #999999">
                 <s:url var="promotionDelete" action="deletePromotion">
                     <s:param name="promotionId" value="%{promotionId}"/>
                 </s:url>
                 <table class="mdl-data-table mdl-js-data-table " style="border: none">
                     <thead>
                     <tr>
-                        <th style="width: 100%">
+                        <th style="padding-bottom: 21px">
                             <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white"
                                href="${promotionDelete}">
                                 <i class="material-icons">clear</i></a>
                         </th>
 
-                        <th>
+                        <th style="color: white">
                             <h4><s:property value="#resPromotion.name"/></h4>
                         </th>
                     </tr>
