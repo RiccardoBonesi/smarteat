@@ -19,7 +19,7 @@
             background: white;
             height: 40px;
             padding-left: 15px;
-            padding-top: 5px;
+            padding-top: 18px;
 
             font-size: larger;
 
