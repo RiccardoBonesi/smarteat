@@ -77,10 +77,10 @@
                             <s:if test="%{#line.promotion == null}">
                                 <tr class="allwhite">
                                     <td><s:property value="#line.quantity"/></td>
-                                    <td class="mdl-data-table__cell--non-numeric "><s:property
+                                    <td class="mdl-data-table__cell--non-numeric"><s:property
                                             value="#line.dish.name"/></td>
-                                    <td><s:property value="#line.dish.price"/>
-                                        &#8364;
+                                    <td class="mdl-data-table__cell--non-numeric">
+                                        <s:property value="#line.dish.price"/> &#8364;
                                     </td>
                                     <td class="mdl-data-table__cell--non-numeric"><s:property value="#line.notes"/></td>
                                 </tr>
@@ -106,7 +106,9 @@
                                 <td class="mdl-data-table__cell--non-numeric ">
                                     <s:property value="#promo.name"/>
                                 </td>
-                                <td><s:property value="#promo.price"/> &#8364;</td>
+                                <td class="mdl-data-table__cell--non-numeric">
+                                    <s:property value="#promo.price"/> &#8364;
+                                </td>
                                 <td class="mdl-data-table__cell--non-numeric ">
                                     <s:property value="#promo.description"/>
                                 </td>
