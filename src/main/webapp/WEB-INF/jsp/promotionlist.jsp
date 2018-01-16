@@ -22,8 +22,6 @@
 
         .mdl-cell--stretch {
             height: 250px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .mdl-data-table {
