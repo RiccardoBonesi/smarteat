@@ -76,10 +76,9 @@
         <s:iterator value="resultCategory" var="resCategory">
 
 
-        <div style="margin-left: 8px; margin-right: 8px; padding-left: 15px"
-             class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200"
-             style="width: 100%; background-color: #999999">
-            <h3><s:property value="#resCategory.name"/></h3>
+        <div style="height: 80px; margin-left: 8px; margin-right: 8px; padding-left: 15px; width: 100%; background-color: #999999"
+             class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200">
+            <h4><s:property value="#resCategory.name"/></h4>
         </div>
 
         <s:iterator value="resultDish" var="resDish" status="incr">
