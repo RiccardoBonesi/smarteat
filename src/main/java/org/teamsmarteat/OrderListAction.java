@@ -25,6 +25,9 @@ public class OrderListAction extends ActionSupport implements SessionAware {
 
     public String execute() {
         String userId = (String) sessionMap.get("user");
+        if(sessionMap.isEmpty()){
+            return "noParameter";
+        }
         result = new ArrayList<>();
         EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         EntityManager em = factory.createEntityManager();

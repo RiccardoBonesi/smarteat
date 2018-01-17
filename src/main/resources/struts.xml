@@ -22,10 +22,12 @@
 
         <action name="orderlist" class="org.teamsmarteat.OrderListAction" method="execute">
             <result name="success">/WEB-INF/jsp/orderlist.jsp</result>
+            <result name="noParameter">/WEB-INF/jsp/index.jsp</result>
         </action>
 
         <action name="dishlist" class="org.teamsmarteat.DishListAction" method="execute">
             <result name="success">/WEB-INF/jsp/dishlist.jsp</result>
+
         </action>
 
         <action name="create_dish" class="org.teamsmarteat.CreateDishAction" method="execute">
