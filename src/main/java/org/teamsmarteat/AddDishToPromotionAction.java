@@ -11,6 +11,7 @@ import org.teamsmarteat.model.PromotionEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -69,7 +70,7 @@ public class AddDishToPromotionAction extends ActionSupport implements SessionAw
         EntityManager em = factory.createEntityManager();
         String userId = (String) sessionMap.get("user");
 
-        if (!(dishName.isEmpty() && dishName == null)) {
+        if (dishName != null && !dishName.isEmpty()) {
             Query query = em.createQuery("select d from DishEntity d " +
                     "inner join CategoryEntity c on d.category.id = c.categoryId  " +
                     "inner join RestaurantEntity r on d.menu = r.menu where  d.name like ? " +
@@ -140,6 +141,13 @@ public class AddDishToPromotionAction extends ActionSupport implements SessionAw
     @Override
     public void setSession(Map session) {
         this.sessionMap = session;
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+
+    }
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+
     }
 
 

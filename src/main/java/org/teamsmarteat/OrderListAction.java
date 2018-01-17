@@ -10,6 +10,7 @@ import org.teamsmarteat.model.OrderEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -38,7 +39,7 @@ public class OrderListAction extends ActionSupport implements SessionAware {
             calendar.setTime(order.getDate());
             boolean sameDay = calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
                     calendar.get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR);
-            if (order.getOrderLines().size() != 0 && sameDay && !order.isCheckout())
+            if (!order.getOrderLines().isEmpty() && sameDay && !order.isCheckout())
                 result.add(order);
         }
 
@@ -54,5 +55,11 @@ public class OrderListAction extends ActionSupport implements SessionAware {
         this.sessionMap = session;
     }
 
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+
+    }
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+
+    }
 
 }

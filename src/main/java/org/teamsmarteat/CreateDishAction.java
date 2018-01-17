@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
 
+import java.io.IOException;
 import java.util.*;
 
 public class CreateDishAction extends ActionSupport implements SessionAware {
@@ -67,7 +68,7 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
     public String confirm_dish() {
 
         EntityManager em = factory.createEntityManager();
-        if (action_value.equalsIgnoreCase("search_ing")) {
+        if ("search_ing".equalsIgnoreCase(action_value)) {
 
             Query query = em.createQuery("SELECT i FROM IngredientEntity i WHERE i.name LIKE ?");
             resultIngredient = query.setParameter(0, "%" + ingredientName + "%").getResultList();
@@ -93,7 +94,7 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
             String pwd = (String) sessionMap.get("psw");
             Query query = em.createQuery("select r from RestaurantEntity r " +
                     "where r.username= :userUsername " +
-                    "and r.password= :userPassword");
+                    "and r.keyid= :userPassword");
 
             List<RestaurantEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
             checkboxIngredient = new ArrayList<IngredientEntity>();
@@ -186,5 +187,12 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map session) {
         this.sessionMap = session;
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+
+    }
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+
     }
 }

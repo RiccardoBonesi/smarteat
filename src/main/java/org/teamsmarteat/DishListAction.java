@@ -11,6 +11,7 @@ import org.teamsmarteat.model.DishEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -91,7 +92,7 @@ public class DishListAction extends ActionSupport implements SessionAware {
         EntityManager em = factory.createEntityManager();
         String userId = (String) sessionMap.get("user");
 
-        if (!(dishName.isEmpty() && dishName == null)) {
+        if (dishName != null && dishName.isEmpty()) {
             Query query = em.createQuery("SELECT d FROM DishEntity d " +
                     "INNER JOIN RestaurantEntity r on d.menu = r.menu " +
                     "WHERE d.name LIKE ? AND r.username = ?");
@@ -130,5 +131,10 @@ public class DishListAction extends ActionSupport implements SessionAware {
         this.sessionMap=session;
     }
 
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 
+    }
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+
+    }
 }
