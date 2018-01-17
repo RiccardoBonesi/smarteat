@@ -7,6 +7,7 @@ import org.teamsmarteat.model.RestaurantEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -79,5 +80,12 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+
+    }
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+
     }
 }

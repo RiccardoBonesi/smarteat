@@ -7,6 +7,7 @@ import org.teamsmarteat.model.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import java.io.IOException;
 import java.util.*;
 
 public class CreatePromotionAction extends ActionSupport implements SessionAware {
@@ -53,7 +54,7 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
     public String confirm_promotion() {
 
         EntityManager em = factory.createEntityManager();
-        if (action_value.equalsIgnoreCase("search_dish")) {
+        if ("search_dish".equalsIgnoreCase(action_value)) {
 
             Query query = em.createQuery("SELECT i FROM DishEntity i WHERE i.name LIKE ?");
             resultDish = query.setParameter(0, "%" + dishName + "%").getResultList();
@@ -169,5 +170,10 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
         this.sessionMap = session;
     }
 
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 
+    }
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+
+    }
 }

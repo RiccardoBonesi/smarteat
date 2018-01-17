@@ -11,6 +11,7 @@ import org.teamsmarteat.model.DishEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -130,5 +131,10 @@ public class DishListAction extends ActionSupport implements SessionAware {
         this.sessionMap=session;
     }
 
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 
+    }
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+
+    }
 }

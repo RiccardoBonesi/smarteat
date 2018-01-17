@@ -29,7 +29,7 @@ public class PromotionAction extends ActionSupport implements SessionAware {
 
     private int dishId;
     private List<PromotionEntity> result;
-    public boolean show = false;
+    private boolean show = false;
 
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
 

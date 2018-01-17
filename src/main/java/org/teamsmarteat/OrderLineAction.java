@@ -9,6 +9,7 @@ import org.teamsmarteat.model.PromotionEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,5 +81,12 @@ public class OrderLineAction extends ActionSupport {
             result.add(new PromotionLine(quantities.get(i),promos.get(i).getName(),promos.get(i).getDescription(),promos.get(i).getPrice()));
         }
         return result;
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+
+    }
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+
     }
 }
