@@ -21,7 +21,6 @@ public class DishListAction extends ActionSupport implements SessionAware {
     private String dishName;
     private DishEntity dishEntity;
 
-
     public DishEntity getDishEntity() {
         return dishEntity;
     }
@@ -57,6 +56,7 @@ public class DishListAction extends ActionSupport implements SessionAware {
     private List<DishEntity> result;
 
     public String execute() {
+        
         String userId = (String) sessionMap.get("user");
 
         EntityManager em = factory.createEntityManager();
@@ -92,7 +92,7 @@ public class DishListAction extends ActionSupport implements SessionAware {
         EntityManager em = factory.createEntityManager();
         String userId = (String) sessionMap.get("user");
 
-        if (dishName != null && dishName.isEmpty()) {
+        if (dishName != null && !dishName.isEmpty()) {
             Query query = em.createQuery("SELECT d FROM DishEntity d " +
                     "INNER JOIN RestaurantEntity r on d.menu = r.menu " +
                     "WHERE d.name LIKE ? AND r.username = ?");
