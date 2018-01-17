@@ -81,18 +81,16 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
             String pwd = (String) sessionMap.get("psw");
 
             checkboxDish = new ArrayList<DishEntity>();
-            if (!(checkBoxes == null)) {
-                for (String dishId : checkBoxes) {
-                    checkboxDish.add(em.find(DishEntity.class, Integer.valueOf(dishId)));
-                }
+            for (String dishId : checkBoxes) {
+                checkboxDish.add(em.find(DishEntity.class, Integer.valueOf(dishId)));
             }
 
+
             promotionEntity.setDishes(checkboxDish);
-            String userId = (String) sessionMap.get("user");
 
             Query query = em.createQuery("select r from RestaurantEntity r " +
                     "where r.username= :userUsername " +
-                    "and r.password= :userPassword");
+                    "and r.keyid= :userPassword");
 
             List<RestaurantEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
 
@@ -173,6 +171,7 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
     private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 
     }
+
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 
     }

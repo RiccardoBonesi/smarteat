@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class LoginAction extends ActionSupport implements SessionAware {
     private String username;
-    private String password;
+    private String keyid;
     private boolean loginFailed = false;
     private List<RestaurantEntity> result;
     Map sessionMap;
@@ -28,25 +28,22 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
     public String execute() {
         sessionMap.put("user", username);
-        sessionMap.put("psw", password);
+        sessionMap.put("psw", keyid);
         return SUCCESS;
     }
 
-
-
     public void validate() {
-        password="BananaU24";
-        if (username.isEmpty() || password.isEmpty()) {
+        if (username.isEmpty() || keyid.isEmpty()) {
             addFieldError("username", "");
             loginFailed = true;
-        } else if (!username.isEmpty() && !password.isEmpty()) {
+        } else {
             EntityManagerFactory entityManagerFactory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
             EntityManager em = entityManagerFactory.createEntityManager();
             Query query = em.createQuery("select r from RestaurantEntity r " +
-                    "where r.username= :userUsername " +
-                    "and r.password= :userPassword");
-            List<RestaurantEntity> result = query.setParameter("userUsername", username).setParameter("userPassword", password).getResultList();
-            if (result == null || result.size() == 0) {
+                    "where r.username= ? " +
+                    "and r.keyid= ?");
+            List<RestaurantEntity> result = query.setParameter(0, username).setParameter(1, keyid).getResultList();
+            if (result == null || result.isEmpty()) {
                 addFieldError("username", "");
                 loginFailed = true;
             }
@@ -74,12 +71,12 @@ public class LoginAction extends ActionSupport implements SessionAware {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getKeyid() {
+        return keyid;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setKeyid(String keyid) {
+        this.keyid = keyid;
     }
 
     private void writeObject(java.io.ObjectOutputStream out) throws IOException {

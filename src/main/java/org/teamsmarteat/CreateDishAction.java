@@ -94,7 +94,7 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
             String pwd = (String) sessionMap.get("psw");
             Query query = em.createQuery("select r from RestaurantEntity r " +
                     "where r.username= :userUsername " +
-                    "and r.password= :userPassword");
+                    "and r.keyid= :userPassword");
 
             List<RestaurantEntity> result = query.setParameter("userUsername", user).setParameter("userPassword", pwd).getResultList();
             checkboxIngredient = new ArrayList<IngredientEntity>();

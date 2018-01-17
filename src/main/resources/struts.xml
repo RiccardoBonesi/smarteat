@@ -20,12 +20,10 @@
             <result>/WEB-INF/jsp/helloWorld.jsp</result>
         </action>
 
-        <action name="dashboard" class="org.teamsmarteat.DashboardAction">
-            <result name="success">/WEB-INF/jsp/dashboard.jsp</result>
-        </action>
         <action name="orderlist" class="org.teamsmarteat.OrderListAction" method="execute">
             <result name="success">/WEB-INF/jsp/orderlist.jsp</result>
         </action>
+
         <action name="dishlist" class="org.teamsmarteat.DishListAction" method="execute">
             <result name="success">/WEB-INF/jsp/dishlist.jsp</result>
         </action>
@@ -67,6 +65,7 @@
         <action name="addDishPromotion" class="org.teamsmarteat.AddDishToPromotionAction" method="execute">
             <result name="success">/WEB-INF/jsp/adddishpromotion.jsp</result>
         </action>
+
         <action name="confirmDish" class="org.teamsmarteat.AddDishToPromotionAction" method="addDish">
             <result name="success" type = "redirectAction">promotion.action</result>
         </action>
@@ -79,9 +78,11 @@
         <action name="deleteDishPromotion" class="org.teamsmarteat.PromotionAction" method="deleteDish">
             <result name="success">/WEB-INF/jsp/promotionlist.jsp</result>
         </action>
+
         <action name="create_promotion" class="org.teamsmarteat.CreatePromotionAction">
             <result name="success">/WEB-INF/jsp/createpromotion.jsp</result>
         </action>
+
         <action name="create_promotion_confirmation" class="org.teamsmarteat.CreatePromotionAction" method="confirm_promotion">
             <result name="error">/WEB-INF/jsp/createpromotion.jsp</result>
             <result name="invalid">/WEB-INF/jsp/createpromotion.jsp</result>

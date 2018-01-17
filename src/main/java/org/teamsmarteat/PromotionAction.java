@@ -9,6 +9,7 @@ import org.teamsmarteat.model.PromotionEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -105,12 +106,11 @@ public class PromotionAction extends ActionSupport implements SessionAware {
     public String deletePromo() {
 
         EntityManager em = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
-        List<OrderLineEntity> orderLine = new ArrayList<OrderLineEntity>();
 
         Query query = em.createQuery("select o from OrderLineEntity o" +
                 " where o.promotion.id= ? ");
         List<OrderLineEntity> result = query.setParameter(0, promotionId).getResultList();
-        if (result.size() > 0) {
+        if (!result.isEmpty()) {
             show = true;
             queryPromotions();
             return ERROR;
@@ -129,7 +129,7 @@ public class PromotionAction extends ActionSupport implements SessionAware {
         EntityManager em = factory.createEntityManager();
         String userId = (String) sessionMap.get("user");
 
-        if (!(promotionName.isEmpty() && promotionName == null)) {
+        if (promotionName != null && !promotionName.isEmpty()) {
             Query query = em.createQuery("SELECT p FROM PromotionEntity p " +
                     "INNER JOIN RestaurantEntity r on p.restaurant.restaurantId = r.restaurantId " +
                     "WHERE p.name LIKE ? AND r.username = ?");
@@ -154,6 +154,13 @@ public class PromotionAction extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map session) {
         this.sessionMap = session;
+    }
+
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+
+    }
+    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
+
     }
 
 }

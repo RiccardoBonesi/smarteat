@@ -23,7 +23,7 @@ public class RestaurantEntity {
     private String username;
 
     @Column(name = "password")
-    private String password;
+    private String keyid;
 
     @ManyToOne
     private MenuEntity menu;
@@ -68,12 +68,12 @@ public class RestaurantEntity {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getKeyid() {
+        return keyid;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setKeyid(String keyid) {
+        this.keyid = keyid;
     }
 
     public int getMaxTables() {
