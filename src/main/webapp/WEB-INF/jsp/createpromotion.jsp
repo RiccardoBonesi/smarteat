@@ -17,17 +17,18 @@
 
         .mdl-card-wide {
             background: white;
-            height: 40px;
+            height: 85%;
             padding-left: 15px;
             padding-top: 18px;
-
+            padding-right: 10px ;
             font-size: larger;
-
         }
 
         .mdl-textfield__label {
             font-size: larger;
         }
+
+
     </style>
 
 
