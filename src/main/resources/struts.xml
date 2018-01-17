@@ -34,6 +34,10 @@
             <result name="success">/WEB-INF/jsp/create_dish.jsp</result>
         </action>
 
+        <action name="logout" class="org.teamsmarteat.LogoutAction" method="execute">
+            <result name="success">/WEB-INF/jsp/index.jsp</result>
+        </action>
+
         <action name="create_dish_confirmation" class="org.teamsmarteat.CreateDishAction" method="confirm_dish">
             <result name="error">/WEB-INF/jsp/create_dish.jsp</result>
             <result name="success" type = "redirectAction">dishlist.action</result>
