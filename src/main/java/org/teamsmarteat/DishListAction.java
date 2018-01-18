@@ -51,6 +51,14 @@ public class DishListAction extends ActionSupport implements SessionAware {
         this.dishName = dishName;
     }
 
+    public Map getSessionMap() {
+        return sessionMap;
+    }
+
+    public void setSessionMap(Map sessionMap) {
+        this.sessionMap = sessionMap;
+    }
+
     private static Logger logger = LogManager.getLogger(DishListAction.class);
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
 

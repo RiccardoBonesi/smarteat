@@ -1,6 +1,7 @@
 package org.teamsmarteat;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.SessionAware;
 import org.teamsmarteat.model.DishEntity;
 import org.teamsmarteat.model.OrderEntity;
 
@@ -9,9 +10,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
+import java.util.Map;
 
-public class CheckoutAction extends ActionSupport {
+public class CheckoutAction extends ActionSupport implements SessionAware{
 
+    Map sessionMap;
     private int orderId;
 
     public int getOrderId() {
@@ -20,6 +23,14 @@ public class CheckoutAction extends ActionSupport {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
+    }
+
+    public Map getSessionMap() {
+        return sessionMap;
+    }
+
+    public void setSessionMap(Map sessionMap) {
+        this.sessionMap = sessionMap;
     }
 
     private CheckoutAction(){
@@ -36,5 +47,10 @@ public class CheckoutAction extends ActionSupport {
         em.getTransaction().commit();
 
         return SUCCESS;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = map;
     }
 }

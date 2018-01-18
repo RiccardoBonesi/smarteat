@@ -3,6 +3,7 @@ package org.teamsmarteat;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.criterion.Order;
 import org.teamsmarteat.model.OrderEntity;
 import org.teamsmarteat.model.PromotionEntity;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class OrderLineAction extends ActionSupport {
+public class OrderLineAction extends ActionSupport implements SessionAware {
     private static Logger logger = LogManager.getLogger(OrderLineAction.class);
     Map sessionMap;
     private int orderId;
@@ -92,5 +93,10 @@ public class OrderLineAction extends ActionSupport {
     }
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = map;
     }
 }

@@ -31,6 +31,14 @@ public class AddDishToPromotionAction extends ActionSupport implements SessionAw
     private boolean errorAdd;
     private List<DishEntity> result;
 
+    public Map getSessionMap() {
+        return sessionMap;
+    }
+
+    public void setSessionMap(Map sessionMap) {
+        this.sessionMap = sessionMap;
+    }
+
     public String execute() {
         if (sessionMap.isEmpty()) {
             return "noParameter";
