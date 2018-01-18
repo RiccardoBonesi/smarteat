@@ -40,7 +40,7 @@ public class AddDishToPromotionAction extends ActionSupport implements SessionAw
     }
 
     public String execute() {
-        if (sessionMap.isEmpty()) {
+        if (sessionMap==null || sessionMap.isEmpty()) {
             return "noParameter";
         }
         EntityManager em = factory.createEntityManager();

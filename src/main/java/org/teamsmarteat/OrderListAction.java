@@ -24,7 +24,7 @@ public class OrderListAction extends ActionSupport implements SessionAware {
     private List<OrderEntity> result;
 
     public String execute() {
-        if (sessionMap.isEmpty()) {
+        if (sessionMap==null || sessionMap.isEmpty()) {
             return "noParameter";
         }
 

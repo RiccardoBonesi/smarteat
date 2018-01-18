@@ -44,7 +44,7 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
     }
 
     public String execute() {
-        if (sessionMap.isEmpty()) {
+        if (sessionMap==null || sessionMap.isEmpty()) {
             return "noParameter";
         }
 

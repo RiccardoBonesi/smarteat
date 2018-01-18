@@ -51,7 +51,7 @@ public class OrderLineAction extends ActionSupport implements SessionAware {
     }
 
     public String execute() {
-        if (sessionMap.isEmpty()) {
+        if (sessionMap==null || sessionMap.isEmpty()) {
             return "noParameter";
         }
         EntityManager entityManager = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
