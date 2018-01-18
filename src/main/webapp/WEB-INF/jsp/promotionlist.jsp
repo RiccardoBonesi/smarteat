@@ -94,25 +94,7 @@
         }
 
     </style>
-    <script type="text/javascript">
-        if (${show}) {
-            r(function () {
-                var notification = document.querySelector('.mdl-js-snackbar');
-                notification.MaterialSnackbar.showSnackbar(
-                    {
-                        message: 'You can\'t delete this promotion! A ordination is using it!'
-                    }
-                );
-            });
 
-            function r(f) {
-                /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
-            }
-
-
-            //alert("Cannot delete promotion since there are some orders linked to that promotion. Please delete that orders and retry. ")
-        }
-    </script>
 </head>
 <body>
 

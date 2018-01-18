@@ -79,7 +79,7 @@
 
         <action name="confirmDish" class="org.teamsmarteat.AddDishToPromotionAction" method="addDish">
             <result name="success" type="redirectAction">promotion.action</result>
-            <result name="invalid" type="redirectAction">promotion.action</result>
+            <result name="invalid">/WEB-INF/jsp/adddishpromotion.jsp</result>
         </action>
 
         <action name="deletePromotion" class="org.teamsmarteat.PromotionAction" method="deletePromo">
