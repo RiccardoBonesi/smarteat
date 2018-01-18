@@ -92,7 +92,7 @@
                     role="presentation">local_offer</i>Promotion</a>
             <a class="mdl-navigation__link" href="<s:url action='logout'/>"><i
                     class="mdl-color-text--blue-grey-400 material-icons"
-                    role="presentation">undo</i>Logout</a>
+                    role="presentation">exit_to_app</i>Logout</a>
 
         </nav>
     </div>

@@ -72,6 +72,9 @@ public class PromotionAction extends ActionSupport implements SessionAware {
 
     @Override
     public String execute() {
+        if (sessionMap.isEmpty()) {
+            return "noParameter";
+        }
         if (result == null) {
             queryPromotions();
         }

@@ -12,11 +12,12 @@ import javax.persistence.Query;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class OrderLineAction extends ActionSupport {
     private static Logger logger = LogManager.getLogger(OrderLineAction.class);
-
+    Map sessionMap;
     private int orderId;
     private OrderEntity order;
     private List<PromotionLine> resultPromos;
@@ -49,6 +50,9 @@ public class OrderLineAction extends ActionSupport {
     }
 
     public String execute() {
+        if (sessionMap.isEmpty()) {
+            return "noParameter";
+        }
         EntityManager entityManager = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
         if (orderId != 0) {
             order = entityManager.find(OrderEntity.class, orderId);

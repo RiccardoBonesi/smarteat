@@ -44,6 +44,10 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
     }
 
     public String execute() {
+        if (sessionMap.isEmpty()) {
+            return "noParameter";
+        }
+
         EntityManager em = factory.createEntityManager();
 
 

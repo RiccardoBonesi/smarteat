@@ -37,6 +37,8 @@
         }
 
     </style>
+
+
 </head>
 <body>
 
@@ -118,7 +120,22 @@
         </s:iterator>
         <%--<input type="hidden" id="action_value_id" value="search_ing" name="action_value">--%>
 
+        <script type="text/javascript">
+            if (${errorAdd}) {
+                r(function () {
+                    var notification = document.querySelector('.mdl-js-snackbar');
+                    notification.MaterialSnackbar.showSnackbar(
+                        {
+                            message: 'Cannot add this dish to the promotion, The dish is already in it.'
+                        }
+                    );
+                });
 
+                function r(f) {
+                    /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
+                }
+            }
+        </script>
         <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
 </body>
