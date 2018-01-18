@@ -9,9 +9,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
+import java.util.Map;
 
 public class CheckoutAction extends ActionSupport {
-
+    Map sessionMap;
     private int orderId;
 
     public int getOrderId() {
@@ -22,10 +23,14 @@ public class CheckoutAction extends ActionSupport {
         this.orderId = orderId;
     }
 
-    private CheckoutAction(){
+    private CheckoutAction() {
     }
 
-    public String execute(){
+    public String execute() {
+
+        if (sessionMap == null || sessionMap.isEmpty()) {
+            return "noParameter";
+        }
         EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         EntityManager em = factory.createEntityManager();
 

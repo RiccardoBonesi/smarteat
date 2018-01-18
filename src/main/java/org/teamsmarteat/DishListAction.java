@@ -57,7 +57,7 @@ public class DishListAction extends ActionSupport implements SessionAware {
     private List<DishEntity> result;
 
     public String execute() {
-        if (sessionMap.isEmpty()) {
+        if (sessionMap==null || sessionMap.isEmpty()) {
             return "noParameter";
         }
 

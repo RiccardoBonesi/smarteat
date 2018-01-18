@@ -110,6 +110,7 @@
 
         <action name="checkout" class="org.teamsmarteat.CheckoutAction" method="execute">
             <result type="redirectAction">orderlist.action</result>
+            <result name="noParameter">/WEB-INF/jsp/index.jsp</result>
         </action>
 
         <action name="login" class="org.teamsmarteat.LoginAction">
