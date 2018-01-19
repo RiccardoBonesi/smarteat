@@ -9,7 +9,7 @@
 
     <package name="myPackage" extends="struts-default">
 
-        <default-action-ref name="index" />
+        <default-action-ref name="index"/>
 
         <action name="index" class="org.teamsmarteat.IndexAction">
             <result>/WEB-INF/jsp/index.jsp</result>
@@ -27,6 +27,7 @@
 
         <action name="dishlist" class="org.teamsmarteat.DishListAction" method="execute">
             <result name="success">/WEB-INF/jsp/dishlist.jsp</result>
+            <result name="noParameter">/WEB-INF/jsp/index.jsp</result>
 
         </action>
 
@@ -40,12 +41,13 @@
 
         <action name="create_dish_confirmation" class="org.teamsmarteat.CreateDishAction" method="confirm_dish">
             <result name="error">/WEB-INF/jsp/create_dish.jsp</result>
-            <result name="success" type = "redirectAction">dishlist.action</result>
+            <result name="success" type="redirectAction">dishlist.action</result>
             <result name="invalid">/WEB-INF/jsp/create_dish.jsp</result>
+            <result name="noParameter">/WEB-INF/jsp/index.jsp</result>
         </action>
 
         <!--<action name="search_ingredient" class="org.teamsmarteat.CreateDishAction" method="search_ingredient">-->
-            <!--<result name="success">/WEB-INF/jsp/create_dish.jsp</result>-->
+        <!--<result name="success">/WEB-INF/jsp/create_dish.jsp</result>-->
         <!--</action>-->
 
         <action name="delete_dish" class="org.teamsmarteat.DishListAction" method="delete_dish">
@@ -58,6 +60,7 @@
 
         <action name="search_promotion_dish" class="org.teamsmarteat.AddDishToPromotionAction" method="search_dish">
             <result name="success">/WEB-INF/jsp/adddishpromotion.jsp</result>
+            <result name="noParameter">/WEB-INF/jsp/index.jsp</result>
         </action>
 
         <action name="search_promotion" class="org.teamsmarteat.PromotionAction" method="search_promotion">
@@ -66,14 +69,17 @@
 
         <action name="promotion" class="org.teamsmarteat.PromotionAction" method="execute">
             <result name="success">/WEB-INF/jsp/promotionlist.jsp</result>
+            <result name="noParameter">/WEB-INF/jsp/index.jsp</result>
         </action>
 
         <action name="addDishPromotion" class="org.teamsmarteat.AddDishToPromotionAction" method="execute">
             <result name="success">/WEB-INF/jsp/adddishpromotion.jsp</result>
+            <result name="noParameter">/WEB-INF/jsp/index.jsp</result>
         </action>
 
         <action name="confirmDish" class="org.teamsmarteat.AddDishToPromotionAction" method="addDish">
-            <result name="success" type = "redirectAction">promotion.action</result>
+            <result name="success" type="redirectAction">promotion.action</result>
+            <result name="invalid">/WEB-INF/jsp/adddishpromotion.jsp</result>
         </action>
 
         <action name="deletePromotion" class="org.teamsmarteat.PromotionAction" method="deletePromo">
@@ -87,20 +93,24 @@
 
         <action name="create_promotion" class="org.teamsmarteat.CreatePromotionAction">
             <result name="success">/WEB-INF/jsp/createpromotion.jsp</result>
+            <result name="noParameter">/WEB-INF/jsp/index.jsp</result>
         </action>
 
-        <action name="create_promotion_confirmation" class="org.teamsmarteat.CreatePromotionAction" method="confirm_promotion">
+        <action name="create_promotion_confirmation" class="org.teamsmarteat.CreatePromotionAction"
+                method="confirm_promotion">
             <result name="error">/WEB-INF/jsp/createpromotion.jsp</result>
             <result name="invalid">/WEB-INF/jsp/createpromotion.jsp</result>
-            <result name="success" type = "redirectAction">promotion.action</result>
+            <result name="success" type="redirectAction">promotion.action</result>
         </action>
 
         <action name="view_detail" class="org.teamsmarteat.OrderLineAction" method="execute">
             <result name="success">/WEB-INF/jsp/order_detail.jsp</result>
+            <result name="noParameter">/WEB-INF/jsp/index.jsp</result>
         </action>
 
         <action name="checkout" class="org.teamsmarteat.CheckoutAction" method="execute">
             <result type="redirectAction">orderlist.action</result>
+            <result name="noParameter">/WEB-INF/jsp/index.jsp</result>
         </action>
 
         <action name="login" class="org.teamsmarteat.LoginAction">

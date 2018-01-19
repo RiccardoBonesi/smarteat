@@ -3,6 +3,7 @@ package org.teamsmarteat;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.interceptor.SessionAware;
 import org.hibernate.criterion.Order;
 import org.teamsmarteat.model.OrderEntity;
 import org.teamsmarteat.model.PromotionEntity;
@@ -12,11 +13,12 @@ import javax.persistence.Query;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
-public class OrderLineAction extends ActionSupport {
+public class OrderLineAction extends ActionSupport implements SessionAware {
     private static Logger logger = LogManager.getLogger(OrderLineAction.class);
-
+    Map sessionMap;
     private int orderId;
     private OrderEntity order;
     private List<PromotionLine> resultPromos;
@@ -49,6 +51,9 @@ public class OrderLineAction extends ActionSupport {
     }
 
     public String execute() {
+        if (sessionMap==null || sessionMap.isEmpty()) {
+            return "noParameter";
+        }
         EntityManager entityManager = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
         if (orderId != 0) {
             order = entityManager.find(OrderEntity.class, orderId);
@@ -88,5 +93,10 @@ public class OrderLineAction extends ActionSupport {
     }
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = map;
     }
 }

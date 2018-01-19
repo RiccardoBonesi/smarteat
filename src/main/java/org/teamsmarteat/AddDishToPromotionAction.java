@@ -18,6 +18,7 @@ import java.util.Map;
 public class AddDishToPromotionAction extends ActionSupport implements SessionAware {
 
 
+    private static final String INVALID = "invalid";
     Map sessionMap;
     private int dishId;
     private String dishName;
@@ -27,11 +28,21 @@ public class AddDishToPromotionAction extends ActionSupport implements SessionAw
     private List<CategoryEntity> resultCategory;
     private static Logger logger = LogManager.getLogger(DishListAction.class);
     private EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
-
+    private boolean errorAdd;
     private List<DishEntity> result;
 
-    public String execute() {
+    public Map getSessionMap() {
+        return sessionMap;
+    }
 
+    public void setSessionMap(Map sessionMap) {
+        this.sessionMap = sessionMap;
+    }
+
+    public String execute() {
+        if (sessionMap==null || sessionMap.isEmpty()) {
+            return "noParameter";
+        }
         EntityManager em = factory.createEntityManager();
         if (resultDish == null) {
 
@@ -56,10 +67,19 @@ public class AddDishToPromotionAction extends ActionSupport implements SessionAw
 
         DishEntity dish = em.find(DishEntity.class, dishId);
         PromotionEntity promo = em.find(PromotionEntity.class, promotionId);
+
         if (promo != null && dish != null) {
-            em.getTransaction().begin();
-            promo.getDishes().add(dish);
-            em.getTransaction().commit();
+            execute();
+            if (!promo.getDishes().contains(dish)) {
+                em.getTransaction().begin();
+                promo.getDishes().add(dish);
+                em.getTransaction().commit();
+            } else {
+                execute();
+                errorAdd = true;
+                return INVALID;
+            }
+
         }
 //        queryPromotions();
 
@@ -138,6 +158,14 @@ public class AddDishToPromotionAction extends ActionSupport implements SessionAw
         this.promotionId = promotionId;
     }
 
+    public boolean isErrorAdd() {
+        return errorAdd;
+    }
+
+    public void setErrorAdd(boolean errorAdd) {
+        this.errorAdd = errorAdd;
+    }
+
     @Override
     public void setSession(Map session) {
         this.sessionMap = session;
@@ -146,6 +174,7 @@ public class AddDishToPromotionAction extends ActionSupport implements SessionAw
     private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 
     }
+
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 
     }

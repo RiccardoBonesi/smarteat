@@ -24,10 +24,12 @@ public class OrderListAction extends ActionSupport implements SessionAware {
     private List<OrderEntity> result;
 
     public String execute() {
-        String userId = (String) sessionMap.get("user");
-        if(sessionMap.isEmpty()){
+        if (sessionMap==null || sessionMap.isEmpty()) {
             return "noParameter";
         }
+
+        String userId = (String) sessionMap.get("user");
+
         result = new ArrayList<>();
         EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         EntityManager em = factory.createEntityManager();
@@ -61,6 +63,7 @@ public class OrderListAction extends ActionSupport implements SessionAware {
     private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 
     }
+
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 
     }
