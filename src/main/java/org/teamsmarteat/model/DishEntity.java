@@ -20,9 +20,6 @@ public class DishEntity {
     @Column(name = "price")
     private double price;
 
-    @Column(name = "description")
-    private String description;
-
     @Column(name = "enabled")
     private boolean enabled;
 
@@ -60,14 +57,6 @@ public class DishEntity {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public boolean isEnabled() { return enabled; }

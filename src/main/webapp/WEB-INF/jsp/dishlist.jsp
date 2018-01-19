@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="mdl-card__supporting-text">
-                        <s:property value="#resDish.description"/>
+                        <h5><s:property value="#resDish.price"/> &#8364;</h5>
                     </div>
 
                     <div class="child" align="right">
