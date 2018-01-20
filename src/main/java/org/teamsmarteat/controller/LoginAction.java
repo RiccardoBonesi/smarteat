@@ -83,6 +83,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
     private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 
     }
+
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 
     }

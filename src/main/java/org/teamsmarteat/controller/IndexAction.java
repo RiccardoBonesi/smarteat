@@ -22,19 +22,20 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Date;
+
 import com.opensymphony.xwork2.conversion.annotations.Conversion;
 import com.opensymphony.xwork2.conversion.annotations.TypeConversion;
 
-/**
- *
- */
+
 @Conversion()
 public class IndexAction extends ActionSupport {
 
     private Date now = new Date(System.currentTimeMillis());
 
     @TypeConversion(converter = "org.teamsmarteat.DateConverter")
-    public Date getDateNow() { return now; }
+    public Date getDateNow() {
+        return now;
+    }
 
     public String execute() throws Exception {
         now = new Date(System.currentTimeMillis());

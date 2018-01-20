@@ -13,7 +13,7 @@ import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
 import java.util.Map;
 
-public class CheckoutAction extends ActionSupport implements SessionAware{
+public class CheckoutAction extends ActionSupport implements SessionAware {
 
     Map sessionMap;
     private int orderId;
@@ -34,10 +34,10 @@ public class CheckoutAction extends ActionSupport implements SessionAware{
         this.sessionMap = sessionMap;
     }
 
-    private CheckoutAction(){
+    private CheckoutAction() {
     }
 
-    public String execute(){
+    public String execute() {
         EntityManagerFactory factory = PersistenceManager.getInstance().getEntityManagerFactory("unit1");
         EntityManager em = factory.createEntityManager();
 

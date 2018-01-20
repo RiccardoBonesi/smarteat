@@ -51,7 +51,7 @@ public class OrderLineAction extends ActionSupport implements SessionAware {
     }
 
     public String execute() {
-        if (sessionMap==null || sessionMap.isEmpty()) {
+        if (sessionMap == null || sessionMap.isEmpty()) {
             return "noParameter";
         }
         EntityManager entityManager = PersistenceManager.getInstance().getEntityManagerFactory("unit1").createEntityManager();
@@ -61,11 +61,7 @@ public class OrderLineAction extends ActionSupport implements SessionAware {
                     "from OrderLineEntity o " +
                     "where o.order.id = ? and o.promotion.id in (SELECT p.id from PromotionEntity p)" +
                     "GROUP BY o.promotion.id");
-            List<Object[]> result = query.setParameter(0,orderId).getResultList();
-//            Query query = entityManager.createQuery("select count(*), promotion.id, quantity " +
-//                    "from OrderLineEntity " +
-//                    "where order.id = 1 and promotion.id in (SELECT promotion.id from PromotionEntity)" +
-//                    "GROUP BY promotion");
+            List<Object[]> result = query.setParameter(0, orderId).getResultList();
             List quantities = new ArrayList<Integer>();
             List promos = new ArrayList<PromotionEntity>();
             for (Object[] res : result) {
@@ -83,7 +79,7 @@ public class OrderLineAction extends ActionSupport implements SessionAware {
     private List<PromotionLine> buildResultPromos(List<Integer> quantities, List<PromotionEntity> promos) {
         List<PromotionLine> result = new ArrayList<>();
         for (int i = 0; i < quantities.size(); i++) {
-            result.add(new PromotionLine(quantities.get(i),promos.get(i).getName(),promos.get(i).getDescription(),promos.get(i).getPrice()));
+            result.add(new PromotionLine(quantities.get(i), promos.get(i).getName(), promos.get(i).getDescription(), promos.get(i).getPrice()));
         }
         return result;
     }
@@ -91,6 +87,7 @@ public class OrderLineAction extends ActionSupport implements SessionAware {
     private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 
     }
+
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 
     }

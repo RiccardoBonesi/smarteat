@@ -65,7 +65,7 @@ public class DishListAction extends ActionSupport implements SessionAware {
     private List<DishEntity> result;
 
     public String execute() {
-        if (sessionMap==null || sessionMap.isEmpty()) {
+        if (sessionMap == null || sessionMap.isEmpty()) {
             return "noParameter";
         }
 
@@ -85,7 +85,7 @@ public class DishListAction extends ActionSupport implements SessionAware {
         return SUCCESS;
     }
 
-    public String delete_dish(){
+    public String delete_dish() {
         if (dishId != 0) {
             EntityManager em = factory.createEntityManager();
             DishEntity dishEntity = em.find(DishEntity.class, dishId);
@@ -109,8 +109,8 @@ public class DishListAction extends ActionSupport implements SessionAware {
                     "INNER JOIN RestaurantEntity r on d.menu = r.menu " +
                     "WHERE d.name LIKE ? AND r.username = ?");
             resultDish = query.setParameter(0, "%" + dishName + "%")
-                        .setParameter(1, userId)
-                        .getResultList();
+                    .setParameter(1, userId)
+                    .getResultList();
             execute();
             return SUCCESS;
         } else {
@@ -138,14 +138,14 @@ public class DishListAction extends ActionSupport implements SessionAware {
     }
 
     @Override
-    public void setSession(Map session)
-    {
-        this.sessionMap=session;
+    public void setSession(Map session) {
+        this.sessionMap = session;
     }
 
     private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 
     }
+
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 
     }

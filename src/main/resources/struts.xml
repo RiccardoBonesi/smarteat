@@ -46,11 +46,7 @@
             <result name="noParameter">/WEB-INF/view/index.jsp</result>
         </action>
 
-        <!--<action name="search_ingredient" class="org.teamsmarteat.controller.CreateDishAction" method="search_ingredient">-->
-        <!--<result name="success">/WEB-INF/jsp/create_dish.jsp</result>-->
-        <!--</action>-->
-
-        <action name="delete_dish" class="org.teamsmarteat.controller.DishListAction" method="delete_dish">
+        <action name="delete_dish" class="org.teamsmarteat.DishListAction" method="delete_dish">
             <result name="success">/WEB-INF/view/dishlist.jsp</result>
         </action>
 

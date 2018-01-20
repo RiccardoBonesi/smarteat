@@ -43,7 +43,7 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
     }
 
     public String execute() {
-        if (sessionMap==null || sessionMap.isEmpty()) {
+        if (sessionMap == null || sessionMap.isEmpty()) {
             return "noParameter";
         }
 
@@ -122,7 +122,6 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
     }
 
 
-
     public IngredientEntity getIngredientEntity() {
         return ingredientEntity;
     }
@@ -195,6 +194,7 @@ public class CreateDishAction extends ActionSupport implements SessionAware {
     private void writeObject(java.io.ObjectOutputStream out) throws IOException {
 
     }
+
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException {
 
     }

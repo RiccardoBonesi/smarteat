@@ -274,7 +274,6 @@
 
     </s:form>
 
-    <%--<button id="demo-show-snackbar" class="mdl-button mdl-js-button mdl-button--raised" type="button" onclick="showToast()">Show Snackbar</button>--%>
     <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
         <div class="mdl-snackbar__text"></div>
         <button class="mdl-snackbar__action" type="button"></button>
