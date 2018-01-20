@@ -66,46 +66,47 @@
                 </div>
                 <div class="mdl-cell mdl-cell--9-col">
                     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-hover">
-                        <s:iterator value="orderLines" var="line">
-                            <s:if test="%{#line.promotion == null}">
-                                <thead>
-                                <tr>
-                                    <th>Quantity</th>
-                                    <th class="mdl-data-table__cell--non-numeric">Dish</th>
-                                    <th class="mdl-data-table__cell--non-numeric">Price</th>
-                                    <th class="mdl-data-table__cell--non-numeric">Notes</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                            <%--<s:if test="%{orderLines != null && !orderLines.isEmpty()}">--%>
+                        <s:if test="%{dishes}">
+                            <thead>
+                            <tr>
+                                <th>Quantity</th>
+                                <th class="mdl-data-table__cell--non-numeric">Dish</th>
+                                <th class="mdl-data-table__cell--non-numeric">Price</th>
+                                <th class="mdl-data-table__cell--non-numeric">Notes</th>
+                            </tr>
+                            </thead>
+                            <s:iterator value="orderLines" var="line">
+                                <s:if test="%{#line.promotion == null}">
+                                    <tbody>
+                                    <tr class="allwhite">
+                                        <td><s:property value="#line.quantity"/></td>
+                                        <td class="mdl-data-table__cell--non-numeric"><s:property
+                                                value="#line.dish.name"/></td>
+                                        <td class="mdl-data-table__cell--non-numeric">
+                                            <s:property value="#line.dish.price"/> &#8364;
+                                        </td>
+                                        <td class="mdl-data-table__cell--non-numeric"><s:property
+                                                value="#line.notes"/></td>
+                                    </tr>
 
-                                <tr class="allwhite">
-                                    <td><s:property value="#line.quantity"/></td>
-                                    <td class="mdl-data-table__cell--non-numeric"><s:property
-                                            value="#line.dish.name"/></td>
-                                    <td class="mdl-data-table__cell--non-numeric">
-                                        <s:property value="#line.dish.price"/> &#8364;
-                                    </td>
-                                    <td class="mdl-data-table__cell--non-numeric"><s:property value="#line.notes"/></td>
-                                </tr>
-
-                                </tbody>
-                            </s:if>
-                        </s:iterator>
+                                    </tbody>
+                                </s:if>
+                            </s:iterator>
+                        </s:if>
                     </table>
                     <!-- table for promotions -->
                     <table id="promos" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-hover">
-                        <s:if test="%{resultPromos!= null && !resultPromos.isEmpty()}">
+                        <s:if test="%{resultPromos != null && !resultPromos.isEmpty()}">
+                            <thead>
+                            <tr>
+                                <th>Quantity</th>
+                                <th class="mdl-data-table__cell--non-numeric">Promo</th>
+                                <th class="mdl-data-table__cell--non-numeric">Price</th>
+                                <th class="mdl-data-table__cell--non-numeric">Description</th>
+                            </tr>
+                            </thead>
                             <s:iterator value="resultPromos" var="promo">
-
-                                <thead>
-                                <tr>
-                                    <th>Quantity</th>
-                                    <th class="mdl-data-table__cell--non-numeric">Promo</th>
-                                    <th class="mdl-data-table__cell--non-numeric">Price</th>
-                                    <th class="mdl-data-table__cell--non-numeric">Description</th>
-
-                                </tr>
-                                </thead>
                                 <tbody>
 
                                 <tr class="allwhite">
@@ -121,7 +122,6 @@
                                     </td>
                                 </tr>
                                 </tbody>
-
                             </s:iterator>
                         </s:if>
                     </table>

@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 import org.teamsmarteat.PersistenceManager;
 import org.teamsmarteat.model.OrderEntity;
+import org.teamsmarteat.model.OrderLineEntity;
 import org.teamsmarteat.model.PromotionEntity;
 
 import javax.persistence.EntityManager;
@@ -22,6 +23,15 @@ public class OrderLineAction extends ActionSupport implements SessionAware {
     private int orderId;
     private OrderEntity order;
     private List<PromotionLine> resultPromos;
+    private boolean dishes = false;
+
+    public boolean isDishes() {
+        return dishes;
+    }
+
+    public void setDishes(boolean dishes) {
+        this.dishes = dishes;
+    }
 
     public List<PromotionLine> getResultPromos() {
         return resultPromos;
@@ -70,6 +80,11 @@ public class OrderLineAction extends ActionSupport implements SessionAware {
                 promos.add(promo);
             }
             resultPromos = buildResultPromos(quantities, promos);
+            for (int i = 0; i<order.getOrderLines().size() && !dishes; i++) {
+                if (order.getOrderLines().get(i).getPromotion() == null) {
+                    dishes = true;
+                }
+            }
             return SUCCESS;
         } else {
             return ERROR;
