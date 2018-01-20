@@ -47,7 +47,6 @@
         <s:iterator value="order" var="res">
             <div class="mdl-grid">
                 <div id="sposta_parent" class=" mdl-cell mdl-cell--3-col">
-                        <%--<h1>Order <s:property value="#res.orderId"/></h1>--%>
                     <div>
                         <h3>Table <s:property value="#res.tableNumber"/></h3>
                     </div>

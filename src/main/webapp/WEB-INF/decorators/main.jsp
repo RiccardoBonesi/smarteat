@@ -48,7 +48,6 @@
     <style>
         .mdl-layout__header {
             height: fit-content;
-            /*border-radius: 50%;*/
         }
 
         .avatar {
@@ -68,19 +67,6 @@
         <header class="demo-drawer-header">
             <img style="background: white" src="images/account.png" height="100" width="100" class="avatar">
             <% out.print(user);%>
-            <%--<div class="demo-avatar-dropdown">
-                <span>hello@example.com</span>
-                <div class="mdl-layout-spacer"></div>
-                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                    <i class="material-icons" role="presentation">arrow_drop_down</i>
-                    <span class="visuallyhidden">Accounts</span>
-                </button>
-                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                    <li class="mdl-menu__item">hello@example.com</li>
-                    <li class="mdl-menu__item">info@example.com</li>
-                    <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
-                </ul>
-            </div>--%>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
             <a class="mdl-navigation__link" href="<s:url action='orderlist'/>"><i

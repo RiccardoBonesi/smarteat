@@ -20,7 +20,7 @@
             height: 85%;
             padding-left: 15px;
             padding-top: 18px;
-            padding-right: 10px ;
+            padding-right: 10px;
             font-size: larger;
         }
 

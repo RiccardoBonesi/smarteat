@@ -33,7 +33,7 @@ public class CreatePromotionAction extends ActionSupport implements SessionAware
     }
 
     public String execute() {
-        if (sessionMap==null || sessionMap.isEmpty()) {
+        if (sessionMap == null || sessionMap.isEmpty()) {
             return "noParameter";
         }
 

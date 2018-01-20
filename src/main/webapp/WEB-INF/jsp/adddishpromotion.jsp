@@ -139,7 +139,6 @@
                 }
 
 
-                //alert("Cannot delete promotion since there are some orders linked to that promotion. Please delete that orders and retry. ")
             }
         </script>
 

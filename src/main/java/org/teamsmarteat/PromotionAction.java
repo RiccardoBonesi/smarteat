@@ -72,7 +72,7 @@ public class PromotionAction extends ActionSupport implements SessionAware {
 
     @Override
     public String execute() {
-        if (sessionMap==null || sessionMap.isEmpty()) {
+        if (sessionMap == null || sessionMap.isEmpty()) {
             return "noParameter";
         }
         if (result == null) {
@@ -149,7 +149,6 @@ public class PromotionAction extends ActionSupport implements SessionAware {
     }
 
     public String addDishPromotion() {
-//        sessionMap.put("currentPromo", password);
         return SUCCESS;
     }
 

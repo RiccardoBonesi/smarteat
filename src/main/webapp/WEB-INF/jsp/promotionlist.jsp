@@ -137,15 +137,12 @@
     </div>
 
 
-    <%--<s:if test="show">--%>
     <div id="demo-snackbar-example" class="mdl-js-snackbar mdl-snackbar">
         <div class="mdl-snackbar__text"></div>
         <button class="mdl-snackbar__action" type="button"></button>
     </div>
 
 
-    <%--</s:if>--%>
-    <%--<div class="demo-list-icon mdl-list">--%>
     <div class="mdl-grid">
         <s:iterator value="result" var="resPromotion">
             <div class="mdl-card-wide mdl-shadow--2dp mdl-color-text--white mdl-color--light-blue-A200"
@@ -168,7 +165,7 @@
                     </tr>
                     </thead>
                 </table>
-                    <%--<s:textfield name="some_name" value="%{show}"/>--%>
+
 
             </div>
 
@@ -233,8 +230,6 @@
                 /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
             }
 
-
-            //alert("Cannot delete promotion since there are some orders linked to that promotion. Please delete that orders and retry. ")
         }
     </script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
