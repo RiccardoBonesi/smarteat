@@ -18,6 +18,7 @@ package org.teamsmarteat;
 import junit.framework.TestCase;
 
 import com.opensymphony.xwork2.Action;
+import org.teamsmarteat.controller.IndexAction;
 
 /**
  * 

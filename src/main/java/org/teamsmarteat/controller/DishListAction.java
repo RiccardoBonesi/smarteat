@@ -1,9 +1,10 @@
-package org.teamsmarteat;
+package org.teamsmarteat.controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
+import org.teamsmarteat.PersistenceManager;
 import org.teamsmarteat.model.CategoryEntity;
 import org.teamsmarteat.model.DishEntity;
 

@@ -1,7 +1,8 @@
-package org.teamsmarteat;
+package org.teamsmarteat.controller;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
+import org.teamsmarteat.PersistenceManager;
 import org.teamsmarteat.model.*;
 
 import javax.persistence.EntityManager;

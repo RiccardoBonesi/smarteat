@@ -1,4 +1,4 @@
-package org.teamsmarteat;
+package org.teamsmarteat.controller;
 
 import java.util.Objects;
 

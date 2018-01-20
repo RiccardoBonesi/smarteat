@@ -1,19 +1,18 @@
-package org.teamsmarteat;
+package org.teamsmarteat.controller;
 
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
+import org.teamsmarteat.PersistenceManager;
+import org.teamsmarteat.controller.DishListAction;
 import org.teamsmarteat.model.*;
 
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaUpdate;
-import javax.persistence.criteria.Root;
 
 import java.io.IOException;
 import java.util.*;
