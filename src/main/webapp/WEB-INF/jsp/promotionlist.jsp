@@ -217,7 +217,26 @@
             </div>
         </s:iterator>
     </div>
+    <script type="text/javascript">
+        if (${show}) {
+            r(function () {
+                var notification = document.querySelector('.mdl-js-snackbar');
+                notification.MaterialSnackbar.showSnackbar(
+                    {
+                        message: 'Cannot delete this promotion since there are orders linked to it.' +
+                        ' Please delete that orders and retry'
+                    }
+                );
+            });
 
+            function r(f) {
+                /in/.test(document.readyState) ? setTimeout('r(' + f + ')', 9) : f()
+            }
+
+
+            //alert("Cannot delete promotion since there are some orders linked to that promotion. Please delete that orders and retry. ")
+        }
+    </script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </main>
 </body>
